@@ -1,7 +1,7 @@
 const navigation = {
   main: [
-    { name: 'My CV', href: '#' },
-    { name: 'Projects Portfolio', href: '/projects' },
+    { name: 'Projects Portfolio', href: '/' },
+    { name: 'My CV', href: '/cv' },
     { name: 'About me', href: '/about-me' },
   ],
   social: [
