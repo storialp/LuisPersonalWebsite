@@ -1,13 +1,6 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import {
-  Bars3Icon,
-  BellIcon,
-  FingerPrintIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import pictureOfMe from '../../public/Luis_P_pic_cropped.jpeg'
-// import.meta.glob('../../node_modules/astro/env.d.ts', { import: 'Astro' })
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -24,12 +17,12 @@ export default function NavBar(props) {
                 <div className='flex flex-shrink-0 items-center '>
                   <img
                     className='block h-12 w-12 lg:hidden rounded-full'
-                    src={pictureOfMe}
+                    src='https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Luis_P_pic_cropped.jpeg'
                     alt='A picture of me'
                   />
                   <img
                     className='hidden h-12 w-12 lg:block rounded-full'
-                    src={pictureOfMe}
+                    src='https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Luis_P_pic_cropped.jpeg'
                     alt='A picture of me'
                   />
                 </div>
