@@ -168,6 +168,22 @@ const people = [
           </svg>
         ),
       },
+      {
+        url: 'https://vercel.com',
+        name: 'Vercel',
+        logo: (props) => (
+          <svg
+            width='800'
+            height='800'
+            viewBox='0 0 512 512'
+            fill='#000000'
+            xmlns='http://www.w3.org/2000/svg'
+            {...props}
+          >
+            <path fillRule='evenodd' d='M256,48,496,464H16Z' />
+          </svg>
+        ),
+      },
     ],
   },
   {
@@ -281,6 +297,22 @@ const people = [
           </svg>
         ),
       },
+      {
+        url: 'https://vercel.com',
+        name: 'Vercel',
+        logo: (props) => (
+          <svg
+            width='800'
+            height='800'
+            viewBox='0 0 512 512'
+            fill='#000000'
+            xmlns='http://www.w3.org/2000/svg'
+            {...props}
+          >
+            <path fillRule='evenodd' d='M256,48,496,464H16Z' />
+          </svg>
+        ),
+      },
     ],
   },
 ]
@@ -318,7 +350,7 @@ export default function PortfolioSection() {
         >
           {people.map((person) => (
             <li key={person.name}>
-              <a href={person.link}>
+              <a href={person.link} target='_blank'>
                 <img
                   className='aspect-[3/2] w-full rounded-2xl object-cover'
                   src={person.imageUrl}

@@ -40,6 +40,16 @@ export default function NavBar(props) {
                         : 'inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700'
                     }
                   >
+                    About Me
+                  </a>
+                  <a
+                    href='/projects'
+                    className={
+                      props.path == '/projects'
+                        ? 'inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900'
+                        : 'inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                    }
+                  >
                     Projects Portfolio
                   </a>
                   <a
@@ -58,12 +68,6 @@ export default function NavBar(props) {
                     className='inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   >
                     Rating Music
-                  </a> */}
-                  {/* <a
-                    href='#'
-                    className='inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                  >
-                    About Me
                   </a> */}
                 </div>
               </div>
