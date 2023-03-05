@@ -1,4 +1,4 @@
-const people = [
+const experiences = [
   {
     name: 'Bocconi',
     role: 'B.Sc. Economics and Computer Science',
@@ -6,6 +6,7 @@ const people = [
       'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/bocconi_logo.png',
     bio: 'Earned Full-tuition merit scholarship ',
     linkedinUrl: 'https://www.linkedin.com/school/universita-bocconi/',
+    website: 'https://www.unibocconi.it/',
   },
   {
     name: 'Privilège Student Ventures',
@@ -15,6 +16,7 @@ const people = [
     bio: 'Sourcing and selecting investments',
     linkedinUrl:
       'https://www.linkedin.com/company/privil%C3%A8ge-student-ventures/',
+    website: 'https://pv-student.vc/',
   },
   {
     name: 'APX (Axel Springer & Porsche Joint Venture',
@@ -23,6 +25,7 @@ const people = [
       'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/apx_logo.webp',
     bio: 'Supporting portfolio founders',
     linkedinUrl: 'https://www.linkedin.com/company/apxberlin/',
+    website: 'https://apx.vc/',
   },
   {
     name: 'Bocconi Students for Venture Capital',
@@ -32,6 +35,7 @@ const people = [
     bio: 'Managing 4 divisions and expanding the club',
     linkedinUrl:
       'https://www.linkedin.com/company/bocconi-students-for-venture-capital/',
+    website: 'https://bsvc.it/',
   },
 ]
 
@@ -53,30 +57,32 @@ export default function Cv() {
           role='list'
           className='-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3'
         >
-          {people.map((person) => (
+          {experiences.map((experience) => (
             <li
-              key={person.name}
+              key={experience.name}
               className='flex flex-col gap-10 pt-12 sm:flex-row'
             >
-              <img
-                className='aspect-[4/5] w-52 flex-none rounded-2xl object-cover'
-                src={person.imageUrl}
-                alt=''
-              />
+              <a href={experience.website}>
+                <img
+                  className='aspect-[4/5] w-52 flex-none rounded-2xl object-cover'
+                  src={experience.imageUrl}
+                  alt=''
+                />
+              </a>
               <div className='max-w-xl flex-auto'>
                 <h3 className='text-lg font-semibold leading-8 tracking-tight text-gray-900'>
-                  {person.name}
+                  {experience.name}
                 </h3>
                 <p className='text-base leading-7 text-gray-600'>
-                  {person.role}
+                  {experience.role}
                 </p>
                 <p className='mt-6 text-base leading-7 text-gray-600'>
-                  {person.bio}
+                  {experience.bio}
                 </p>
                 <ul role='list' className='mt-6 flex gap-x-6'>
                   <li>
                     <a
-                      href={person.linkedinUrl}
+                      href={experience.linkedinUrl}
                       className='text-gray-400 hover:text-gray-500'
                     >
                       <span className='sr-only'>LinkedIn</span>

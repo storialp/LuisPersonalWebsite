@@ -1,4 +1,4 @@
-const people = [
+const projects = [
   {
     name: 'Usuals Landing Page',
     role: 'Proof of Concept website for a SaaS with a waitlist',
@@ -102,7 +102,7 @@ const people = [
             <path
               d='M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z'
               fill='url(#paint1_linear)'
-              fill-opacity='0.2'
+              fillOpacity='0.2'
             />
             <path
               d='M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z'
@@ -231,7 +231,7 @@ const people = [
             <path
               d='M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z'
               fill='url(#paint1_linear)'
-              fill-opacity='0.2'
+              fillOpacity='0.2'
             />
             <path
               d='M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z'
@@ -285,8 +285,8 @@ const people = [
                 x2='64'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#2383ae' offset='0%' />
-                <stop stop-color='#6dd7b9' offset='100%' />
+                <stop stopColor='#2383ae' offset='0%' />
+                <stop stopColor='#6dd7b9' offset='100%' />
               </linearGradient>
             </defs>
             <path
@@ -316,19 +316,6 @@ const people = [
     ],
   },
 ]
-// {
-//   name: 'Usuals Scanner',
-//   role: 'Loyalty card (QR) Scanner',
-//   imageUrl:
-//     'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
-//   frameworkUrl: 'https://astro.build/',
-//   databaseUrl: 'https://supabase.com/',
-//   stylingUrl: 'https://tailwindcss.com/',
-//   hostingUrl: 'https://vercel.com/',
-//   frameworkName: 'Astro',
-//   dataBaseName: 'Supabase',
-// },
-// More people...
 
 export default function PortfolioSection() {
   return (
@@ -348,22 +335,24 @@ export default function PortfolioSection() {
           role='list'
           className='mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3'
         >
-          {people.map((person) => (
-            <li key={person.name}>
-              <a href={person.link} target='_blank'>
+          {projects.map((project) => (
+            <li key={project.name}>
+              <a href={project.link} target='_blank'>
                 <img
                   className='aspect-[3/2] w-full rounded-2xl object-cover'
-                  src={person.imageUrl}
+                  src={project.imageUrl}
                   alt=''
                 />
               </a>
               <h3 className='mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900'>
-                {person.name}
+                {project.name}
               </h3>
-              <p className='text-base leading-7 text-gray-600'>{person.role}</p>
+              <p className='text-base leading-7 text-gray-600'>
+                {project.role}
+              </p>
               <p className='text-base leading-7 text-gray-600'>Built with:</p>
               <ul role='list' className='mt-6 flex gap-x-6'>
-                {person.stack.map((item) => (
+                {project.stack.map((item) => (
                   <li>
                     <a
                       href={item.url}
