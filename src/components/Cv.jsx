@@ -31,7 +31,7 @@ const experiences = [
     name: 'Bocconi Students for Venture Capital',
     role: 'Vice President',
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/bsvc_logo.webp',
+      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/BSVC+-+Logo+1.png',
     bio: 'Managing 4 divisions and expanding the club',
     linkedinUrl:
       'https://www.linkedin.com/company/bocconi-students-for-venture-capital/',
@@ -42,7 +42,7 @@ const experiences = [
 export default function Cv() {
   return (
     <div className='bg-white py-24 md:py-32'>
-      <div className='mx-auto grid max-w-7xl grid-cols-1 gap-y-20 gap-x-8 px-6 lg:px-8 xl:grid-cols-5'>
+      <div className='mx-auto grid max-w-7xl grid-cols-1 gap-y-20 gap-x-8 px-6 lg:px-8 '>
         <div className='max-w-2xl xl:col-span-2'>
           <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
             Luis Pericchi
@@ -79,7 +79,7 @@ export default function Cv() {
                 <p className='mt-6 text-base leading-7 text-gray-600'>
                   {experience.bio}
                 </p>
-                <ul role='list' className='mt-6 flex gap-x-6'>
+                {/* <ul role='list' className='mt-6 flex gap-x-6'>
                   <li>
                     <a
                       href={experience.linkedinUrl}
@@ -100,7 +100,7 @@ export default function Cv() {
                       </svg>
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </li>
           ))}

@@ -4,12 +4,12 @@ export default function TechSkills() {
       <div className='bg-white py-24 sm:py-32'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
           <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
-            These are the technologies I'm most comfortable in
+            These are the technologies I'm most comfortable with
           </h2>
           <div className='mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5'>
             <img
               className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-              src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/640px-Python_logo_and_wordmark.svg.png'
+              src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png'
               alt='Python logo'
               width={158}
               height={48}
@@ -46,7 +46,7 @@ export default function TechSkills() {
           <div className='mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5'>
             <img
               className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_VfYfuw4JGQC0QLtbrhWyAQgW9qD9fXanG34lWGAyI1y34PxtAPagPNkCTAoX7_x7sFw&usqp=CAU'
+              src='https://user-images.githubusercontent.com/67586773/105040771-43887300-5a88-11eb-9f01-bee100b9ef22.png'
               alt='Numpy logo'
               width={158}
               height={48}
@@ -60,7 +60,7 @@ export default function TechSkills() {
             />
             <img
               className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-              src='https://dka575ofm4ao0.cloudfront.net/pages-transactional_logos/retina/205146/logo-light.png'
+              src='https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png'
               alt='Supabase'
               width={158}
               height={48}
@@ -83,7 +83,7 @@ export default function TechSkills() {
           <div className='mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5'>
             <img
               className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-              src='https://matplotlib.org/3.1.1/_static/logo2_compressed.svg'
+              src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Created_with_Matplotlib-logo.svg/2048px-Created_with_Matplotlib-logo.svg.png'
               alt='Matplotlib logo'
               width={158}
               height={48}
