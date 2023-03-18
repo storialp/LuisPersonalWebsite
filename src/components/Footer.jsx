@@ -1,8 +1,8 @@
 const navigation = {
   main: [
-    { name: 'Projects Portfolio', href: '/' },
+    { name: 'Projects Portfolio', href: '/projects' },
     { name: 'My CV', href: '/cv' },
-    { name: 'About me', href: '/about-me' },
+    // { name: 'About me', href: '/about-me' },
   ],
   social: [
     {
