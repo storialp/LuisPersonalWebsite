@@ -188,9 +188,9 @@ const projects = [
   },
   {
     name: 'Usuals Scanner',
-    role: 'Loyalty card (QR code) Scanner',
+    role: 'Loyalty card (QR code) Scanner for Businesses',
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Frame+22.png',
+      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/DoubleScannerPictureCropped+(1).jpg',
     link: 'https://usuals-scanner.vercel.app/',
     stack: [
       {
@@ -319,7 +319,7 @@ const projects = [
     name: 'Usuals Consumer App',
     role: 'Loyalty card manager for the B2C side of the project',
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Screenshot+(334).png',
+      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/usualsconsumercropped+(1).jpg',
     link: 'https://usuals.co',
     stack: [
       {
