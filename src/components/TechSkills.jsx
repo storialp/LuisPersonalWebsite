@@ -94,6 +94,20 @@ const technologies3 = [
     imgAlt: 'Scikit Learn logo',
     link: 'https://scikit-learn.org/',
   },
+  {
+    name: 'Jotai',
+    imgSrc:
+      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/jotai_logo.svg',
+    imgAlt: 'Jotai logo',
+    link: 'https://jotai.org/',
+  },
+  {
+    name: 'SQL',
+    imgSrc:
+      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/jotai_logo.svg',
+    imgAlt: 'SQL logo',
+    link: 'https://www.w3schools.com/sql/sql_quickref.asp',
+  },
 ]
 export default function TechSkills() {
   return (
