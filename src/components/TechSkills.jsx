@@ -104,7 +104,7 @@ const technologies3 = [
   {
     name: 'SQL',
     imgSrc:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/jotai_logo.svg',
+      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/sql-database-generic.svg',
     imgAlt: 'SQL logo',
     link: 'https://www.w3schools.com/sql/sql_quickref.asp',
   },
@@ -112,7 +112,7 @@ const technologies3 = [
 export default function TechSkills() {
   return (
     <div>
-      <div className='bg-white py-24 sm:py-32'>
+      <div className='bg-white pt-10 sm:pt-12 pb-16'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
           <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
             These are the technologies I'm most comfortable with
