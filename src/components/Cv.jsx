@@ -1,115 +1,115 @@
 const experiences = [
   {
-    name: 'Bocconi',
-    role: 'B.Sc. Economics and Computer Science',
+    name: "Bocconi",
+    role: "B.Sc. Economics and Computer Science",
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/bocconi_logo.png',
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/bocconi_logo.png",
     bio: [
-      'Earned Full-tuition merit-based scholarship ',
-      'Relevant coursework: Machine Learning, Advanced Statistics, Fundamentals of Computer Science',
+      "Earned Full-tuition merit-based scholarship ",
+      "Relevant coursework: Machine Learning, Advanced Statistics, Fundamentals of Computer Science",
     ],
-    linkedinUrl: 'https://www.linkedin.com/school/universita-bocconi/',
-    website: 'https://www.unibocconi.it/',
+    linkedinUrl: "https://www.linkedin.com/school/universita-bocconi/",
+    website: "https://www.unibocconi.it/",
   },
   {
-    name: 'Privilège Student Ventures',
-    role: 'Investment Manager',
+    name: "Privilège Student Ventures",
+    role: "Investment Manager",
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/psv_logo.jpg',
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/psv_logo.jpg",
     bio: [
-      'Owning the full investment process from sourcing and selection to Investment Committee approval',
+      "Owning the full investment process from sourcing and selection to Investment Committee approval",
       "Organized a VC Investment Competition with Bocconi's accelerator and its VC club",
     ],
     linkedinUrl:
-      'https://www.linkedin.com/company/privil%C3%A8ge-student-ventures/',
-    website: 'https://pv-student.vc/',
+      "https://www.linkedin.com/company/privil%C3%A8ge-student-ventures/",
+    website: "https://pv-student.vc/",
   },
   {
-    name: 'Usuals',
-    role: 'Co-founder',
+    name: "Usuals",
+    role: "Co-founder",
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Frame+22.png',
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Frame+22.png",
     bio: [
-      'Tested the idea of a Loyalty Program for SMBs SaaS',
-      'After conversations with prospects, we realized the problem was likely not pressing enough for them, decided to pause',
-      'Led product development for the MVP, from Figma to programming full-stack web apps. Continued as personal project',
+      "Tested the idea of a Loyalty Program for SMBs SaaS, paused after discouraging conversations with prospects",
+      "Led product development for the MVP, from Figma to programming full-stack web apps. Continued as personal project",
     ],
-    linkedinUrl: 'https://www.linkedin.com/company/usuals',
-    website: 'https://usuals.co',
+    linkedinUrl: "https://www.linkedin.com/company/usuals",
+    website: "https://usuals.co",
   },
   {
-    name: 'APX (Axel Springer & Porsche Joint Venture',
-    role: 'Venture Development Intern',
+    name: "APX (Axel Springer & Porsche Joint Venture",
+    role: "Venture Development Intern",
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/apx_logo.webp',
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/apx_logo.webp",
     bio: [
-      'Created a comprehensive KPI system to measure value added by our GTM and HR support layers with data visualization models',
-      'Worked directly with over 30 founding teams on preparing them for their next round of funding, hypothesis testing, and connecting them with mentors within our network',
+      "Created a KPI and data visualization system to measure value added by our GTM and HR support layers",
+      "Worked directly with over 30 founding teams on preparing them for their next funding round, hypothesis testing, and connecting them with mentors",
     ],
-    linkedinUrl: 'https://www.linkedin.com/company/apxberlin/',
-    website: 'https://apx.vc/',
+    linkedinUrl: "https://www.linkedin.com/company/apxberlin/",
+    website: "https://apx.vc/",
   },
   {
-    name: 'Bocconi Students for Venture Capital',
-    role: 'Vice President',
+    name: "Bocconi Students for Venture Capital",
+    role: "Vice President",
     imageUrl:
-      'https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/BSVC+-+Logo+1.png',
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/BSVC+-+Logo+1.png",
     bio: [
-      'Managed over 40 students across 4 divisions including a new consulting division',
+      "Managed over 40 students across 4 divisions including a new consulting division",
       "Led partnerships with VCs and Accelerators such as Earlybird and Bocconi's accelerator",
     ],
     linkedinUrl:
-      'https://www.linkedin.com/company/bocconi-students-for-venture-capital/',
-    website: 'https://bsvc.it/',
+      "https://www.linkedin.com/company/bocconi-students-for-venture-capital/",
+    website: "https://bsvc.it/",
   },
-]
+];
 
 export default function Cv() {
   return (
-    <div className='bg-white py-10 md:py-16'>
-      <div className='mx-auto grid max-w-7xl grid-cols-1 gap-y-20 gap-x-8 px-6 lg:px-8 '>
-        <div className='max-w-2xl xl:col-span-2'>
-          <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+    <div className="bg-white py-10 md:py-16 border-b">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-y-20 gap-x-8 px-6 lg:px-8 ">
+        <div className="max-w-2xl xl:col-span-2">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Luis Pericchi
           </h2>
-          <p className='mt-6 text-lg leading-8 text-gray-600'>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
             Born and raised in Venezuela, I moved to Milan two years ago to
             study Economics and Computer Science at Bocconi. These are my
             professional experiences:
           </p>
         </div>
         <ul
-          role='list'
-          className='-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3'
+          role="list"
+          className="-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3"
         >
           {experiences.map((experience) => (
             <li
               key={experience.name}
-              className='flex flex-col gap-10 pt-12 sm:flex-row'
+              className="flex flex-col gap-10 pt-12 sm:flex-row"
             >
               <a href={experience.website}>
                 <img
-                  className='aspect-[4/5] w-36 flex-none rounded-2xl object-cover'
+                  className="aspect-[4/5] w-36 flex-none rounded-2xl object-cover"
                   src={experience.imageUrl}
-                  alt=''
+                  alt=""
                 />
               </a>
-              <div className='max-w-xl flex-auto'>
-                <h3 className='text-lg font-semibold leading-8 tracking-tight text-gray-900'>
+              <div className="max-w-xl flex-auto">
+                <h3 className="text-lg font-semibold leading-8 tracking-tight text-gray-900">
                   {experience.name}
                 </h3>
-                <p className='text-base leading-7 text-gray-600'>
+                <p className="text-base leading-7 text-gray-600">
                   {experience.role}
                 </p>
-                <div className='mt-4'>
-                  {experience.bio.map((item, index) => (
-                    <p
-                      className='mt-2 text-base leading-7 text-gray-600'
-                      key={index}
-                    >
-                      {item}
-                    </p>
-                  ))}
+                <div className="mt-4">
+                  <ul className="list-disc">
+                    {experience.bio.map((item, index) => (
+                      <li key={index}>
+                        <p className="mt-2 text-base leading-7 text-gray-600">
+                          {item}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 {/* <ul role='list' className='mt-6 flex gap-x-6'>
@@ -140,5 +140,5 @@ export default function Cv() {
         </ul>
       </div>
     </div>
-  )
+  );
 }
