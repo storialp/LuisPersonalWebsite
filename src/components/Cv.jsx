@@ -37,7 +37,7 @@ const experiences = [
     website: "https://usuals.co",
   },
   {
-    name: "APX (Axel Springer & Porsche Joint Venture",
+    name: "APX (Axel Springer & Porsche Joint Venture)",
     role: "Venture Development Intern",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/apx_logo.webp",
