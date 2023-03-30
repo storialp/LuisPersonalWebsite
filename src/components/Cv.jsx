@@ -54,8 +54,8 @@ const experiences = [
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/BSVC+-+Logo+1.png",
     bio: [
-      "Managed over 40 students across 4 divisions including a new consulting division",
       "Led partnerships with VCs and Accelerators such as Earlybird and Bocconi's accelerator",
+      "Set goals and roadmaps for our events and communications divisions, pushing these 40 students to develop relationships with VCs and each other",
     ],
     linkedinUrl:
       "https://www.linkedin.com/company/bocconi-students-for-venture-capital/",
@@ -74,7 +74,7 @@ export default function Cv() {
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Born and raised in Venezuela, I moved to Milan two years ago to
             study Economics and Computer Science at Bocconi. These are my
-            professional experiences:
+            professional and educational experiences:
           </p>
         </div>
         <ul
