@@ -88,7 +88,7 @@ export default function Cv() {
             >
               <a href={experience.website}>
                 <img
-                  className="aspect-[4/5] w-36 flex-none rounded-2xl object-cover"
+                  className="aspect-[4/5] w-36 flex-none rounded-2xl object-cover hover:opacity-75"
                   src={experience.imageUrl}
                   alt=""
                 />
