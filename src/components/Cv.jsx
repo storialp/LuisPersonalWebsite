@@ -1,11 +1,11 @@
 const experiences = [
   {
-    name: "Bocconi",
+    name: "Bocconi University",
     role: "B.Sc. Economics and Computer Science",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/bocconi_logo.png",
     bio: [
-      "Earned Full-tuition merit-based scholarship ",
+      "Earned full-tuition merit-based scholarship ",
       "Relevant coursework: Machine Learning, Advanced Statistics, Fundamentals of Computer Science",
     ],
     linkedinUrl: "https://www.linkedin.com/school/universita-bocconi/",
