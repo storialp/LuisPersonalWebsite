@@ -4,7 +4,7 @@ const experiences = [
     role: "B.Sc. Economics and Computer Science",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/bocconi_logo.png",
-    bio: [
+    content: [
       "Earned full-tuition merit-based scholarship ",
       "Relevant coursework: Machine Learning, Advanced Statistics, Fundamentals of Computer Science",
     ],
@@ -16,9 +16,9 @@ const experiences = [
     role: "Investment Manager",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/psv_logo.jpg",
-    bio: [
-      "Owning the full investment process from sourcing and selection to Investment Committee approval",
-      "Organized a VC Investment Competition with Bocconi's accelerator and its VC club",
+    content: [
+      "Sourced and selected early-stage companies for Italy’s first student-run VC fund, investing €10-20k tickets in each",
+      "Pitched a €15k investment in a femtech company to IC, presenting my due diligence and preparing deliverables, on track to finalize in the coming weeks",
     ],
     linkedinUrl:
       "https://www.linkedin.com/company/privil%C3%A8ge-student-ventures/",
@@ -29,9 +29,9 @@ const experiences = [
     role: "Co-founder",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Frame+22.png",
-    bio: [
-      "Tested the idea of a Loyalty Program for SMBs SaaS, paused after discouraging conversations with prospects",
-      "Led product development for the MVP, from Figma to programming full-stack web apps. Continued as personal project",
+    content: [
+      "Tested the idea of Loyalty Programs for SMBs, focused on takeout restaurants and cafes. Invalidated the idea and stopped pursuing the project as a startup after discouraging conversations with prospects",
+      "Led product development for the MVP, starting with Figma and then programming full-stack web apps, continued as a personal project",
     ],
     linkedinUrl: "https://www.linkedin.com/company/usuals",
     website: "https://usuals.co",
@@ -41,9 +41,10 @@ const experiences = [
     role: "Venture Development Intern",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/apx_logo.webp",
-    bio: [
-      "Created a KPI and data visualization system to measure value added by our GTM and HR support layers",
-      "Worked directly with over 30 founding teams on preparing them for their next funding round, hypothesis testing, and connecting them with mentors",
+    content: [
+      "Cut ~€500 monthly in costs by creating a KPI and data visualization system to measure the value added by our GTM and HR partners, made evident the GTM partnership should be cut",
+      "Negotiated ~€50k in total discounts with corporate partners for our portfolio companies on services such as Salesforce, Agicap, and Hubspot",
+      "Worked directly with more than 30 pre-seed founding teams on helping them navigate our network of mentors to find the relevant contact based on their problem",
     ],
     linkedinUrl: "https://www.linkedin.com/company/apxberlin/",
     website: "https://apx.vc/",
@@ -53,15 +54,15 @@ const experiences = [
     role: "Vice President",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/BSVC+-+Logo+1.png",
-    bio: [
-      "Led partnerships with VCs and Accelerators such as Earlybird and Bocconi's accelerator",
-      "Set goals and roadmaps for our events and communications divisions, pushing these 40 students to develop relationships with VCs and each other",
+    content: [
+      "Established partnerships with accelerators and VCs such as Earlybird and Bocconi’s accelerator",
+      "Organized our largest event to date, a VC Investment Competition inviting 6 VC funds and having over 40 students in attendance",
     ],
     linkedinUrl:
       "https://www.linkedin.com/company/bocconi-students-for-venture-capital/",
     website: "https://bsvc.it/",
   },
-];
+]
 
 export default function Cv() {
   return (
@@ -102,7 +103,7 @@ export default function Cv() {
                 </p>
                 <div className="mt-4">
                   <ul className="list-disc">
-                    {experience.bio.map((item, index) => (
+                    {experience.content.map((item, index) => (
                       <li key={index}>
                         <p className="mt-2 text-base leading-7 text-gray-600">
                           {item}
@@ -140,5 +141,5 @@ export default function Cv() {
         </ul>
       </div>
     </div>
-  );
+  )
 }
