@@ -712,7 +712,7 @@ c3 -6 1 -15 -5 -19 -7 -4 -11 -12 -9 -17 2 -6 -1 -13 -6 -14 -5 -2 -10 11 -12
   },
   {
     name: "Usuals Business App",
-    role: "Dashboard for businesses to see loyalty program members (Optimized for  desktop)",
+    role: "Dashboard for businesses to see loyalty program members",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Usuals-Business-Screenshot.png",
     link: "https://usuals-business.vercel.app",
@@ -976,7 +976,7 @@ c3 -6 1 -15 -5 -19 -7 -4 -11 -12 -9 -17 2 -6 -1 -13 -6 -14 -5 -2 -10 11 -12
 
 export default function PortfolioSection() {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -990,7 +990,7 @@ export default function PortfolioSection() {
         </div>
         <ul
           role="list"
-          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
         >
           {projects.map((project) => (
             <li key={project.name}>
