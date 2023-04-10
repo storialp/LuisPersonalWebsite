@@ -1,4 +1,4 @@
-const technologies1 = [
+const technologies = [
   {
     name: "Python",
     imgSrc:
@@ -34,9 +34,6 @@ const technologies1 = [
     imgAlt: "CSS logo",
     link: "https://www.w3schools.com/css/",
   },
-];
-
-const technologies2 = [
   {
     name: "NumPy",
     imgSrc:
@@ -71,9 +68,6 @@ const technologies2 = [
     imgAlt: "Tailwindcss logo",
     link: "https://tailwindcss.com/",
   },
-];
-
-const technologies3 = [
   {
     name: "MatplotLib",
     imgSrc:
@@ -108,7 +102,46 @@ const technologies3 = [
     imgAlt: "SQL logo",
     link: "https://www.w3schools.com/sql/sql_quickref.asp",
   },
-];
+]
+
+const technologiesLearning = [
+  {
+    name: "React Query",
+    imgSrc:
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/React-Query-SVG.svg",
+    imgAlt: "React Query logo",
+    link: "https://tanstack.com/query/v3/",
+  },
+  {
+    name: "TypeScript",
+    imgSrc:
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Typescript-SVG.svg",
+    imgAlt: "Typescript logo",
+    link: "https://www.typescriptlang.org/",
+  },
+  {
+    name: "PostgreSQL",
+    imgSrc:
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Postgresql-SVG.svg",
+    imgAlt: "PostgreSQL logo",
+    link: "https://www.postgresql.org/",
+  },
+  {
+    name: "Prisma",
+    imgSrc:
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Prisma-SVG.svg",
+    imgAlt: "Prisma logo",
+    link: "https://www.prisma.io/",
+  },
+  {
+    name: "tRPC",
+    imgSrc:
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/TRPC-SVG.svg",
+    imgAlt: "tRPC logo",
+    link: "https://trpc.io/",
+  },
+]
+
 export default function TechSkills() {
   return (
     <div>
@@ -118,33 +151,7 @@ export default function TechSkills() {
             Technologies I work with
           </h2>
           <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-            {technologies1.map((technology) => (
-              <a href={technology.link}>
-                <img
-                  className="col-span-2 max-h-12 w-full object-contain lg:col-span-1 hover:opacity-75"
-                  src={technology.imgSrc}
-                  alt={technology.imgAlt}
-                  width={158}
-                  height={48}
-                />
-              </a>
-            ))}
-          </div>
-          <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-            {technologies2.map((technology) => (
-              <a href={technology.link}>
-                <img
-                  className="col-span-2 max-h-12 w-full object-contain lg:col-span-1 hover:opacity-75"
-                  src={technology.imgSrc}
-                  alt={technology.imgAlt}
-                  width={158}
-                  height={48}
-                />
-              </a>
-            ))}
-          </div>
-          <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-            {technologies3.map((technology) => (
+            {technologies.map((technology) => (
               <a href={technology.link}>
                 <img
                   className="col-span-2 max-h-12 w-full object-contain lg:col-span-1 hover:opacity-75"
@@ -157,7 +164,27 @@ export default function TechSkills() {
             ))}
           </div>
         </div>
+        <div className="bg-white pt-10 sm:pt-12 pb-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
+              Technologies I'm working towards
+            </h2>
+            <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+              {technologiesLearning.map((technology) => (
+                <a href={technology.link}>
+                  <img
+                    className="col-span-2 max-h-12 w-full object-contain lg:col-span-1 hover:opacity-75"
+                    src={technology.imgSrc}
+                    alt={technology.imgAlt}
+                    width={158}
+                    height={48}
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  );
+  )
 }
