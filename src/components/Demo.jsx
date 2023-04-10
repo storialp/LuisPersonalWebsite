@@ -21,10 +21,13 @@ const features = [
   },
 ]
 
-export default function Example() {
+export default function Demo() {
   return (
-    <div className="bg-white">
+    <div className="bg-white border-gray-200 border-t">
       <section aria-labelledby="features-heading" className="relative">
+        <div>
+          <h1 className="font-bold text-3xl px-6 py-8">Usuals Consumer Demo</h1>
+        </div>
         <div className="aspect-h-2 aspect-w-3 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
           <img
             src="https://tailwindui.com/img/ecommerce-images/confirmation-page-01-hero.jpg"
