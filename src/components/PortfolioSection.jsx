@@ -453,7 +453,7 @@ c3 -6 1 -15 -5 -19 -7 -4 -11 -12 -9 -17 2 -6 -1 -13 -6 -14 -5 -2 -10 11 -12
     role: "Loyalty card manager for the B2C side of the project (Optimized for mobile)",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/usualsconsumercropped+(1).jpg",
-    link: "https://usuals-consumer-web.vercel.app",
+    link: "https:/usuals-consumer.vercel.app",
     stack: [
       {
         url: "https://nextjs.org/",
