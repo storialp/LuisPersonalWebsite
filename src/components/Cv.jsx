@@ -12,6 +12,18 @@ const experiences = [
     website: "https://www.unibocconi.it/",
   },
   {
+    name: "Yummy (YC S21)",
+    role: "Software Engineering Intern",
+    imageUrl:
+      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/yummy_logo+(3).png",
+    content: [
+      "Developed a full-stack feature which allowed stores to give multiple categories to each product using Express, Angular, Sequelize, and Mongoose",
+      "Created a drag and drop feature for businesses to create navigation routes for their online stores using Angular and Express",
+    ],
+    linkedinUrl: "https://www.linkedin.com/school/universita-bocconi/",
+    website: "https://www.yummysuperapp.com/",
+  },
+  {
     name: "Privilège Student Ventures",
     role: "Investment Manager",
     imageUrl:
@@ -51,7 +63,7 @@ const experiences = [
   },
   {
     name: "Bocconi Students for Venture Capital",
-    role: "Vice President",
+    role: "President",
     imageUrl:
       "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/BSVC+-+Logo+1.png",
     content: [
@@ -62,7 +74,7 @@ const experiences = [
       "https://www.linkedin.com/company/bocconi-students-for-venture-capital/",
     website: "https://bsvc.it/",
   },
-]
+];
 
 export default function Cv() {
   return (
@@ -141,5 +153,5 @@ export default function Cv() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

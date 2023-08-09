@@ -972,7 +972,7 @@ c3 -6 1 -15 -5 -19 -7 -4 -11 -12 -9 -17 2 -6 -1 -13 -6 -14 -5 -2 -10 11 -12
       },
     ],
   },
-]
+];
 
 export default function PortfolioSection() {
   return (
@@ -1030,5 +1030,5 @@ export default function PortfolioSection() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

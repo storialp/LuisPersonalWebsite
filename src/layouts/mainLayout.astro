@@ -1,17 +1,14 @@
 ---
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 ---
 
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <meta
-      name='description'
-      content='The personal site of the person currently known as Luis Pericchi, will house my personal portfolio and more'
-    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="The personal site of Luis Pericchi" />
     <title>Luis Pericchi's personal portfolio</title>
   </head>
   <NavBar client:load path={Astro.url.pathname} />

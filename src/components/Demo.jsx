@@ -19,7 +19,7 @@ const features = [
     description:
       "Responsibly and sustainably made real close to wherever you are, somehow.",
   },
-]
+];
 
 export default function Example() {
   return (
@@ -58,5 +58,5 @@ export default function Example() {
         </div>
       </section>
     </div>
-  )
+  );
 }
