@@ -1,27 +1,31 @@
-const features = [
+interface Feature {
+  name: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
-    name: "Durable",
+    name: 'Durable',
     description:
-      "The leather cover and machined steel disc binding stand up to daily use for years to come.",
+      'The leather cover and machined steel disc binding stand up to daily use for years to come.',
   },
   {
-    name: "Refillable",
+    name: 'Refillable',
     description:
-      "Buy it once and refill as often as you need. Subscribe and save on routine refills.",
+      'Buy it once and refill as often as you need. Subscribe and save on routine refills.',
   },
   {
-    name: "Thoughtfully designed",
+    name: 'Thoughtfully designed',
     description:
-      "The comfortable disc binding allows you to quickly rearrange pages or combine lined, graph, and blank refills.",
+      'The comfortable disc binding allows you to quickly rearrange pages or combine lined, graph, and blank refills.',
   },
   {
-    name: "Locally made",
-    description:
-      "Responsibly and sustainably made real close to wherever you are, somehow.",
+    name: 'Locally made',
+    description: 'Responsibly and sustainably made real close to wherever you are, somehow.',
   },
 ];
 
-export default function Example() {
+export default function Demo() {
   return (
     <div className="bg-white">
       <section aria-labelledby="features-heading" className="relative">
@@ -42,8 +46,8 @@ export default function Example() {
               All in the Details
             </p>
             <p className="mt-4 text-gray-500">
-              We've obsessed over every detail of this handcrafted journal to
-              bring you the best materials for daily use.
+              We've obsessed over every detail of this handcrafted journal to bring you the best
+              materials for daily use.
             </p>
 
             <dl className="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 text-sm sm:grid-cols-2">

@@ -1,12 +1,30 @@
-const navigation = {
+import type { ReactNode, SVGProps } from 'react';
+
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+interface SocialItem {
+  name: string;
+  href: string;
+  icon: (props: SVGProps<SVGSVGElement>) => ReactNode;
+}
+
+interface Navigation {
+  main: NavItem[];
+  social: SocialItem[];
+}
+
+const navigation: Navigation = {
   main: [
-    { name: "About me", href: "/" },
-    { name: "Projects Portfolio", href: "/projects" },
+    { name: 'About me', href: '/' },
+    { name: 'Projects Portfolio', href: '/projects' },
   ],
   social: [
     {
-      name: "Email",
-      href: "mailto:pericchiluis@gmail.com",
+      name: 'Email',
+      href: 'mailto:pericchiluis@gmail.com',
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
@@ -15,8 +33,8 @@ const navigation = {
       ),
     },
     {
-      name: "GitHub",
-      href: "https://github.com/storialp",
+      name: 'GitHub',
+      href: 'https://github.com/storialp',
       icon: (props) => (
         <svg
           viewBox="0 0 24 24"
@@ -31,8 +49,8 @@ const navigation = {
       ),
     },
     {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/luis-pericchi/",
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/luis-pericchi/',
       icon: (props) => (
         <svg
           viewBox="0 0 67 67"
@@ -58,16 +76,10 @@ export default function Footer() {
     <footer className="bg-white">
       <div className="border-t border-gray-200 pt-0.5 lg:flex lg:items-center lg:justify-between xl:mt-0 px-6">
         <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
-          <nav
-            className="-mx-5 -my-2 flex flex-wrap justify-center"
-            aria-label="Footer"
-          >
+          <nav className="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
             {navigation.main.map((item) => (
               <div key={item.name} className="px-5 ">
-                <a
-                  href={item.href}
-                  className="text-base text-gray-500 hover:text-gray-900"
-                >
+                <a href={item.href} className="text-base text-gray-500 hover:text-gray-900">
                   {item.name}
                 </a>
               </div>
@@ -75,11 +87,7 @@ export default function Footer() {
           </nav>
           <div className="mt-8 flex justify-center space-x-6">
             {navigation.social.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-400 hover:text-gray-500"
-              >
+              <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
               </a>

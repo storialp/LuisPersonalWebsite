@@ -5,13 +5,15 @@ const MusicCard = () => {
         <img
           className="w-full h-auto rounded-md"
           src="https://upload.wikimedia.org/wikipedia/en/2/23/Phoebe_Bridgers_Punisher_%282020%29.png"
-        ></img>
+          alt="Phoebe Bridgers Punisher album cover"
+        />
       </div>
       <div>
         <img
           className="w-full h-auto rounded-md"
           src="https://upload.wikimedia.org/wikipedia/en/2/23/Phoebe_Bridgers_Punisher_%282020%29.png"
-        ></img>
+          alt="Phoebe Bridgers Punisher album cover"
+        />
       </div>
     </div>
   );
