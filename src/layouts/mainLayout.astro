@@ -8,12 +8,63 @@ import NavBar from '../components/NavBar';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="The personal site of Luis Pericchi" />
-    <title>Luis Pericchi's personal portfolio</title>
+    <meta name="description" content="Luis Pericchi — Founder & Engineer based in Milan" />
+    <title>Luis Pericchi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style is:global>
+      :root {
+        --bg: #f8f5f0;
+        --bg-elevated: #f0ece5;
+        --surface: #e6e0d6;
+        --gold: #c06742;
+        --gold-muted: rgba(192, 103, 66, 0.4);
+        --gold-faint: rgba(192, 103, 66, 0.08);
+        --cream: #1c1510;
+        --cream-muted: #7a6e66;
+        --border: rgba(28, 21, 16, 0.1);
+        --border-gold: rgba(192, 103, 66, 0.3);
+        --lavender: #7a6d9a;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'Lora', serif;
+        background-color: var(--bg);
+        color: var(--cream);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      ::selection {
+        background-color: var(--gold);
+        color: var(--bg);
+      }
+
+      ::-webkit-scrollbar { width: 3px; }
+      ::-webkit-scrollbar-track { background: var(--bg); }
+      ::-webkit-scrollbar-thumb { background: var(--surface); }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(122, 109, 154, 0.3); }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    </style>
   </head>
-  <NavBar client:load path={Astro.url.pathname} />
-  <slot />
-  <Footer />
-
-
+  <body>
+    <NavBar client:load path={Astro.url.pathname} />
+    <slot />
+    <Footer />
+  </body>
 </html>

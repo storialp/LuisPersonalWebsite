@@ -1,6 +1,5 @@
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline/index.js';
-import { Fragment } from 'react';
 
 interface NavBarProps {
   path: string;
@@ -10,87 +9,123 @@ function classNames(...classes: (string | boolean | undefined | null)[]): string
   return classes.filter(Boolean).join(' ');
 }
 
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Experience', href: '/#experience' },
+];
+
 export default function NavBar({ path }: NavBarProps) {
+  const isActive = (href: string) => {
+    if (href === '/') return path === '/';
+    return path.includes(href.replace('/', ''));
+  };
+
+  const linkStyle = (active: boolean): React.CSSProperties => ({
+    fontFamily: "'Lora', serif",
+    fontSize: '0.72rem',
+    fontWeight: 600,
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+    color: active ? 'var(--gold)' : 'rgba(28, 21, 16, 0.4)',
+    textDecoration: 'none',
+    transition: 'color 0.2s',
+  });
+
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure
+      as="nav"
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        backgroundColor: 'rgba(248, 245, 240, 0.92)',
+        backdropFilter: 'blur(16px)',
+        borderBottom: '1px solid rgba(28, 21, 16, 0.08)',
+      }}
+    >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 justify-between">
-              <div className="flex">
-                <div className="flex flex-shrink-0 items-center ">
-                  <img
-                    className="block h-12 w-12 lg:hidden rounded-full"
-                    src="https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Luis_P_pic_cropped.jpeg"
-                    alt="A picture of me"
-                  />
-                  <img
-                    className="hidden h-12 w-12 lg:block rounded-full"
-                    src="https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/Luis_P_pic_cropped.jpeg"
-                    alt="A picture of me"
-                  />
-                </div>
-                <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  <a
-                    href="/"
-                    className={
-                      path === '/'
-                        ? 'inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900'
-                        : 'inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                    }
-                  >
-                    Home
-                  </a>
-                  <a
-                    href="/projects"
-                    className={
-                      path === '/projects/'
-                        ? 'inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900'
-                        : 'inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                    }
-                  >
-                    Projects Portfolio
-                  </a>
-                </div>
-              </div>
-              <div className="-mr-2 flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
+          <div
+            style={{
+              maxWidth: '1100px',
+              margin: '0 auto',
+              padding: '0 2rem',
+              display: 'flex',
+              height: '60px',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <a
+              href="/"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '1.15rem',
+                fontWeight: 400,
+                fontStyle: 'italic',
+                color: 'var(--cream)',
+                textDecoration: 'none',
+                letterSpacing: '0.01em',
+              }}
+            >
+              Luis Pericchi
+            </a>
+
+            <div className="hidden md:flex" style={{ gap: '2.5rem', alignItems: 'center', display: 'flex' }}>
+              {navigation.map((item) => (
+                <a key={item.name} href={item.href} style={linkStyle(isActive(item.href))}>
+                  {item.name}
+                </a>
+              ))}
+            </div>
+
+            <div className="md:hidden">
+              <Disclosure.Button
+                style={{
+                  padding: '8px',
+                  color: 'var(--cream)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                <span className="sr-only">Open menu</span>
+                {open ? (
+                  <XMarkIcon className="block h-5 w-5" aria-hidden="true" />
+                ) : (
+                  <Bars3Icon className="block h-5 w-5" aria-hidden="true" />
+                )}
+              </Disclosure.Button>
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 pt-2 pb-3">
+          <Disclosure.Panel
+            style={{
+              backgroundColor: 'var(--bg-elevated)',
+              borderBottom: '1px solid rgba(28, 21, 16, 0.08)',
+              padding: '1rem 2rem',
+            }}
+          >
+            {navigation.map((item) => (
               <Disclosure.Button
+                key={item.name}
                 as="a"
-                href="/"
-                className={
-                  path === '/'
-                    ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700'
-                    : 'block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700'
-                }
+                href={item.href}
+                style={{
+                  display: 'block',
+                  padding: '0.5rem 0',
+                  fontFamily: "'Lora', serif",
+                  fontSize: '0.72rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  color: isActive(item.href) ? 'var(--gold)' : 'rgba(28, 21, 16, 0.45)',
+                }}
               >
-                About me
+                {item.name}
               </Disclosure.Button>
-              <Disclosure.Button
-                as="a"
-                href="/projects"
-                className={
-                  path === '/projects'
-                    ? 'block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700'
-                    : 'block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700'
-                }
-              >
-                Projects Portfolio
-              </Disclosure.Button>
-            </div>
+            ))}
           </Disclosure.Panel>
         </>
       )}
