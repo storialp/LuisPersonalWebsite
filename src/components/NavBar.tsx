@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface NavBarProps {
   path: string;
@@ -41,25 +41,29 @@ export default function NavBar({ path }: NavBarProps) {
           padding: '0 2rem',
           display: 'flex',
           height: '60px',
-          justifyContent: 'space-between',
+          justifyContent: 'center',
           alignItems: 'center',
+          position: 'relative',
         }}
       >
         <a
           href="/"
           style={{
-            fontSize: '0.875rem',
-            fontWeight: 400,
-            color: 'var(--text)',
+            display: 'flex',
+            alignItems: 'center',
             textDecoration: 'none',
-            letterSpacing: '0.01em',
+            position: 'absolute',
+            left: 0,
           }}
         >
-          Luis Pericchi
+          <img src="/initials-white.svg" alt="LP" style={{ width: '28px', height: '28px' }} />
         </a>
 
         {/* Desktop nav */}
-        <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }} className="hidden sm:flex">
+        <div
+          style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}
+          className="hidden sm:flex"
+        >
           {navigation.map((item) => (
             <a
               key={item.name}
@@ -79,26 +83,6 @@ export default function NavBar({ path }: NavBarProps) {
             </a>
           ))}
         </div>
-
-        {/* Mobile hamburger */}
-        <button
-          className="sm:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            color: 'var(--text-muted)',
-            padding: '4px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '5px',
-          }}
-          aria-label="Toggle menu"
-        >
-          <span style={{ display: 'block', width: '18px', height: '1px', background: 'currentColor', transition: 'opacity 0.2s' }} />
-          <span style={{ display: 'block', width: '18px', height: '1px', background: 'currentColor', transition: 'opacity 0.2s' }} />
-        </button>
       </div>
 
       {/* Mobile menu */}
