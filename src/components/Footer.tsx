@@ -8,23 +8,24 @@ export default function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: 'var(--bg-elevated)',
         borderTop: '1px solid var(--border)',
         padding: '3rem 2rem',
+        backgroundColor: 'var(--bg)',
+        position: 'relative',
       }}
     >
       <div
         style={{
-          maxWidth: '1100px',
+          maxWidth: '720px',
           margin: '0 auto',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          gap: '1.5rem',
+          gap: '1rem',
           flexWrap: 'wrap',
         }}
       >
-        <div style={{ display: 'flex', gap: '2.25rem' }}>
+        <div style={{ display: 'flex', gap: '2.5rem' }}>
           {links.map(({ label, href, external }) => (
             <a
               key={label}
@@ -32,17 +33,15 @@ export default function Footer() {
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
               style={{
-                fontFamily: "'Lora', serif",
-                fontSize: '0.7rem',
-                fontWeight: 600,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'rgba(122, 110, 102, 0.7)',
+                fontSize: '0.75rem',
+                color: 'var(--text-muted)',
                 textDecoration: 'none',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
                 transition: 'color 0.2s',
               }}
-              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--gold)')}
-              onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(122, 110, 102, 0.7)')}
+              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+              onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
             >
               {label}
             </a>
@@ -51,11 +50,9 @@ export default function Footer() {
 
         <p
           style={{
-            fontFamily: "'Lora', serif",
-            fontSize: '0.67rem',
-            fontWeight: 400,
-            letterSpacing: '0.06em',
-            color: 'rgba(122, 110, 102, 0.5)',
+            fontSize: '0.7rem',
+            color: 'rgba(255,255,255,0.12)',
+            letterSpacing: '0.03em',
           }}
         >
           © {new Date().getFullYear()} Luis Pericchi

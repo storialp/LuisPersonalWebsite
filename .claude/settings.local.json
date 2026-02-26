@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:excelent.ai)",
+      "WebFetch(domain:faqextractor.com)",
+      "WebFetch(domain:tryendpoint.com)",
+      "WebFetch(domain:www.perplexity.ai)",
+      "WebSearch"
+    ]
+  }
+}

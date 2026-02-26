@@ -12,7 +12,7 @@ const languages = [
   { name: 'Italian', level: 'Professional' },
 ];
 
-function TechTag({ name }: { name: string }) {
+function TechTag({ tech }: { tech: string }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -20,62 +20,61 @@ function TechTag({ name }: { name: string }) {
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: '0.45rem',
-        padding: '0.35rem 0.8rem',
-        fontFamily: "'Lora', serif",
-        fontSize: '0.75rem',
-        fontWeight: 500,
+        padding: '0.3rem 0.8rem',
+        fontSize: '0.72rem',
+        color: hovered ? 'var(--accent)' : 'var(--text-muted)',
+        background: hovered ? 'rgba(32, 213, 179, 0.07)' : 'rgba(255, 255, 255, 0.03)',
+        border: `1px solid ${hovered ? 'rgba(32, 213, 179, 0.2)' : 'rgba(255, 255, 255, 0.07)'}`,
+        borderRadius: '2px',
         letterSpacing: '0.02em',
-        color: hovered ? 'var(--cream)' : 'var(--cream-muted)',
-        border: `1px solid ${hovered ? 'var(--border-gold)' : 'var(--border)'}`,
-        transition: 'color 0.2s, border-color 0.2s',
+        transition: 'color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s',
+        boxShadow: hovered ? '0 0 14px rgba(32, 213, 179, 0.08)' : 'none',
         cursor: 'default',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <span
-        style={{
-          width: '4px',
-          height: '4px',
-          borderRadius: '50%',
-          backgroundColor: hovered ? 'var(--gold)' : 'rgba(122, 110, 102, 0.4)',
-          flexShrink: 0,
-          transition: 'background-color 0.2s',
-        }}
-      />
-      {name}
+      {tech}
     </span>
   );
 }
 
-const sectionHeading: React.CSSProperties = {
-  fontFamily: "'Lora', serif",
-  fontSize: '0.65rem',
-  fontWeight: 600,
-  letterSpacing: '0.2em',
-  textTransform: 'uppercase',
-  color: 'var(--lavender)',
-  marginBottom: '2.5rem',
-  display: 'flex',
-  alignItems: 'center',
-  gap: '1.25rem',
-};
-
-const rule: React.CSSProperties = {
-  flex: 1,
-  height: '1px',
-  backgroundColor: 'var(--border)',
-};
-
 export default function TechSkills() {
   return (
-    <section style={{ padding: '7rem 2rem', backgroundColor: 'var(--bg)' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <h2 style={sectionHeading}>
+    <section
+      style={{
+        padding: '9rem 2rem',
+        backgroundColor: 'var(--bg-secondary)',
+        position: 'relative',
+        borderTop: '1px solid var(--border)',
+        borderBottom: '1px solid var(--border)',
+      }}
+    >
+      {/* Subtle glow */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '10%',
+          left: '-5%',
+          width: '40%',
+          height: '50%',
+          background: 'radial-gradient(ellipse, rgba(32, 213, 179, 0.025) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div style={{ maxWidth: '720px', margin: '0 auto', position: 'relative' }}>
+        <p
+          style={{
+            fontSize: '0.65rem',
+            color: 'var(--accent)',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '2.5rem',
+          }}
+        >
           Technologies
-          <div style={rule} />
-        </h2>
+        </p>
 
         <div
           style={{
@@ -86,39 +85,42 @@ export default function TechSkills() {
           }}
         >
           {technologies.map((tech) => (
-            <TechTag key={tech} name={tech} />
+            <TechTag key={tech} tech={tech} />
           ))}
         </div>
 
-        <h2 style={sectionHeading}>
+        <p
+          style={{
+            fontSize: '0.65rem',
+            color: 'var(--accent)',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '2.5rem',
+          }}
+        >
           Languages
-          <div style={rule} />
-        </h2>
+        </p>
 
-        <div style={{ display: 'flex', gap: '3.5rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap' }}>
           {languages.map((lang) => (
             <div key={lang.name}>
               <p
                 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: '1.3rem',
+                  fontSize: '0.9rem',
                   fontWeight: 400,
-                  fontStyle: 'italic',
-                  color: 'var(--cream)',
+                  color: 'var(--text)',
                   marginBottom: '0.3rem',
-                  lineHeight: 1,
+                  letterSpacing: '-0.01em',
                 }}
               >
                 {lang.name}
               </p>
               <p
                 style={{
-                  fontFamily: "'Lora', serif",
-                  fontSize: '0.65rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.14em',
+                  fontSize: '0.7rem',
+                  color: 'var(--text-muted)',
+                  letterSpacing: '0.05em',
                   textTransform: 'uppercase',
-                  color: 'var(--gold)',
                 }}
               >
                 {lang.level}

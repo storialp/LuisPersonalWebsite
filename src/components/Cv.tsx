@@ -74,10 +74,7 @@ const education: Entry = {
   role: 'B.Sc. Computer Science & Economics',
   location: 'Milan, Italy',
   period: '2020 — 2024',
-  content: [
-    'Bocconi Merit Award (Full-tuition scholarship)',
-    'SAT: 1540/1600',
-  ],
+  content: ['Bocconi Merit Award (Full-tuition scholarship)', 'SAT: 1540/1600'],
   website: 'https://www.unibocconi.it/',
 };
 
@@ -86,92 +83,103 @@ function EntryCard({ item }: { item: Entry }) {
 
   return (
     <article
-      style={{ position: 'relative', paddingLeft: '1.75rem', padding: '1.5rem 0 1.5rem 1.75rem', cursor: 'default' }}
+      style={{
+        position: 'relative',
+        padding: '1.5rem 1.5rem 1.5rem 2rem',
+        background: hovered ? 'rgba(32, 213, 179, 0.03)' : 'rgba(255, 255, 255, 0.02)',
+        border: `1px solid ${hovered ? 'rgba(32, 213, 179, 0.15)' : 'rgba(255, 255, 255, 0.06)'}`,
+        borderRadius: '2px',
+        transition: 'background 0.3s, border-color 0.3s',
+        cursor: 'default',
+        marginBottom: '0.5rem',
+      }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Left border — coral on hover */}
+      {/* Left accent bar */}
       <div
         style={{
           position: 'absolute',
           left: 0,
           top: 0,
           bottom: 0,
-          width: '1px',
-          backgroundColor: hovered ? 'var(--gold)' : 'var(--border)',
-          transition: 'background-color 0.35s',
+          width: '2px',
+          background: hovered ? 'var(--accent)' : 'rgba(255,255,255,0.07)',
+          transition: 'background 0.3s',
+          borderRadius: '2px 0 0 2px',
         }}
       />
 
-      {/* Header row */}
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           gap: '1rem',
-          marginBottom: '0.4rem',
+          marginBottom: '0.35rem',
           flexWrap: 'wrap',
         }}
       >
         <h3
           style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: '1.35rem',
-            fontWeight: 400,
-            fontStyle: 'italic',
-            color: 'var(--cream)',
-            lineHeight: 1.2,
+            fontSize: '0.9rem',
+            fontWeight: 500,
+            color: 'var(--text)',
+            letterSpacing: '-0.01em',
+            lineHeight: 1.4,
           }}
         >
           {item.name}
         </h3>
         <span
           style={{
-            fontFamily: "'Lora', serif",
-            fontSize: '0.65rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: hovered ? 'var(--gold)' : 'rgba(122, 110, 102, 0.65)',
-            transition: 'color 0.35s',
+            fontSize: '0.7rem',
+            color: hovered ? 'var(--accent)' : 'var(--text-muted)',
+            transition: 'color 0.3s',
+            letterSpacing: '0.04em',
+            fontVariantNumeric: 'tabular-nums',
+            paddingTop: '0.1rem',
             whiteSpace: 'nowrap',
-            paddingTop: '0.25rem',
           }}
         >
           {item.period}
         </span>
       </div>
 
-      {/* Role */}
       <p
         style={{
-          fontFamily: "'Lora', serif",
-          fontSize: '0.78rem',
-          color: 'var(--cream-muted)',
+          fontSize: '0.775rem',
+          color: 'var(--text-muted)',
           marginBottom: '1rem',
-          letterSpacing: '0.02em',
+          letterSpacing: '0.01em',
         }}
       >
-        {item.role} &middot; {item.location}
+        {item.role} · {item.location}
       </p>
 
-      {/* Bullets */}
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
         {item.content.map((bullet, i) => (
           <li
             key={i}
             style={{
-              fontFamily: "'Lora', serif",
-              fontSize: '0.82rem',
-              color: 'var(--cream-muted)',
-              display: 'flex',
-              gap: '0.65rem',
+              fontSize: '0.775rem',
+              color: 'var(--text-muted)',
               lineHeight: 1.65,
               listStyle: 'none',
+              paddingLeft: '0.9rem',
+              position: 'relative',
             }}
           >
-            <span style={{ color: 'var(--gold)', flexShrink: 0, userSelect: 'none' }}>—</span>
+            <span
+              style={{
+                position: 'absolute',
+                left: 0,
+                color: hovered ? 'rgba(32, 213, 179, 0.5)' : 'rgba(255,255,255,0.15)',
+                transition: 'color 0.3s',
+              }}
+            >
+              ·
+            </span>
             {bullet}
           </li>
         ))}
@@ -180,50 +188,61 @@ function EntryCard({ item }: { item: Entry }) {
   );
 }
 
-const sectionHeading: React.CSSProperties = {
-  fontFamily: "'Lora', serif",
-  fontSize: '0.65rem',
-  fontWeight: 600,
-  letterSpacing: '0.2em',
-  textTransform: 'uppercase',
-  color: 'var(--lavender)',
-  marginBottom: '2.5rem',
-  display: 'flex',
-  alignItems: 'center',
-  gap: '1.25rem',
-};
-
-const rule: React.CSSProperties = {
-  flex: 1,
-  height: '1px',
-  backgroundColor: 'var(--border)',
-};
-
 export default function Cv() {
   return (
     <section
       id="experience"
       style={{
-        padding: '7rem 2rem',
-        backgroundColor: 'var(--bg-elevated)',
+        padding: '9rem 2rem',
+        backgroundColor: 'var(--bg)',
+        position: 'relative',
+        borderTop: '1px solid var(--border)',
       }}
     >
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <h2 style={sectionHeading}>
-          Experience
-          <div style={rule} />
-        </h2>
+      {/* Ambient section glow */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: '-10%',
+          width: '50%',
+          height: '50%',
+          background:
+            'radial-gradient(ellipse, rgba(32, 213, 179, 0.03) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '5rem' }}>
+      <div style={{ maxWidth: '720px', margin: '0 auto', position: 'relative' }}>
+        <p
+          style={{
+            fontSize: '0.65rem',
+            color: 'var(--accent)',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '2.5rem',
+          }}
+        >
+          Experience
+        </p>
+
+        <div style={{ marginBottom: '5rem' }}>
           {experiences.map((exp) => (
             <EntryCard key={exp.name + exp.period} item={exp} />
           ))}
         </div>
 
-        <h2 style={sectionHeading}>
+        <p
+          style={{
+            fontSize: '0.65rem',
+            color: 'var(--accent)',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '2.5rem',
+          }}
+        >
           Education
-          <div style={rule} />
-        </h2>
+        </p>
 
         <EntryCard item={education} />
       </div>

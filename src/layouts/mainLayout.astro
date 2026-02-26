@@ -12,20 +12,18 @@ import NavBar from '../components/NavBar';
     <title>Luis Pericchi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style is:global>
       :root {
-        --bg: #f8f5f0;
-        --bg-elevated: #f0ece5;
-        --surface: #e6e0d6;
-        --gold: #c06742;
-        --gold-muted: rgba(192, 103, 66, 0.4);
-        --gold-faint: rgba(192, 103, 66, 0.08);
-        --cream: #1c1510;
-        --cream-muted: #7a6e66;
-        --border: rgba(28, 21, 16, 0.1);
-        --border-gold: rgba(192, 103, 66, 0.3);
-        --lavender: #7a6d9a;
+        --bg: #080808;
+        --bg-secondary: #0d0d0d;
+        --bg-card: rgba(255, 255, 255, 0.03);
+        --text: #ededed;
+        --text-muted: #5a5a5a;
+        --border: rgba(255, 255, 255, 0.07);
+        --accent: #20D5B3;
+        --accent-dim: rgba(32, 213, 179, 0.1);
+        --accent-glow: rgba(32, 213, 179, 0.05);
       }
 
       *, *::before, *::after {
@@ -37,28 +35,50 @@ import NavBar from '../components/NavBar';
       html { scroll-behavior: smooth; }
 
       body {
-        font-family: 'Lora', serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         background-color: var(--bg);
-        color: var(--cream);
-        line-height: 1.65;
+        color: var(--text);
+        line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
       }
 
-      ::selection {
-        background-color: var(--gold);
-        color: var(--bg);
+      /* Grain texture overlay */
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 250px 250px;
       }
 
-      ::-webkit-scrollbar { width: 3px; }
+      ::selection {
+        background-color: var(--accent);
+        color: #000;
+      }
+
+      ::-webkit-scrollbar { width: 2px; }
       ::-webkit-scrollbar-track { background: var(--bg); }
-      ::-webkit-scrollbar-thumb { background: var(--surface); }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(122, 109, 154, 0.3); }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); }
 
       @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(24px); }
         to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50%       { opacity: 1;   transform: scale(1.05); }
       }
     </style>
   </head>

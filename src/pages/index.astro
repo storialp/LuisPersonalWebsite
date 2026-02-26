@@ -1,6 +1,7 @@
 ---
 import Cv from '../components/Cv';
 import Hero from '../components/Hero';
+import PortfolioSection from '../components/PortfolioSection';
 import TechSkills from '../components/TechSkills';
 import MainLayout from '../layouts/mainLayout.astro';
 ---
@@ -9,4 +10,7 @@ import MainLayout from '../layouts/mainLayout.astro';
   <Hero />
   <Cv />
   <TechSkills />
+  <div id="projects">
+    <PortfolioSection client:load />
+  </div>
 </MainLayout>

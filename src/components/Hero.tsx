@@ -2,125 +2,146 @@ export default function Hero() {
   return (
     <section
       style={{
-        minHeight: '91vh',
-        display: 'flex',
-        alignItems: 'flex-end',
-        backgroundColor: 'var(--bg)',
         position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         overflow: 'hidden',
-        padding: '0 2rem 7rem',
+        backgroundColor: 'var(--bg)',
       }}
     >
-      {/* Ambient radial glow — impressionist sunrise warmth */}
+      {/* Primary ambient glow — large, centered */}
       <div
         style={{
           position: 'absolute',
-          top: '-15%',
-          right: '-10%',
-          width: '65vw',
-          height: '65vw',
-          borderRadius: '50%',
+          inset: 0,
           background:
-            'radial-gradient(ellipse, rgba(207,123,84,0.06) 0%, transparent 55%)',
+            'radial-gradient(ellipse 90% 70% at 50% 45%, rgba(32, 213, 179, 0.07) 0%, transparent 65%)',
+          animation: 'pulse-glow 8s ease-in-out infinite',
+          pointerEvents: 'none',
+        }}
+      />
+      {/* Secondary accent — top-left */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'radial-gradient(ellipse 40% 30% at 15% 25%, rgba(32, 213, 179, 0.04) 0%, transparent 60%)',
+          pointerEvents: 'none',
+        }}
+      />
+      {/* Tertiary accent — bottom-right */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'radial-gradient(ellipse 35% 25% at 85% 75%, rgba(32, 213, 179, 0.03) 0%, transparent 60%)',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Subtle lavender mist — bottom left */}
+      {/* Hairline horizon */}
       <div
         style={{
           position: 'absolute',
-          bottom: '-20%',
-          left: '-15%',
-          width: '55vw',
-          height: '55vw',
-          borderRadius: '50%',
+          left: '10%',
+          right: '10%',
+          top: '50%',
+          height: '1px',
           background:
-            'radial-gradient(ellipse, rgba(139,126,163,0.04) 0%, transparent 60%)',
+            'linear-gradient(90deg, transparent, rgba(32, 213, 179, 0.12) 30%, rgba(32, 213, 179, 0.12) 70%, transparent)',
+          transform: 'translateY(-90px)',
           pointerEvents: 'none',
         }}
       />
 
+      {/* Content */}
       <div
         style={{
-          maxWidth: '1100px',
-          margin: '0 auto',
-          width: '100%',
           position: 'relative',
+          zIndex: 1,
+          textAlign: 'center',
+          padding: '0 2rem',
+          maxWidth: '860px',
+          width: '100%',
         }}
       >
-        {/* Location */}
         <p
           style={{
-            fontFamily: "'Lora', serif",
-            fontSize: '0.67rem',
-            fontWeight: 600,
+            fontSize: '0.7rem',
+            color: 'var(--accent)',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'var(--lavender)',
-            marginBottom: '2rem',
-            animation: 'fadeUp 0.6s 0.05s both cubic-bezier(0.16, 1, 0.3, 1)',
+            marginBottom: '2.5rem',
+            animation: 'fadeUp 0.8s 0.1s both',
           }}
         >
           Milan, Italy
         </p>
 
-        {/* Name — large Playfair Display */}
         <h1
           style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: 'clamp(3.5rem, 9.5vw, 8.5rem)',
-            fontWeight: 400,
-            lineHeight: 0.92,
-            color: 'var(--cream)',
-            letterSpacing: '-0.02em',
-            marginBottom: '3.5rem',
-            animation: 'fadeUp 0.75s 0.15s both cubic-bezier(0.16, 1, 0.3, 1)',
+            fontSize: 'clamp(4rem, 12vw, 8rem)',
+            fontWeight: 200,
+            lineHeight: 0.95,
+            letterSpacing: '-0.04em',
+            color: 'var(--text)',
+            marginBottom: '3rem',
+            animation: 'fadeUp 0.8s 0.25s both',
           }}
         >
           Luis
           <br />
-          <em style={{ fontStyle: 'italic', color: 'rgba(28, 21, 16, 0.55)' }}>
+          <span
+            style={{
+              fontWeight: 400,
+              background: 'linear-gradient(135deg, var(--text) 40%, rgba(32, 213, 179, 0.7) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
             Pericchi
-          </em>
+          </span>
         </h1>
 
-        {/* Coral rule */}
-        <div
-          style={{
-            width: '40px',
-            height: '1px',
-            backgroundColor: 'var(--gold)',
-            marginBottom: '2rem',
-            animation: 'fadeUp 0.65s 0.32s both cubic-bezier(0.16, 1, 0.3, 1)',
-          }}
-        />
-
-        {/* Bio */}
         <p
           style={{
-            fontFamily: "'Lora', serif",
-            fontSize: '0.92rem',
-            color: 'var(--cream-muted)',
-            maxWidth: '400px',
+            fontSize: '1rem',
+            color: 'var(--text-muted)',
             lineHeight: 1.85,
-            marginBottom: '3rem',
-            animation: 'fadeUp 0.65s 0.42s both cubic-bezier(0.16, 1, 0.3, 1)',
+            maxWidth: '440px',
+            margin: '0 auto 3.5rem',
+            animation: 'fadeUp 0.8s 0.4s both',
           }}
         >
           Founder and engineer. Currently building{' '}
-          <span style={{ color: 'var(--cream)' }}>Endpoint</span>. Previously at{' '}
-          <span style={{ color: 'var(--cream)' }}>Yummy (YC&nbsp;S21)</span> and APX.
+          <a
+            href="https://endpoint.health"
+            style={{
+              color: 'var(--accent)',
+              textDecoration: 'none',
+              transition: 'opacity 0.2s',
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.opacity = '0.7')}
+            onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
+          >
+            Endpoint
+          </a>
+          . Previously at Yummy (YC&nbsp;S21) and APX.
           Studying CS&nbsp;&amp;&nbsp;Economics at Bocconi.
         </p>
 
-        {/* CTAs */}
         <div
           style={{
             display: 'flex',
-            gap: '0.75rem',
+            gap: '1rem',
+            justifyContent: 'center',
             flexWrap: 'wrap',
-            animation: 'fadeUp 0.65s 0.52s both cubic-bezier(0.16, 1, 0.3, 1)',
+            animation: 'fadeUp 0.8s 0.55s both',
           }}
         >
           <a
@@ -128,19 +149,30 @@ export default function Hero() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              padding: '0.7rem 1.75rem',
-              backgroundColor: 'var(--gold)',
-              color: 'var(--bg)',
-              fontFamily: "'Lora', serif",
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              letterSpacing: '0.12em',
+              gap: '0.5rem',
+              padding: '0.65rem 1.5rem',
+              fontSize: '0.75rem',
+              fontWeight: 400,
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
+              color: 'var(--text)',
               textDecoration: 'none',
-              transition: 'opacity 0.2s',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '2px',
+              background: 'rgba(255,255,255,0.04)',
+              backdropFilter: 'blur(12px)',
+              transition: 'border-color 0.25s, background 0.25s, color 0.25s',
             }}
-            onMouseOver={(e) => (e.currentTarget.style.opacity = '0.8')}
-            onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
+            onMouseOver={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(32,213,179,0.35)';
+              e.currentTarget.style.background = 'rgba(32,213,179,0.07)';
+              e.currentTarget.style.color = 'var(--accent)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+              e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+              e.currentTarget.style.color = 'var(--text)';
+            }}
           >
             Experience
           </a>
@@ -150,29 +182,57 @@ export default function Hero() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              padding: '0.7rem 1.75rem',
-              border: '1px solid rgba(28, 21, 16, 0.15)',
-              color: 'var(--cream-muted)',
-              fontFamily: "'Lora', serif",
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              letterSpacing: '0.12em',
+              padding: '0.65rem 1.5rem',
+              fontSize: '0.75rem',
+              fontWeight: 400,
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
+              color: 'var(--text-muted)',
               textDecoration: 'none',
-              transition: 'border-color 0.2s, color 0.2s',
+              transition: 'color 0.25s',
             }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border-gold)';
-              e.currentTarget.style.color = 'var(--cream)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(28, 21, 16, 0.15)';
-              e.currentTarget.style.color = 'var(--cream-muted)';
-            }}
+            onMouseOver={(e) => (e.currentTarget.style.color = 'var(--text)')}
+            onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
-            Contact
+            Contact ↗
           </a>
         </div>
+      </div>
+
+      {/* Bottom vignette fade */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '220px',
+          background: 'linear-gradient(transparent, var(--bg))',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Scroll indicator */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '2.5rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '6px',
+          animation: 'fadeIn 1s 1.2s both',
+        }}
+      >
+        <div
+          style={{
+            width: '1px',
+            height: '40px',
+            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.15))',
+          }}
+        />
       </div>
     </section>
   );
