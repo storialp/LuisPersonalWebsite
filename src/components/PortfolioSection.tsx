@@ -197,7 +197,7 @@ const projects: Project[] = [
   {
     name: 'Endpoint',
     role: 'AI-powered B2B lead generation — find verified decision-maker contacts via natural language',
-    imageUrl: '',
+    imageUrl: '/logos/endpoint.svg',
     link: 'https://tryendpoint.com',
     stack: [
       {
@@ -258,13 +258,21 @@ export default function PortfolioSection() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const isLogo = project.imageUrl.endsWith('.svg');
+
   return (
     <article className="bg-white/[0.02] border border-white/[0.07] overflow-hidden rounded-[2px] transition-all duration-300 hover:border-[rgba(32,213,179,0.2)] hover:bg-[rgba(32,213,179,0.02)]">
       <a href={project.link} target="_blank" rel="noopener noreferrer" className="block no-verify">
-        <div className="aspect-video overflow-hidden bg-[#0d0d0d] relative">
+        <div
+          className={`aspect-video overflow-hidden relative transition-colors duration-300 ${
+            isLogo ? 'bg-white p-12' : 'bg-[#0d0d0d]'
+          }`}
+        >
           {project.imageUrl ? (
             <img
-              className="w-full h-full object-cover opacity-75 transition-all duration-500 hover:scale-[1.04] hover:opacity-100 block"
+              className={`w-full h-full transition-all duration-500 hover:scale-[1.04] block ${
+                isLogo ? 'object-contain opacity-100' : 'object-cover opacity-75 hover:opacity-100'
+              }`}
               src={project.imageUrl}
               alt={project.name}
             />

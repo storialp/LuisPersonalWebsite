@@ -22,7 +22,7 @@ const experiences: Entry[] = [
       'Led product & engineering for MVP that converted to LOI with major Italian pharma company',
     ],
     website: 'https://endpoint.health',
-    logo: '/logos/endpoint.png',
+    logo: '/logos/endpoint.svg',
   },
   {
     name: 'Vento',
