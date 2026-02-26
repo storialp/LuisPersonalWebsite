@@ -7,6 +7,7 @@ interface Entry {
   period: string;
   content: string[];
   website: string;
+  logo?: string;
 }
 
 const experiences: Entry[] = [
@@ -21,6 +22,7 @@ const experiences: Entry[] = [
       'Led product & engineering for MVP that converted to LOI with major Italian pharma company',
     ],
     website: 'https://endpoint.health',
+    logo: '/logos/endpoint.png',
   },
   {
     name: 'Vento',
@@ -32,6 +34,7 @@ const experiences: Entry[] = [
       'One of 4 teams to receive funding',
     ],
     website: 'https://vento.vc',
+    logo: '/logos/vento.jpg',
   },
   {
     name: 'Yummy (YC S21)',
@@ -43,6 +46,7 @@ const experiences: Entry[] = [
       'Built CRUD APIs for multi-variant product management',
     ],
     website: 'https://www.yummysuperapp.com/',
+    logo: '/logos/yummy.png',
   },
   {
     name: 'Yummy (YC S21)',
@@ -54,6 +58,7 @@ const experiences: Entry[] = [
       'Created drag-and-drop navigation tool for store routes',
     ],
     website: 'https://www.yummysuperapp.com/',
+    logo: '/logos/yummy.png',
   },
   {
     name: 'APX',
@@ -66,6 +71,7 @@ const experiences: Entry[] = [
       'Negotiated €50k in discounts for portfolio companies',
     ],
     website: 'https://apx.vc/',
+    logo: '/logos/apx.svg',
   },
 ];
 
@@ -76,6 +82,7 @@ const education: Entry = {
   period: '2020 — 2024',
   content: ['Bocconi Merit Award (Full-tuition scholarship)', 'SAT: 1540/1600'],
   website: 'https://www.unibocconi.it/',
+  logo: '/logos/bocconi.svg',
 };
 
 function EntryCard({ item }: { item: Entry }) {
@@ -83,100 +90,64 @@ function EntryCard({ item }: { item: Entry }) {
 
   return (
     <article
-      style={{
-        position: 'relative',
-        padding: '1.5rem 1.5rem 1.5rem 2rem',
-        background: hovered ? 'rgba(32, 213, 179, 0.03)' : 'rgba(255, 255, 255, 0.02)',
-        border: `1px solid ${hovered ? 'rgba(32, 213, 179, 0.15)' : 'rgba(255, 255, 255, 0.06)'}`,
-        borderRadius: '2px',
-        transition: 'background 0.3s, border-color 0.3s',
-        cursor: 'default',
-        marginBottom: '0.5rem',
-      }}
+      className={`relative p-6 pl-8 rounded-[2px] transition-all duration-300 cursor-default mb-2 ${
+        hovered
+          ? 'bg-[rgba(32,213,179,0.03)] border-[rgba(32,213,179,0.15)]'
+          : 'bg-white/[0.02] border-white/[0.06]'
+      } border`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Left accent bar */}
       <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: '2px',
-          background: hovered ? 'var(--accent)' : 'rgba(255,255,255,0.07)',
-          transition: 'background 0.3s',
-          borderRadius: '2px 0 0 2px',
-        }}
+        className={`absolute left-0 top-0 bottom-0 w-0.5 rounded-l-[2px] transition-colors duration-300 ${
+          hovered ? 'bg-accent' : 'bg-white/[0.07]'
+        }`}
       />
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          gap: '1rem',
-          marginBottom: '0.35rem',
-          flexWrap: 'wrap',
-        }}
-      >
-        <h3
-          style={{
-            fontSize: '0.9rem',
-            fontWeight: 500,
-            color: 'var(--text)',
-            letterSpacing: '-0.01em',
-            lineHeight: 1.4,
-          }}
-        >
-          {item.name}
-        </h3>
+      <div className="flex justify-between items-center gap-4 mb-2 flex-wrap">
+        <div className="flex items-center gap-3">
+          {item.logo ? (
+              <div className={`w-10 h-10 rounded-[4px] bg-white border border-white/10 flex items-center justify-center p-1.5 overflow-hidden flex-shrink-0 transition-colors duration-300 ${hovered ? 'border-accent/20' : ''}`}>
+              <img
+                src={item.logo}
+                alt={`${item.name} logo`}
+                className="w-full h-full object-contain transition-all duration-300"
+              />
+            </div>
+          ) : (
+            <div className={`w-10 h-10 rounded-[4px] bg-white/[0.03] border border-white/10 flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${hovered ? 'border-accent/20 bg-accent/[0.02]' : ''}`}>
+              <span className={`text-[0.65rem] font-bold transition-colors duration-300 ${hovered ? 'text-accent opacity-60' : 'text-text-muted opacity-40'}`}>
+                {item.name.substring(0, 1)}
+              </span>
+            </div>
+          )}
+          <h3 className="text-[0.9rem] font-medium text-text tracking-[-0.01em] leading-[1.4]">
+            {item.name}
+          </h3>
+        </div>
         <span
-          style={{
-            fontSize: '0.7rem',
-            color: hovered ? 'var(--accent)' : 'var(--text-muted)',
-            transition: 'color 0.3s',
-            letterSpacing: '0.04em',
-            fontVariantNumeric: 'tabular-nums',
-            paddingTop: '0.1rem',
-            whiteSpace: 'nowrap',
-          }}
+          className={`text-[0.7rem] transition-colors duration-300 tracking-[0.04em] font-variant-numeric tabular-nums whitespace-nowrap ${
+            hovered ? 'text-accent' : 'text-text-muted'
+          }`}
         >
           {item.period}
         </span>
       </div>
 
-      <p
-        style={{
-          fontSize: '0.775rem',
-          color: 'var(--text-muted)',
-          marginBottom: '1rem',
-          letterSpacing: '0.01em',
-        }}
-      >
+      <p className="text-[0.775rem] text-text-muted mb-4 tracking-[0.01em]">
         {item.role} · {item.location}
       </p>
 
-      <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+      <ul className="flex flex-col gap-1">
         {item.content.map((bullet, i) => (
           <li
             key={i}
-            style={{
-              fontSize: '0.775rem',
-              color: 'var(--text-muted)',
-              lineHeight: 1.65,
-              listStyle: 'none',
-              paddingLeft: '0.9rem',
-              position: 'relative',
-            }}
+            className="text-[0.775rem] text-text-muted leading-[1.65] list-none pl-[0.9rem] relative"
           >
             <span
-              style={{
-                position: 'absolute',
-                left: 0,
-                color: hovered ? 'rgba(32, 213, 179, 0.5)' : 'rgba(255,255,255,0.15)',
-                transition: 'color 0.3s',
-              }}
+              className={`absolute left-0 transition-colors duration-300 ${
+                hovered ? 'text-[rgba(32,213,179,0.5)]' : 'text-white/[0.15]'
+              }`}
             >
               ·
             </span>
@@ -190,59 +161,19 @@ function EntryCard({ item }: { item: Entry }) {
 
 export default function Cv() {
   return (
-    <section
-      id="experience"
-      style={{
-        padding: '9rem 2rem',
-        backgroundColor: 'var(--bg)',
-        position: 'relative',
-        borderTop: '1px solid var(--border)',
-      }}
-    >
-      {/* Ambient section glow */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: '-10%',
-          width: '50%',
-          height: '50%',
-          background:
-            'radial-gradient(ellipse, rgba(32, 213, 179, 0.03) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
+    <section id="experience" className="py-36 px-8 bg-bg relative border-t border-border">
+      <div className="absolute top-0 right-[-10%] w-[50%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.03)_0%,transparent_70%)] pointer-events-none" />
 
-      <div style={{ maxWidth: '720px', margin: '0 auto', position: 'relative' }}>
-        <p
-          style={{
-            fontSize: '0.65rem',
-            color: 'var(--accent)',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            marginBottom: '2.5rem',
-          }}
-        >
-          Experience
-        </p>
+      <div className="max-w-[720px] mx-auto relative">
+        <p className="text-[0.65rem] text-accent tracking-[0.2em] uppercase mb-10">Experience</p>
 
-        <div style={{ marginBottom: '5rem' }}>
+        <div className="mb-20">
           {experiences.map((exp) => (
             <EntryCard key={exp.name + exp.period} item={exp} />
           ))}
         </div>
 
-        <p
-          style={{
-            fontSize: '0.65rem',
-            color: 'var(--accent)',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            marginBottom: '2.5rem',
-          }}
-        >
-          Education
-        </p>
+        <p className="text-[0.65rem] text-accent tracking-[0.2em] uppercase mb-10">Education</p>
 
         <EntryCard item={education} />
       </div>
