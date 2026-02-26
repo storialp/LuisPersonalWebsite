@@ -9,7 +9,7 @@ import MainLayout from '../layouts/mainLayout.astro';
 <MainLayout>
   <Hero />
   <Cv />
-  <TechSkills />
+  <TechSkills client:load />
   <div id="projects">
     <PortfolioSection client:load />
   </div>

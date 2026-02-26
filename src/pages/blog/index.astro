@@ -1,0 +1,62 @@
+---
+import mainLayout from '../layouts/mainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<mainLayout>
+	<div style={{ paddingTop: '80px', maxWidth: '720px', margin: '0 auto', padding: '120px 2rem 4rem' }}>
+		<h1 style={{ fontSize: '2.5rem', fontWeight: '600', marginBottom: '0.5rem' }}>Blog</h1>
+		<p style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>
+			Thoughts on engineering, startups, and building things.
+		</p>
+
+		<ul style={{ listStyle: 'none' }}>
+			{
+				posts.map((post) => (
+					<li style={{ marginBottom: '2rem' }}>
+						<a
+							href={`/blog/${post.slug}`}
+							style={{
+								display: 'block',
+								textDecoration: 'none',
+								padding: '1.5rem',
+								background: 'var(--bg-card)',
+								borderRadius: '8px',
+								border: '1px solid var(--border)',
+								transition: 'border-color 0.2s, transform 0.2s',
+							}}
+							onMouseOver={(e) => {
+								e.currentTarget.style.borderColor = 'var(--accent)';
+								e.currentTarget.style.transform = 'translateX(4px)';
+							}}
+							onMouseOut={(e) => {
+								e.currentTarget.style.borderColor = 'var(--border)';
+								e.currentTarget.style.transform = 'translateX(0)';
+							}}
+						>
+							<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
+								<h2 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text)' }}>
+									{post.data.title}
+								</h2>
+								<time datetime={post.data.pubDate.toISOString()} style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+									{post.data.pubDate.toLocaleDateString('en-us', {
+										year: 'numeric',
+										month: 'short',
+										day: 'numeric',
+									})}
+								</time>
+							</div>
+							<p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+								{post.data.description}
+							</p>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</mainLayout>
