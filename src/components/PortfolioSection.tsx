@@ -241,47 +241,13 @@ const projects: Project[] = [
 
 export default function PortfolioSection() {
   return (
-    <div
-      style={{
-        backgroundColor: 'var(--bg)',
-        padding: '9rem 2rem',
-        position: 'relative',
-        borderTop: '1px solid var(--border)',
-      }}
-    >
-      {/* Ambient glow */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '20%',
-          right: '-5%',
-          width: '45%',
-          height: '50%',
-          background: 'radial-gradient(ellipse, rgba(32, 213, 179, 0.025) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
+    <div className="bg-bg py-36 px-8 relative border-t border-border">
+      <div className="absolute top-[20%] right-[-5%] w-[45%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
-      <div style={{ maxWidth: '960px', margin: '0 auto', position: 'relative' }}>
-        <p
-          style={{
-            fontSize: '0.65rem',
-            color: 'var(--accent)',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            marginBottom: '2.5rem',
-          }}
-        >
-          Projects
-        </p>
+      <div className="max-w-[960px] mx-auto relative">
+        <p className="text-[0.65rem] text-accent tracking-[0.2em] uppercase mb-10">Projects</p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 420px), 1fr))',
-            gap: '1rem',
-          }}
-        >
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,420px),1fr))] gap-4">
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
@@ -293,77 +259,18 @@ export default function PortfolioSection() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article
-      style={{
-        background: 'rgba(255, 255, 255, 0.02)',
-        border: '1px solid rgba(255, 255, 255, 0.07)',
-        overflow: 'hidden',
-        borderRadius: '2px',
-        transition: 'border-color 0.3s, background 0.3s',
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(32, 213, 179, 0.2)';
-        (e.currentTarget as HTMLElement).style.background = 'rgba(32, 213, 179, 0.02)';
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.07)';
-        (e.currentTarget as HTMLElement).style.background = 'rgba(255, 255, 255, 0.02)';
-      }}
-    >
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ display: 'block', textDecoration: 'none' }}
-      >
-        <div
-          style={{
-            aspectRatio: '16/9',
-            overflow: 'hidden',
-            background: '#0d0d0d',
-            position: 'relative',
-          }}
-        >
+    <article className="bg-white/[0.02] border border-white/[0.07] overflow-hidden rounded-[2px] transition-all duration-300 hover:border-[rgba(32,213,179,0.2)] hover:bg-[rgba(32,213,179,0.02)]">
+      <a href={project.link} target="_blank" rel="noopener noreferrer" className="block no-verify">
+        <div className="aspect-video overflow-hidden bg-[#0d0d0d] relative">
           {project.imageUrl ? (
             <img
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: 0.75,
-                transition: 'transform 0.5s, opacity 0.3s',
-                display: 'block',
-              }}
+              className="w-full h-full object-cover opacity-75 transition-all duration-500 hover:scale-[1.04] hover:opacity-100 block"
               src={project.imageUrl}
               alt={project.name}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)';
-                (e.currentTarget as HTMLImageElement).style.opacity = '1';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)';
-                (e.currentTarget as HTMLImageElement).style.opacity = '0.75';
-              }}
             />
           ) : (
-            <div
-              style={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'linear-gradient(135deg, #0d0d0d 0%, #111 100%)',
-              }}
-            >
-              <span
-                style={{
-                  fontSize: '0.6rem',
-                  color: 'rgba(255,255,255,0.1)',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                }}
-              >
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0d0d0d] to-[#111]">
+              <span className="text-[0.6rem] text-white/[0.1] tracking-[0.2em] uppercase">
                 {project.name}
               </span>
             </div>
@@ -371,51 +278,22 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </a>
 
-      <div style={{ padding: '1.25rem' }}>
-        <h3
-          style={{
-            fontSize: '0.85rem',
-            fontWeight: 500,
-            color: 'var(--text)',
-            marginBottom: '0.4rem',
-            letterSpacing: '-0.01em',
-            lineHeight: 1.4,
-          }}
-        >
+      <div className="p-5">
+        <h3 className="text-[0.85rem] font-medium text-text mb-1 tracking-[-0.01em] leading-[1.4]">
           {project.name}
         </h3>
-        <p
-          style={{
-            fontSize: '0.75rem',
-            color: 'var(--text-muted)',
-            marginBottom: '1rem',
-            lineHeight: 1.6,
-          }}
-        >
-          {project.role}
-        </p>
+        <p className="text-[0.75rem] text-text-muted mb-4 leading-[1.6]">{project.role}</p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+        <div className="flex flex-wrap gap-1">
           {project.stack.map((stackItem) => (
             <span
               key={stackItem.name}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px',
-                padding: '0.2rem 0.55rem',
-                fontSize: '0.65rem',
-                color: 'rgba(255,255,255,0.3)',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.06)',
-                borderRadius: '2px',
-                letterSpacing: '0.02em',
-              }}
+              className="inline-flex items-center gap-1 px-2 py-0.5 text-[0.65rem] text-white/[0.3] bg-white/[0.03] border border-white/[0.06] rounded-[2px] tracking-[0.02em]"
             >
               <img
                 src={stackItem.logo}
                 alt={stackItem.name}
-                style={{ width: '10px', height: '10px', objectFit: 'contain', opacity: 0.5 }}
+                className="w-2.5 h-2.5 object-contain opacity-50"
               />
               {stackItem.name}
             </span>
