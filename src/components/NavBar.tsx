@@ -7,6 +7,7 @@ interface NavBarProps {
 const navigation = [
   { name: 'Experience', href: '/#experience' },
   { name: 'Projects', href: '/#projects' },
+  { name: 'Blog', href: '/blog' },
 ];
 
 export default function NavBar({ path }: NavBarProps) {
@@ -21,63 +22,23 @@ export default function NavBar({ path }: NavBarProps) {
 
   return (
     <nav
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        transition: 'background 0.4s, border-color 0.4s',
-        backgroundColor: scrolled ? 'rgba(8, 8, 8, 0.88)' : 'transparent',
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        borderBottom: `1px solid ${scrolled ? 'rgba(255,255,255,0.06)' : 'transparent'}`,
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+        scrolled
+          ? 'bg-[rgba(8,8,8,0.88)] backdrop-blur-2xl border-b border-white/[0.06]'
+          : 'bg-transparent border-b border-transparent'
+      }`}
     >
-      <div
-        style={{
-          maxWidth: '960px',
-          margin: '0 auto',
-          padding: '0 2rem',
-          display: 'flex',
-          height: '60px',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'relative',
-        }}
-      >
-        <a
-          href="/"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            textDecoration: 'none',
-            position: 'absolute',
-            left: 0,
-          }}
-        >
-          <img src="/initials-white.svg" alt="LP" style={{ width: '28px', height: '28px' }} />
+      <div className="max-w-[960px] mx-auto px-8 flex h-[60px] justify-center items-center relative">
+        <a href="/" className="flex items-center no-verify absolute left-0">
+          <img src="/initials-white.svg" alt="LP" className="w-7 h-7" />
         </a>
 
-        {/* Desktop nav */}
-        <div
-          style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}
-          className="hidden sm:flex"
-        >
+        <div className="hidden sm:flex gap-10 items-center">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              style={{
-                fontSize: '0.75rem',
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                transition: 'color 0.2s',
-              }}
-              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              className="text-[0.75rem] text-text-muted no-verify tracking-[0.1em] uppercase transition-colors duration-200 hover:text-text"
             >
               {item.name}
             </a>
@@ -85,32 +46,14 @@ export default function NavBar({ path }: NavBarProps) {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div
-          className="sm:hidden"
-          style={{
-            borderTop: '1px solid var(--border)',
-            padding: '1rem 2rem',
-            backgroundColor: 'rgba(8, 8, 8, 0.95)',
-            backdropFilter: 'blur(24px)',
-          }}
-        >
+        <div className="sm:hidden border-t border-border px-8 py-4 bg-[rgba(8,8,8,0.95)] backdrop-blur-2xl">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              style={{
-                display: 'block',
-                padding: '0.75rem 0',
-                fontSize: '0.8rem',
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                borderBottom: '1px solid var(--border)',
-              }}
+              className="block py-3 text-[0.8rem] text-text-muted no-verify tracking-[0.08em] uppercase border-b border-border"
             >
               {item.name}
             </a>
