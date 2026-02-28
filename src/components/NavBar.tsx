@@ -7,8 +7,9 @@ interface NavBarProps {
 const navigation = [
   { name: 'Experience', href: '/#experience' },
   { name: 'Projects', href: '/#projects' },
-  { name: 'Travel', href: '/travel' },
   { name: 'Blog', href: '/blog' },
+  { name: 'Travel', href: '/travel' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 export default function NavBar({ path }: NavBarProps) {

@@ -6,7 +6,7 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border py-12 px-8 bg-bg relative">
+    <footer id="contact" className="border-t border-border py-12 px-8 bg-bg relative">
       <div className="max-w-[720px] mx-auto flex justify-between items-center gap-4 flex-wrap">
         <div className="flex gap-10">
           {links.map(({ label, href, external }) => (
