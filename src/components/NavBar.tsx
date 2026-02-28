@@ -7,6 +7,7 @@ interface NavBarProps {
 const navigation = [
   { name: 'Experience', href: '/#experience' },
   { name: 'Projects', href: '/#projects' },
+  { name: 'Travel', href: '/travel' },
   { name: 'Blog', href: '/blog' },
 ];
 
@@ -38,7 +39,7 @@ export default function NavBar({ path }: NavBarProps) {
             <a
               key={item.name}
               href={item.href}
-              className="text-[0.75rem] text-text-muted no-verify tracking-[0.1em] uppercase transition-colors duration-200 hover:text-text"
+              className="text-xs text-text-muted no-verify tracking-[0.1em] uppercase transition-colors duration-200 hover:text-text font-medium"
             >
               {item.name}
             </a>
@@ -53,7 +54,7 @@ export default function NavBar({ path }: NavBarProps) {
               key={item.name}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              className="block py-3 text-[0.8rem] text-text-muted no-verify tracking-[0.08em] uppercase border-b border-border"
+              className="block py-3 text-sm text-text-muted no-verify tracking-[0.08em] uppercase border-b border-border"
             >
               {item.name}
             </a>
