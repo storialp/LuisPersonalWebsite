@@ -27,6 +27,7 @@ const technologies = [
   'Claude Code',
   'Drizzle',
   'tRPC',
+  'smolagents',
 ];
 
 const technologyLogos: Record<string, string> = {
@@ -55,6 +56,7 @@ const technologyLogos: Record<string, string> = {
   'Claude Code': 'https://cdn.simpleicons.org/claude',
   Drizzle: 'https://cdn.simpleicons.org/drizzle',
   tRPC: 'https://cdn.simpleicons.org/trpc',
+  smolagents: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
 };
 
 const languages = [
@@ -70,7 +72,7 @@ function TechTag({ tech }: { tech: string }) {
   return (
     <button
       type="button"
-      className={`inline-flex items-center gap-2 px-3 py-1 text-[0.72rem] rounded-[2px] tracking-[0.02em] transition-all duration-200 cursor-default ${
+      className={`inline-flex items-center gap-2 px-3 py-1 text-xs rounded-[2px] tracking-[0.02em] transition-all duration-200 cursor-default ${
         hovered
           ? 'text-white bg-white/[0.4] border-white/60 shadow-[0_0_14px_rgba(255,255,255,0.08)]'
           : 'text-text-muted bg-white/[0.03] border-white/[0.07]'
@@ -78,7 +80,7 @@ function TechTag({ tech }: { tech: string }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {logoUrl && <img src={logoUrl} alt={`${tech} logo`} className="w-[0.85rem] h-[0.85rem]" />}
+      {logoUrl && <img src={logoUrl} alt={`${tech} logo`} className="w-[0.9rem] h-[0.9rem]" />}
       {tech}
     </button>
   );
@@ -90,27 +92,27 @@ export default function TechSkills() {
       <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[720px] mx-auto relative">
-        <p className="text-[0.65rem] text-accent tracking-[0.2em] uppercase mb-10">Technologies</p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Technologies</p>
 
-        <div className="flex flex-wrap gap-2 mb-20">
+        <div className="flex flex-wrap gap-2.5 mb-20">
           {technologies.map((tech) => (
             <TechTag key={tech} tech={tech} />
           ))}
         </div>
 
-        <p className="text-[0.65rem] text-accent tracking-[0.2em] uppercase mb-10">Languages</p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Languages</p>
 
         <div className="flex gap-16 flex-wrap">
           {languages.map((lang) => (
             <div key={lang.name} className="flex items-center gap-4">
-              <div className="h-[1.3rem] border border-white/10 rounded-[1px] overflow-hidden">
+              <div className="h-[1.4rem] border border-white/10 rounded-[1px] overflow-hidden">
                 <lang.Flag className="block h-full w-auto" />
               </div>
               <div className="flex flex-col justify-center gap-0.5">
-                <p className="text-[0.9rem] font-medium text-text tracking-[-0.01em] leading-[1.1]">
+                <p className="text-base font-medium text-text tracking-tight leading-[1.1]">
                   {lang.name}
                 </p>
-                <p className="text-[0.65rem] text-text-muted tracking-[0.05em] uppercase leading-none">
+                <p className="text-xs text-text-muted tracking-[0.05em] uppercase leading-none">
                   {lang.level}
                 </p>
               </div>

@@ -8,11 +8,11 @@ export default function Hero() {
       <div className="absolute left-[10%] right-[10%] top-1/2 h-[1px] -translate-y-[90px] bg-gradient-to-r from-transparent via-[rgba(32,213,179,0.12)] to-transparent pointer-events-none" />
 
       <div className="relative z-10 text-center px-8 max-w-[860px] w-full">
-        <p className="text-[0.7rem] text-accent tracking-[0.2em] uppercase mb-10 animate-[fadeUp_0.8s_0.1s_both]">
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10 animate-[fadeUp_0.8s_0.1s_both]">
           Milan, Italy
         </p>
 
-        <h1 className="text-[clamp(4rem,12vw,8rem)] font-extralight leading-[0.95] tracking-[-0.04em] text-text mb-12 animate-[fadeUp_0.8s_0.25s_both]">
+        <h1 className="text-[clamp(4rem,12vw,8rem)] font-extralight leading-[1.05] tracking-tight text-text mb-12 animate-[fadeUp_0.8s_0.25s_both]">
           Luis
           <br />
           <span className="font-normal bg-gradient-to-br from-text to-[rgba(32,213,179,0.7)] bg-clip-text text-transparent">
@@ -20,7 +20,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="text-base text-text-muted leading-[1.85] max-w-[440px] mx-auto mb-14 animate-[fadeUp_0.8s_0.4s_both]">
+        <p className="text-[1.05rem] text-text-muted leading-[1.75] max-w-[480px] mx-auto mb-14 animate-[fadeUp_0.8s_0.4s_both]">
           Founder and engineer. Currently building{' '}
           <a
             href="https://endpoint.health"
@@ -35,14 +35,14 @@ export default function Hero() {
         <div className="flex gap-4 justify-center flex-wrap animate-[fadeUp_0.8s_0.55s_both]">
           <a
             href="#experience"
-            className="inline-flex items-center gap-2 px-6 py-2.5 text-[0.75rem] font-normal tracking-[0.08em] uppercase text-text no-verify border border-white/10 rounded-[2px] bg-white/[0.04] backdrop-blur-xl transition-all duration-250 hover:border-[rgba(32,213,179,0.35)] hover:bg-[rgba(32,213,179,0.07)] hover:text-accent"
+            className="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-medium tracking-[0.08em] uppercase text-text no-verify border border-white/10 rounded-[2px] bg-white/[0.04] backdrop-blur-xl transition-all duration-250 hover:border-[rgba(32,213,179,0.35)] hover:bg-[rgba(32,213,179,0.07)] hover:text-accent"
           >
             Experience
           </a>
 
           <a
             href="mailto:pericchiluis@gmail.com"
-            className="inline-flex items-center px-6 py-2.5 text-[0.75rem] font-normal tracking-[0.08em] uppercase text-text-muted no-verify transition-colors duration-250 hover:text-text"
+            className="inline-flex items-center px-6 py-2.5 text-xs font-medium tracking-[0.08em] uppercase text-text-muted no-verify transition-colors duration-250 hover:text-text"
           >
             Contact ↗
           </a>

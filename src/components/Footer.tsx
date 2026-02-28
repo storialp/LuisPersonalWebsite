@@ -15,14 +15,14 @@ export default function Footer() {
               href={href}
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
-              className="text-[0.75rem] text-text-muted no-verify tracking-[0.05em] uppercase transition-colors duration-200 hover:text-accent"
+              className="text-xs text-text-muted no-verify tracking-[0.05em] uppercase transition-colors duration-200 hover:text-accent font-medium"
             >
               {label}
             </a>
           ))}
         </div>
 
-        <p className="text-[0.7rem] text-white/[0.12] tracking-[0.03em]">
+        <p className="text-xs text-white/40 tracking-[0.03em]">
           © {new Date().getFullYear()} Luis Pericchi
         </p>
       </div>

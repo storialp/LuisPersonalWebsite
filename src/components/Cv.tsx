@@ -121,12 +121,12 @@ function EntryCard({ item }: { item: Entry }) {
               </span>
             </div>
           )}
-          <h3 className="text-[0.9rem] font-medium text-text tracking-[-0.01em] leading-[1.4]">
+          <h3 className="text-base font-medium text-text tracking-tight leading-[1.4]">
             {item.name}
           </h3>
         </div>
         <span
-          className={`text-[0.7rem] transition-colors duration-300 tracking-[0.04em] font-variant-numeric tabular-nums whitespace-nowrap ${
+          className={`text-xs transition-colors duration-300 tracking-[0.04em] font-variant-numeric tabular-nums whitespace-nowrap ${
             hovered ? 'text-accent' : 'text-text-muted'
           }`}
         >
@@ -134,19 +134,19 @@ function EntryCard({ item }: { item: Entry }) {
         </span>
       </div>
 
-      <p className="text-[0.775rem] text-text-muted mb-4 tracking-[0.01em]">
+      <p className="text-[0.875rem] text-text-muted mb-4 tracking-normal">
         {item.role} · {item.location}
       </p>
 
-      <ul className="flex flex-col gap-1">
+      <ul className="flex flex-col gap-1.5">
         {item.content.map((bullet, i) => (
           <li
             key={i}
-            className="text-[0.775rem] text-text-muted leading-[1.65] list-none pl-[0.9rem] relative"
+            className="text-[0.875rem] text-text-muted leading-[1.6] list-none pl-[0.9rem] relative"
           >
             <span
               className={`absolute left-0 transition-colors duration-300 ${
-                hovered ? 'text-[rgba(32,213,179,0.5)]' : 'text-white/[0.15]'
+                hovered ? 'text-[rgba(32,213,179,0.5)]' : 'text-white/40'
               }`}
             >
               ·
@@ -165,7 +165,7 @@ export default function Cv() {
       <div className="absolute top-0 right-[-10%] w-[50%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[720px] mx-auto relative">
-        <p className="text-[0.65rem] text-accent tracking-[0.2em] uppercase mb-10">Experience</p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Experience</p>
 
         <div className="mb-20">
           {experiences.map((exp) => (
@@ -173,7 +173,7 @@ export default function Cv() {
           ))}
         </div>
 
-        <p className="text-[0.65rem] text-accent tracking-[0.2em] uppercase mb-10">Education</p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Education</p>
 
         <EntryCard item={education} />
       </div>
