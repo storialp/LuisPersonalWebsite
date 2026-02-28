@@ -44,7 +44,7 @@ export default function Hero() {
             href="mailto:pericchiluis@gmail.com"
             className="inline-flex items-center px-6 py-2.5 text-xs font-medium tracking-[0.08em] uppercase text-text-muted no-verify transition-colors duration-250 hover:text-text"
           >
-            Contact ↗
+            Email me
           </a>
         </div>
       </div>
