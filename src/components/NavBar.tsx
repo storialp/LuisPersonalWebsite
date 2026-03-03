@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ContactModal from './ContactModal';
 
 interface NavBarProps {
   path: string;
@@ -9,12 +10,12 @@ const navigation = [
   { name: 'Projects', href: '/#projects' },
   { name: 'Blog', href: '/blog' },
   { name: 'Travel', href: '/travel' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Contact', href: '#contact', isModal: true },
 ];
 
 export default function NavBar({ path }: NavBarProps) {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -22,42 +23,40 @@ export default function NavBar({ path }: NavBarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        scrolled
-          ? 'bg-[rgba(8,8,8,0.88)] backdrop-blur-2xl border-b border-white/[0.06]'
-          : 'bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="max-w-[960px] mx-auto px-8 flex h-[60px] justify-center items-center relative">
-        <div className="hidden sm:flex gap-10 items-center">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-xs text-text-muted no-verify tracking-[0.1em] uppercase transition-colors duration-200 hover:text-text font-medium"
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-      </div>
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setContactModalOpen(true);
+  };
 
-      {menuOpen && (
-        <div className="sm:hidden border-t border-border px-8 py-4 bg-[rgba(8,8,8,0.95)] backdrop-blur-2xl">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className="block py-3 text-sm text-text-muted no-verify tracking-[0.08em] uppercase border-b border-border"
-            >
-              {item.name}
-            </a>
-          ))}
+  return (
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+          scrolled
+            ? 'bg-[rgba(8,8,8,0.88)] backdrop-blur-2xl border-b border-white/[0.06]'
+            : 'bg-transparent border-b border-transparent'
+        }`}
+      >
+        <div className="max-w-[960px] mx-auto px-8 flex h-[60px] justify-center items-center relative">
+          <div className="flex gap-10 items-center">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={item.isModal ? handleContactClick : undefined}
+                className="text-xs text-text-muted no-verify tracking-[0.1em] uppercase transition-colors duration-200 hover:text-text font-medium"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
         </div>
-      )}
-    </nav>
+      </nav>
+
+      <ContactModal 
+        isOpen={contactModalOpen} 
+        onClose={() => setContactModalOpen(false)} 
+      />
+    </>
   );
 }

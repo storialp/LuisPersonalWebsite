@@ -77,6 +77,11 @@ const projects: Project[] = [
         name: 'Stripe',
         logo: 'https://cdn.simpleicons.org/stripe',
       },
+      {
+        url: 'https://redis.io/',
+        name: 'Redis',
+        logo: 'https://cdn.simpleicons.org/redis',
+      },
     ],
   },
   {
@@ -106,6 +111,11 @@ const projects: Project[] = [
         logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',
       },
       {
+        url: 'https://redis.io/',
+        name: 'Redis',
+        logo: 'https://cdn.simpleicons.org/redis',
+      },
+      {
         url: 'https://www.firecrawl.dev/',
         name: 'Firecrawl',
         logo: 'https://www.firecrawl.dev/favicon.ico',
@@ -118,7 +128,7 @@ const projects: Project[] = [
       {
         url: 'https://www.apollo.io/',
         name: 'Apollo',
-        logo: 'https://cdn.worldvectorlogo.com/logos/apollo-graphql-compact.svg',
+        logo: 'https://www.apollo.io/favicon.ico',
       },
       {
         url: 'https://stripe.com/',
