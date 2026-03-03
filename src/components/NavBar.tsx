@@ -31,10 +31,6 @@ export default function NavBar({ path }: NavBarProps) {
       }`}
     >
       <div className="max-w-[960px] mx-auto px-8 flex h-[60px] justify-center items-center relative">
-        <a href="/" className="flex items-center no-verify absolute left-0">
-          <img src="/initials-white.svg" alt="LP" className="w-7 h-7" />
-        </a>
-
         <div className="hidden sm:flex gap-10 items-center">
           {navigation.map((item) => (
             <a
