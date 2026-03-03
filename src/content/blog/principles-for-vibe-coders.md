@@ -14,3 +14,5 @@ pubDate: "2026-03-03"
 8. Frameworks vs languages vs libraries
 9. On what used to be premature optimization
 10. Right tool at the right time
+11. Client state vs server state
+12. URLs and http

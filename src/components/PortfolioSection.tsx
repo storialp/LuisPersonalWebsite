@@ -125,6 +125,11 @@ const projects: Project[] = [
         name: 'Stripe',
         logo: 'https://cdn.simpleicons.org/stripe',
       },
+      {
+        url: 'https://posthog.com/',
+        name: 'PostHog',
+        logo: 'https://cdn.simpleicons.org/posthog',
+      },
     ],
   },
 ];
