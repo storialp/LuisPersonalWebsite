@@ -1,5 +1,5 @@
 ---
-import mainLayout from '../layouts/mainLayout.astro';
+import MainLayout from '../../layouts/mainLayout.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
@@ -7,42 +7,21 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<mainLayout>
-	<div style={{ paddingTop: '80px', maxWidth: '860px', margin: '0 auto', padding: '120px 2rem 4rem' }}>
-		<h1 style={{ fontSize: '2.5rem', fontWeight: '600', marginBottom: '0.5rem' }}>Blog</h1>
-		<p style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>
-			Thoughts on engineering, startups, and building things.
-		</p>
+<MainLayout>
+	<div style={{ position: 'relative' }}>
+		<div class="blog-glow" />
+		<div class="blog-container">
+			<p class="blog-overline">Writing</p>
+			<h1 class="blog-title">Blog</h1>
+			<p class="blog-subtitle">Thoughts on engineering, startups, and building things.</p>
 
-		<ul style={{ listStyle: 'none' }}>
-			{
-				posts.map((post) => (
-					<li style={{ marginBottom: '2rem' }}>
-						<a
-							href={`/blog/${post.slug}`}
-							style={{
-								display: 'block',
-								textDecoration: 'none',
-								padding: '1.5rem',
-								background: 'var(--bg-card)',
-								borderRadius: '8px',
-								border: '1px solid var(--border)',
-								transition: 'border-color 0.2s, transform 0.2s',
-							}}
-							onMouseOver={(e) => {
-								e.currentTarget.style.borderColor = 'var(--accent)';
-								e.currentTarget.style.transform = 'translateX(4px)';
-							}}
-							onMouseOut={(e) => {
-								e.currentTarget.style.borderColor = 'var(--border)';
-								e.currentTarget.style.transform = 'translateX(0)';
-							}}
-						>
-							<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
-								<h2 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text)' }}>
-									{post.data.title}
-								</h2>
-								<time datetime={post.data.pubDate.toISOString()} style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+			<ul style={{ listStyle: 'none' }}>
+				{posts.map((post, i) => (
+					<li class="post-item" style={{ animationDelay: `${0.4 + i * 0.1}s` }}>
+						<a href={`/blog/${post.slug}`} class="blog-card">
+							<div class="card-header">
+								<h2 class="card-title">{post.data.title}</h2>
+								<time datetime={post.data.pubDate.toISOString()} class="card-date">
 									{post.data.pubDate.toLocaleDateString('en-us', {
 										year: 'numeric',
 										month: 'short',
@@ -50,19 +29,126 @@ const posts = (await getCollection('blog')).sort(
 									})}
 								</time>
 							</div>
-							<p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
-								{post.data.description}
-							</p>
+							<p class="card-desc">{post.data.description}</p>
 						</a>
 					</li>
-				))
-			}
-		</ul>
+				))}
+			</ul>
+		</div>
 	</div>
-</mainLayout>
+</MainLayout>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
     window.posthog?.capture('blog_list_viewed');
   });
 </script>
+
+<style>
+	.blog-glow {
+		position: fixed;
+		inset: 0;
+		background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(32, 213, 179, 0.05) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.blog-container {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 120px 2rem 4rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.blog-overline {
+		font-size: 0.75rem;
+		color: var(--accent);
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		margin-bottom: 1rem;
+		animation: fadeUp 0.8s 0.1s both;
+	}
+
+	.blog-title {
+		font-size: 2.5rem;
+		font-weight: 300;
+		margin-bottom: 0.5rem;
+		animation: fadeUp 0.8s 0.2s both;
+		background: linear-gradient(135deg, var(--text) 0%, rgba(32, 213, 179, 0.7) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.blog-subtitle {
+		color: var(--text-muted);
+		margin-bottom: 3rem;
+		animation: fadeUp 0.8s 0.3s both;
+	}
+
+	.post-item {
+		margin-bottom: 1rem;
+		animation: fadeUp 0.8s both;
+	}
+
+	.blog-card {
+		display: block;
+		text-decoration: none;
+		padding: 1.5rem;
+		background: var(--bg-card);
+		border-radius: 4px;
+		border: 1px solid var(--border);
+		transition: border-color 0.2s, transform 0.2s, background 0.2s;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.blog-card::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: var(--accent);
+		opacity: 0;
+		transition: opacity 0.2s;
+	}
+
+	.blog-card:hover {
+		border-color: rgba(32, 213, 179, 0.25);
+		background: rgba(32, 213, 179, 0.03);
+		transform: translateX(4px);
+	}
+
+	.blog-card:hover::before {
+		opacity: 1;
+	}
+
+	.card-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin-bottom: 0.5rem;
+		gap: 1rem;
+	}
+
+	.card-title {
+		font-size: 1.05rem;
+		font-weight: 500;
+		color: var(--text);
+	}
+
+	.card-date {
+		font-size: 0.8rem;
+		color: var(--text-muted);
+		flex-shrink: 0;
+	}
+
+	.card-desc {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		line-height: 1.5;
+	}
+</style>

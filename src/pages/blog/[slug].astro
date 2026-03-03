@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import mainLayout from '../../layouts/mainLayout.astro';
+import MainLayout from '../../layouts/mainLayout.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -19,50 +19,35 @@ const postSlug = post.slug;
 const postDate = post.data.pubDate.toISOString();
 ---
 
-<mainLayout>
-	<article style={{ maxWidth: '860px', margin: '0 auto', padding: '120px 2rem 4rem' }}>
-		<header style={{ marginBottom: '3rem' }}>
-			<a
-				href="/blog"
-				style={{
-					display: 'inline-flex',
-					alignItems: 'center',
-					gap: '0.5rem',
-					color: 'var(--text-muted)',
-					textDecoration: 'none',
-					fontSize: '0.85rem',
-					marginBottom: '2rem',
-					transition: 'color 0.2s',
-				}}
-				onMouseOver={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-				onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
-			>
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<path d="M19 12H5M12 19l-7-7 7-7" />
-				</svg>
-				Back to blog
-			</a>
-			<time datetime={post.data.pubDate.toISOString()} style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-				{post.data.pubDate.toLocaleDateString('en-us', {
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric',
-				})}
-			</time>
-			<h1 style={{ fontSize: '2rem', fontWeight: '600', marginTop: '0.5rem', lineHeight: '1.2' }}>
-				{post.data.title}
-			</h1>
-			{post.data.description && (
-				<p style={{ color: 'var(--text-muted)', marginTop: '1rem', fontSize: '1.1rem' }}>
-					{post.data.description}
-				</p>
-			)}
-		</header>
-		<div class="prose" style={{ lineHeight: '1.7', fontSize: '1rem' }}>
-			<Content />
-		</div>
-	</article>
-</mainLayout>
+<MainLayout>
+	<div style={{ position: 'relative' }}>
+		<div class="article-glow" />
+		<article class="article-container">
+			<header class="article-header">
+				<a href="/blog" class="back-link">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M19 12H5M12 19l-7-7 7-7" />
+					</svg>
+					Back to blog
+				</a>
+				<time datetime={post.data.pubDate.toISOString()} class="article-date">
+					{post.data.pubDate.toLocaleDateString('en-us', {
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric',
+					})}
+				</time>
+				<h1 class="article-title">{post.data.title}</h1>
+				{post.data.description && (
+					<p class="article-desc">{post.data.description}</p>
+				)}
+			</header>
+			<div class="prose">
+				<Content />
+			</div>
+		</article>
+	</div>
+</MainLayout>
 
 <script is:inline define:vars={{ postTitle, postSlug, postDate }}>
   document.addEventListener('DOMContentLoaded', function () {
@@ -73,6 +58,73 @@ const postDate = post.data.pubDate.toISOString();
     });
   });
 </script>
+
+<style>
+	.article-glow {
+		position: fixed;
+		inset: 0;
+		background: radial-gradient(ellipse 70% 50% at 50% 10%, rgba(32, 213, 179, 0.04) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.article-container {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 120px 2rem 4rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.article-header {
+		margin-bottom: 3rem;
+		animation: fadeUp 0.8s 0.1s both;
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--text-muted);
+		text-decoration: none;
+		font-size: 0.85rem;
+		margin-bottom: 2rem;
+		transition: color 0.2s;
+	}
+
+	.back-link:hover {
+		color: var(--accent);
+	}
+
+	.article-date {
+		display: block;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+	}
+
+	.article-title {
+		font-size: 2rem;
+		font-weight: 600;
+		margin-top: 0.5rem;
+		line-height: 1.2;
+		background: linear-gradient(135deg, var(--text) 0%, rgba(32, 213, 179, 0.6) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.article-desc {
+		color: var(--text-muted);
+		margin-top: 1rem;
+		font-size: 1.1rem;
+	}
+
+	.prose {
+		line-height: 1.7;
+		font-size: 1rem;
+		animation: fadeUp 0.8s 0.3s both;
+	}
+</style>
 
 <style is:global>
 	.prose h1,
@@ -109,23 +161,26 @@ const postDate = post.data.pubDate.toISOString();
 	}
 	.prose code {
 		background: var(--bg-card);
+		border: 1px solid var(--border);
 		padding: 0.2rem 0.4rem;
 		border-radius: 4px;
 		font-size: 0.9em;
 	}
 	.prose pre {
 		background: var(--bg-secondary);
+		border: 1px solid var(--border);
 		padding: 1rem;
-		border-radius: 8px;
+		border-radius: 4px;
 		overflow-x: auto;
 		margin-bottom: 1.25rem;
 	}
 	.prose pre code {
 		background: none;
+		border: none;
 		padding: 0;
 	}
 	.prose blockquote {
-		border-left: 3px solid var(--accent);
+		border-left: 2px solid var(--accent);
 		padding-left: 1rem;
 		margin: 1.5rem 0;
 		color: var(--text-muted);
@@ -133,12 +188,12 @@ const postDate = post.data.pubDate.toISOString();
 	}
 	.prose img {
 		max-width: 100%;
-		border-radius: 8px;
+		border-radius: 4px;
 		margin: 1.5rem 0;
 	}
 	.prose hr {
 		border: none;
-		borderTop: '1px solid var(--border)';
+		border-top: 1px solid var(--border);
 		margin: 2rem 0;
 	}
 </style>
