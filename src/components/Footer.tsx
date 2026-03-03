@@ -74,8 +74,16 @@ export default function Footer() {
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
               className="flex items-center gap-2 text-xs text-text-muted no-verify tracking-[0.05em] uppercase transition-all duration-300 hover:text-text font-medium group"
+              onClick={() =>
+                window.posthog?.capture('external_link_clicked', {
+                  link_label: label,
+                  link_href: href,
+                })
+              }
             >
-              <span className={`transition-colors duration-300 ${color} opacity-70 group-hover:opacity-100`}>
+              <span
+                className={`transition-colors duration-300 ${color} opacity-70 group-hover:opacity-100`}
+              >
                 {icon}
               </span>
               {label}

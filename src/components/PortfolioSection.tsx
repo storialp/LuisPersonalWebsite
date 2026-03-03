@@ -47,7 +47,7 @@ const projects: Project[] = [
     ],
   },
   {
-    name: 'Slack to FAQ',
+    name: 'FAQ extractor',
     role: 'AI-powered FAQ extraction from Slack conversations',
     imageUrl: '/logos/faq-extractor.png',
     link: 'https://faqextractor.com',
@@ -71,6 +71,11 @@ const projects: Project[] = [
         url: 'https://trpc.io/',
         name: 'tRPC',
         logo: 'https://trpc.io/img/logo.svg',
+      },
+      {
+        url: 'https://stripe.com/',
+        name: 'Stripe',
+        logo: 'https://cdn.simpleicons.org/stripe',
       },
     ],
   },
@@ -115,6 +120,11 @@ const projects: Project[] = [
         name: 'Apollo',
         logo: 'https://cdn.worldvectorlogo.com/logos/apollo-graphql-compact.svg',
       },
+      {
+        url: 'https://stripe.com/',
+        name: 'Stripe',
+        logo: 'https://cdn.simpleicons.org/stripe',
+      },
     ],
   },
 ];
@@ -140,9 +150,22 @@ export default function PortfolioSection() {
 function ProjectCard({ project }: { project: Project }) {
   const isLogo = project.imageUrl.endsWith('.svg');
 
+  function handleProjectClick() {
+    window.posthog?.capture('project_link_clicked', {
+      project_name: project.name,
+      project_url: project.link,
+    });
+  }
+
   return (
     <article className="bg-white/[0.02] border border-white/[0.07] overflow-hidden rounded-[2px] transition-all duration-300 hover:border-[rgba(32,213,179,0.2)] hover:bg-[rgba(32,213,179,0.02)]">
-      <a href={project.link} target="_blank" rel="noopener noreferrer" className="block no-verify">
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block no-verify"
+        onClick={handleProjectClick}
+      >
         <div
           className={`aspect-video overflow-hidden relative transition-colors duration-300 ${
             isLogo ? 'bg-white p-12' : 'bg-[#0d0d0d]'

@@ -36,6 +36,7 @@ export default function Hero() {
           <a
             href="#experience"
             className="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-medium tracking-[0.08em] uppercase text-text no-verify border border-white/10 rounded-[2px] bg-white/[0.04] backdrop-blur-xl transition-all duration-250 hover:border-[rgba(32,213,179,0.35)] hover:bg-[rgba(32,213,179,0.07)] hover:text-accent"
+            onClick={() => window.posthog?.capture('hero_cta_clicked', { cta_label: 'Experience' })}
           >
             Experience
           </a>
@@ -43,6 +44,7 @@ export default function Hero() {
           <a
             href="mailto:pericchiluis@gmail.com"
             className="inline-flex items-center px-6 py-2.5 text-xs font-medium tracking-[0.08em] uppercase text-text-muted no-verify transition-colors duration-250 hover:text-text"
+            onClick={() => window.posthog?.capture('hero_cta_clicked', { cta_label: 'Email me' })}
           >
             Email me
           </a>

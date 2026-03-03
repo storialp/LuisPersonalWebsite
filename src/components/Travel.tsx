@@ -1,14 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import Globe from "react-globe.gl";
-import { COUNTRIES, type Country } from "../data/countries";
 import * as Flags from 'country-flag-icons/react/3x2';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import Globe from 'react-globe.gl';
+import { COUNTRIES, type Country } from '../data/countries';
 
 const VISITED_CODES = new Set(COUNTRIES.map((c) => c.code));
 
 export default function Travel() {
-  const [geoJson, setGeoJson] = useState<GeoJSON.FeatureCollection | null>(
-    null,
-  );
+  const [geoJson, setGeoJson] = useState<GeoJSON.FeatureCollection | null>(null);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<any>(null);
@@ -46,23 +44,22 @@ export default function Travel() {
 
   useEffect(() => {
     fetch(
-      "https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson",
+      'https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson'
     )
       .then((res) => res.json())
       .then((data) => {
         setGeoJson(data);
       })
-      .catch((err) => console.error("Failed to load GeoJSON:", err));
+      .catch((err) => console.error('Failed to load GeoJSON:', err));
   }, []);
 
   const polygonsWithHighlight = useMemo(() => {
     if (!geoJson?.features) return [];
     return geoJson.features.map((feature) => {
       const props = feature.properties;
-      const iso2 = props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
-      const iso3 = props?.ISO_A3 === "-99" ? props?.WB_A3 : props?.ISO_A3;
-      const isVisited =
-        (iso2 && VISITED_CODES.has(iso2)) || (iso3 && VISITED_CODES.has(iso3));
+      const iso2 = props?.ISO_A2 === '-99' ? props?.WB_A2 : props?.ISO_A2;
+      const iso3 = props?.ISO_A3 === '-99' ? props?.WB_A3 : props?.ISO_A3;
+      const isVisited = (iso2 && VISITED_CODES.has(iso2)) || (iso3 && VISITED_CODES.has(iso3));
       return { ...feature, properties: { ...props, _isVisited: isVisited } };
     });
   }, [geoJson]);
@@ -73,9 +70,7 @@ export default function Travel() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-8">
         <div className="text-center mb-16">
-          <p className="text-xs text-accent tracking-[0.2em] uppercase mb-4">
-            Adventures
-          </p>
+          <p className="text-xs text-accent tracking-[0.2em] uppercase mb-4">Adventures</p>
           <h2 className="text-4xl md:text-5xl font-light text-text tracking-tight">
             Countries Explored
           </h2>
@@ -102,21 +97,15 @@ export default function Travel() {
               polygonsData={polygonsWithHighlight}
               polygonAltitude={(d: any) => (d.properties?._isVisited ? 0.01 : 0.005)}
               polygonCapColor={(d: any) =>
-                d.properties?._isVisited
-                  ? "rgba(22, 101, 52, 0.8)"
-                  : "transparent"
+                d.properties?._isVisited ? 'rgba(22, 101, 52, 0.8)' : 'transparent'
               }
-              polygonSideColor={() => "transparent"}
-              polygonStrokeColor={() => "rgba(255, 255, 255, 0.2)"}
+              polygonSideColor={() => 'transparent'}
+              polygonStrokeColor={() => 'rgba(255, 255, 255, 0.2)'}
               polygonLabel={(feature: any) => {
                 const props = feature.properties;
-                const code = props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
-                const country = code
-                  ? COUNTRIES.find((c) => c.code === code)
-                  : null;
-                return country
-                  ? `<div><b>${country.name}</b></div>`
-                  : props?.ADMIN || "";
+                const code = props?.ISO_A2 === '-99' ? props?.WB_A2 : props?.ISO_A2;
+                const country = code ? COUNTRIES.find((c) => c.code === code) : null;
+                return country ? `<div><b>${country.name}</b></div>` : props?.ADMIN || '';
               }}
             />
           )}
@@ -127,7 +116,7 @@ export default function Travel() {
                 <span className="w-8 inline-block overflow-hidden rounded-[2px]">
                   {(() => {
                     const Flag = Flags[hoveredCountry.code as keyof typeof Flags];
-                    return Flag ? <Flag /> : "🏳️";
+                    return Flag ? <Flag /> : '🏳️';
                   })()}
                 </span>
                 <div>
@@ -146,15 +135,19 @@ export default function Travel() {
                 key={country.name}
                 type="button"
                 className="flex items-center gap-2 px-3 py-2 bg-white/[0.02] border border-white/5 rounded-md hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 cursor-pointer text-left"
-                onMouseEnter={() => setHoveredCountry(country)}
+                onMouseEnter={() => {
+                  setHoveredCountry(country);
+                  window.posthog?.capture('travel_country_hovered', {
+                    country_name: country.name,
+                    country_code: country.code,
+                  });
+                }}
                 onMouseLeave={() => setHoveredCountry(null)}
               >
                 <span className="w-5 inline-block overflow-hidden rounded-[2px] opacity-90">
-                  {Flag ? <Flag /> : "🏳️"}
+                  {Flag ? <Flag /> : '🏳️'}
                 </span>
-                <span className="text-text-muted text-xs truncate">
-                  {country.name}
-                </span>
+                <span className="text-text-muted text-xs truncate">{country.name}</span>
               </button>
             );
           })}
@@ -165,7 +158,7 @@ export default function Travel() {
               className="flex items-center justify-center px-3 py-2 bg-accent/5 border border-accent/20 rounded-md hover:bg-accent/10 transition-colors cursor-pointer"
             >
               <span className="text-accent text-xs font-medium">
-                {isExpanded ? "Show less" : `+${COUNTRIES.length - 12} more`}
+                {isExpanded ? 'Show less' : `+${COUNTRIES.length - 12} more`}
               </span>
             </button>
           )}
