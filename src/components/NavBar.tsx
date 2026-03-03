@@ -37,7 +37,7 @@ export default function NavBar({ path }: NavBarProps) {
             : 'bg-transparent border-b border-transparent'
         }`}
       >
-        <div className="max-w-[960px] mx-auto px-8 flex h-[60px] justify-center items-center relative">
+        <div className="max-w-[860px] mx-auto px-8 flex h-[60px] justify-center items-center relative">
           <div className="flex gap-10 items-center">
             {navigation.map((item) => (
               <a

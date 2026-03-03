@@ -183,7 +183,7 @@ export default function Cv() {
     <section id="experience" className="py-36 px-8 bg-bg relative border-t border-border">
       <div className="absolute top-0 right-[-10%] w-[50%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.03)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-[720px] mx-auto relative">
+      <div className="max-w-[860px] mx-auto relative">
         <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Experience</p>
 
         <div className="mb-20">

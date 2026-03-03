@@ -91,7 +91,7 @@ export default function TechSkills() {
     <section className="py-36 px-8 bg-bg-secondary relative border-t border-b border-border">
       <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-[720px] mx-auto relative">
+      <div className="max-w-[860px] mx-auto relative">
         <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Technologies</p>
 
         <div className="flex flex-wrap gap-2.5 mb-20">

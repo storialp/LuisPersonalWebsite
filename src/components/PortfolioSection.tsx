@@ -149,12 +149,12 @@ export default function PortfolioSection() {
     <div className="bg-bg py-36 px-8 relative border-t border-border">
       <div className="absolute top-[20%] right-[-5%] w-[45%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-[960px] mx-auto relative">
+      <div className="max-w-[860px] mx-auto relative">
         <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
           Projects
         </p>
 
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,420px),1fr))] gap-4">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,380px),1fr))] gap-4">
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
