@@ -14,131 +14,131 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: 'Excelent.ai',
-    role: 'AI agent for Excel — Microsoft Office extension powered by Claude',
-    imageUrl: '',
-    link: 'https://excelent.ai',
+    name: "Excelent.ai",
+    role: "AI agent for Excel — Microsoft Office extension powered by Claude",
+    imageUrl: "",
+    link: "https://excelent.ai",
     stack: [
       {
-        url: 'https://reactjs.org/',
-        name: 'React',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png',
+        url: "https://reactjs.org/",
+        name: "React",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
       },
       {
-        url: 'https://flask.palletsprojects.com/',
-        name: 'Flask',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg',
+        url: "https://flask.palletsprojects.com/",
+        name: "Flask",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg",
       },
       {
-        url: 'https://www.anthropic.com/',
-        name: 'Claude',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Anthropic_logo.svg/1024px-Anthropic_logo.svg.png',
+        url: "https://www.anthropic.com/",
+        name: "Claude 4.5 Haiku",
+        logo: "https://cdn.simpleicons.org/claude",
       },
       {
-        url: 'https://huggingface.co/docs/smolagents/index',
-        name: 'smolagents',
-        logo: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
+        url: "https://huggingface.co/docs/smolagents/index",
+        name: "smolagents",
+        logo: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
       },
       {
-        url: 'https://www.microsoft.com/en-us/microsoft-365/excel',
-        name: 'Excel Add-in',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/1024px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png',
+        url: "https://www.microsoft.com/en-us/microsoft-365/excel",
+        name: "Excel Add-in",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/1024px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png",
       },
     ],
   },
   {
-    name: 'FAQ extractor',
-    role: 'AI-powered FAQ extraction from Slack conversations',
-    imageUrl: '/logos/faq-extractor.png',
-    link: 'https://faqextractor.com',
+    name: "FAQ extractor",
+    role: "AI-powered FAQ extraction from Slack conversations",
+    imageUrl: "/logos/faq-extractor.png",
+    link: "https://faqextractor.com",
     stack: [
       {
-        url: 'https://nextjs.org/',
-        name: 'Next.js',
-        logo: 'https://cdn.worldvectorlogo.com/logos/next-js.svg',
+        url: "https://nextjs.org/",
+        name: "Next.js",
+        logo: "https://cdn.worldvectorlogo.com/logos/next-js.svg",
       },
       {
-        url: 'https://deepmind.google/technologies/gemini/',
-        name: 'Gemini 2.0',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/1024px-Google_Gemini_logo.svg.png',
+        url: "https://deepmind.google/technologies/gemini/",
+        name: "Gemini 2.0 Flash",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/1024px-Google_Gemini_logo.svg.png",
       },
       {
-        url: 'https://orm.drizzle.team/',
-        name: 'Drizzle',
-        logo: 'https://orm.drizzle.team/favicon.ico',
+        url: "https://orm.drizzle.team/",
+        name: "Drizzle",
+        logo: "https://orm.drizzle.team/favicon.ico",
       },
       {
-        url: 'https://trpc.io/',
-        name: 'tRPC',
-        logo: 'https://trpc.io/img/logo.svg',
+        url: "https://trpc.io/",
+        name: "tRPC",
+        logo: "https://trpc.io/img/logo.svg",
       },
       {
-        url: 'https://stripe.com/',
-        name: 'Stripe',
-        logo: 'https://cdn.simpleicons.org/stripe',
+        url: "https://stripe.com/",
+        name: "Stripe",
+        logo: "https://cdn.simpleicons.org/stripe",
       },
       {
-        url: 'https://redis.io/',
-        name: 'Redis',
-        logo: 'https://cdn.simpleicons.org/redis',
+        url: "https://redis.io/",
+        name: "Redis",
+        logo: "https://cdn.simpleicons.org/redis",
       },
     ],
   },
   {
-    name: 'Endpoint',
-    role: 'AI-powered B2B lead generation — find verified decision-maker contacts via natural language',
-    imageUrl: '/logos/endpoint.svg',
-    link: 'https://tryendpoint.com',
+    name: "Endpoint",
+    role: "AI-powered B2B lead generation — find verified decision-maker contacts via natural language",
+    imageUrl: "/logos/endpoint.svg",
+    link: "https://tryendpoint.com",
     stack: [
       {
-        url: 'https://nextjs.org/',
-        name: 'Next.js',
-        logo: 'https://cdn.worldvectorlogo.com/logos/next-js.svg',
+        url: "https://nextjs.org/",
+        name: "Next.js",
+        logo: "https://cdn.worldvectorlogo.com/logos/next-js.svg",
       },
       {
-        url: 'https://trpc.io/',
-        name: 'tRPC',
-        logo: 'https://trpc.io/img/logo.svg',
+        url: "https://trpc.io/",
+        name: "tRPC",
+        logo: "https://trpc.io/img/logo.svg",
       },
       {
-        url: 'https://orm.drizzle.team/',
-        name: 'Drizzle',
-        logo: 'https://orm.drizzle.team/favicon.ico',
+        url: "https://orm.drizzle.team/",
+        name: "Drizzle",
+        logo: "https://orm.drizzle.team/favicon.ico",
       },
       {
-        url: 'https://www.postgresql.org/',
-        name: 'PostgreSQL',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg',
+        url: "https://www.postgresql.org/",
+        name: "PostgreSQL",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
       },
       {
-        url: 'https://redis.io/',
-        name: 'Redis',
-        logo: 'https://cdn.simpleicons.org/redis',
+        url: "https://redis.io/",
+        name: "Redis",
+        logo: "https://cdn.simpleicons.org/redis",
       },
       {
-        url: 'https://www.firecrawl.dev/',
-        name: 'Firecrawl',
-        logo: 'https://www.firecrawl.dev/favicon.ico',
+        url: "https://www.firecrawl.dev/",
+        name: "Firecrawl",
+        logo: "https://www.firecrawl.dev/favicon.ico",
       },
       {
-        url: 'https://exa.ai/',
-        name: 'Exa',
-        logo: 'https://exa.ai/favicon.ico',
+        url: "https://exa.ai/",
+        name: "Exa",
+        logo: "https://exa.ai/favicon.ico",
       },
       {
-        url: 'https://www.apollo.io/',
-        name: 'Apollo',
-        logo: 'https://www.apollo.io/favicon.ico',
+        url: "https://www.apollo.io/",
+        name: "Apollo",
+        logo: "https://www.apollo.io/favicon.ico",
       },
       {
-        url: 'https://stripe.com/',
-        name: 'Stripe',
-        logo: 'https://cdn.simpleicons.org/stripe',
+        url: "https://stripe.com/",
+        name: "Stripe",
+        logo: "https://cdn.simpleicons.org/stripe",
       },
       {
-        url: 'https://posthog.com/',
-        name: 'PostHog',
-        logo: 'https://cdn.simpleicons.org/posthog',
+        url: "https://posthog.com/",
+        name: "PostHog",
+        logo: "https://cdn.simpleicons.org/posthog",
       },
     ],
   },
@@ -150,7 +150,9 @@ export default function PortfolioSection() {
       <div className="absolute top-[20%] right-[-5%] w-[45%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[960px] mx-auto relative">
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Projects</p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
+          Projects
+        </p>
 
         <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,420px),1fr))] gap-4">
           {projects.map((project) => (
@@ -163,10 +165,10 @@ export default function PortfolioSection() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const isLogo = project.imageUrl.endsWith('.svg');
+  const isLogo = project.imageUrl.endsWith(".svg");
 
   function handleProjectClick() {
-    window.posthog?.capture('project_link_clicked', {
+    window.posthog?.capture("project_link_clicked", {
       project_name: project.name,
       project_url: project.link,
     });
@@ -183,13 +185,15 @@ function ProjectCard({ project }: { project: Project }) {
       >
         <div
           className={`aspect-video overflow-hidden relative transition-colors duration-300 ${
-            isLogo ? 'bg-white p-12' : 'bg-[#0d0d0d]'
+            isLogo ? "bg-white p-12" : "bg-[#0d0d0d]"
           }`}
         >
           {project.imageUrl ? (
             <img
               className={`w-full h-full transition-all duration-500 hover:scale-[1.04] block ${
-                isLogo ? 'object-contain opacity-100' : 'object-cover opacity-75 hover:opacity-100'
+                isLogo
+                  ? "object-contain opacity-100"
+                  : "object-cover opacity-75 hover:opacity-100"
               }`}
               src={project.imageUrl}
               alt={project.name}
@@ -208,7 +212,9 @@ function ProjectCard({ project }: { project: Project }) {
         <h3 className="text-base font-medium text-text mb-1 tracking-tight leading-[1.4]">
           {project.name}
         </h3>
-        <p className="text-sm text-text-muted mb-4 leading-[1.6]">{project.role}</p>
+        <p className="text-sm text-text-muted mb-4 leading-[1.6]">
+          {project.role}
+        </p>
 
         <div className="flex flex-wrap gap-1.5">
           {project.stack.map((stackItem) => (
