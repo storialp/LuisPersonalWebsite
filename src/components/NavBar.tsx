@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ContactModal from './ContactModal';
+import SpotifyWidget from './SpotifyWidget';
 
 interface NavBarProps {
   path: string;
@@ -51,6 +52,7 @@ export default function NavBar({ path }: NavBarProps) {
             ))}
           </div>
         </div>
+        <SpotifyWidget />
       </nav>
 
       <ContactModal 
