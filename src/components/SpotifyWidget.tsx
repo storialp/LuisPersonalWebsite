@@ -6,6 +6,22 @@ interface SpotifyData {
   artist?: string;
   albumArt?: string;
   songUrl?: string;
+  playedAt?: string;
+}
+
+function getRelativeTime(dateString?: string) {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+  if (diffInSeconds < 60) return 'just now';
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) return `${diffInHours}h ago`;
+  const diffInDays = Math.floor(diffInHours / 24);
+  return `${diffInDays}d ago`;
 }
 
 const AudioBars = () => (
@@ -110,6 +126,17 @@ export default function SpotifyWidget() {
         </div>
 
         {data.isPlaying && <AudioBars />}
+
+        {/* Tooltip */}
+        <div className="absolute top-[calc(100%+8px)] right-0 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0">
+          <div className="bg-black/80 backdrop-blur-md text-white/90 text-[9px] font-medium px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap shadow-lg backdrop-saturate-150">
+            {data.isPlaying 
+              ? 'Now Playing' 
+              : data.playedAt 
+                ? `Last played: ${getRelativeTime(data.playedAt)}` 
+                : 'Recently Played'}
+          </div>
+        </div>
 
         {/* Minimal Glow Effect */}
         <div className="absolute inset-0 -z-10 bg-[#20D5B3]/0 group-hover:bg-[#20D5B3]/[0.02] rounded-full blur-md transition-all duration-700" />

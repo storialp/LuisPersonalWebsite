@@ -22,7 +22,7 @@ async function getAccessToken() {
   return data.access_token as string;
 }
 
-function trackResponse(track: any, isPlaying: boolean) {
+function trackResponse(track: any, isPlaying: boolean, playedAt?: string) {
   return new Response(
     JSON.stringify({
       isPlaying,
@@ -30,6 +30,7 @@ function trackResponse(track: any, isPlaying: boolean) {
       artist: track.artists.map((a: any) => a.name).join(', '),
       albumArt: track.album.images?.[2]?.url ?? track.album.images?.[0]?.url,
       songUrl: track.external_urls.spotify,
+      playedAt,
     }),
     { status: 200, headers: { 'Content-Type': 'application/json' } },
   );
@@ -52,8 +53,9 @@ export async function GET() {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     const recentData = await recentRes.json();
-    const track = recentData?.items?.[0]?.track;
-    if (track) return trackResponse(track, false);
+    const item = recentData?.items?.[0];
+    const track = item?.track;
+    if (track) return trackResponse(track, false, item.played_at);
   } catch {}
 
   return new Response(JSON.stringify({ isPlaying: false }), {
