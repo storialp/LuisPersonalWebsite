@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_45%,rgba(32,213,179,0.07)_0%,transparent_65%)] animate-[pulse-glow_8s_ease-in-out_infinite] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_140%_120%_at_50%_45%,rgba(32,213,179,0.07)_0%,transparent_80%)] animate-[pulse-glow_8s_ease-in-out_infinite] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_30%_at_15%_25%,rgba(32,213,179,0.04)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_35%_25%_at_85%_75%,rgba(32,213,179,0.03)_0%,transparent_60%)] pointer-events-none" />
 
@@ -51,7 +51,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-[220px] bg-gradient-to-t from-transparent to-bg pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-[220px] bg-gradient-to-b from-transparent to-bg pointer-events-none" />
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-[fadeIn_1s_1.2s_both]">
         <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/[0.15]" />

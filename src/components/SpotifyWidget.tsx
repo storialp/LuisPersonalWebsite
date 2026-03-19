@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 interface SpotifyData {
   isPlaying: boolean;
@@ -10,12 +10,12 @@ interface SpotifyData {
 }
 
 function getRelativeTime(dateString?: string) {
-  if (!dateString) return '';
+  if (!dateString) return "";
   const date = new Date(dateString);
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  if (diffInSeconds < 60) return 'just now';
+  if (diffInSeconds < 60) return "just now";
   const diffInMinutes = Math.floor(diffInSeconds / 60);
   if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
   const diffInHours = Math.floor(diffInMinutes / 60);
@@ -45,7 +45,7 @@ export default function SpotifyWidget() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch('/api/spotify');
+      const res = await fetch("/api/spotify");
       if (res.ok) setData(await res.json());
     } catch {
       // ignore
@@ -90,10 +90,10 @@ export default function SpotifyWidget() {
         target="_blank"
         rel="noopener noreferrer"
         className={`absolute right-6 top-[12px] hidden md:flex items-center gap-2.5 py-1.5 pl-1.5 pr-3.5 rounded-full border border-white/5 bg-white/[0.01] backdrop-blur-md transition-all duration-700 hover:bg-white/[0.04] hover:border-white/10 active:scale-95 ${
-          visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+          visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
         } group`}
         style={{
-          maxWidth: '240px',
+          maxWidth: "240px",
         }}
       >
         <div className="relative shrink-0 flex items-center justify-center">
@@ -102,7 +102,7 @@ export default function SpotifyWidget() {
               src={data.albumArt}
               alt={data.title}
               className={`w-7 h-7 rounded-full object-cover grayscale-[0.2] transition-all duration-700 group-hover:grayscale-0 ${
-                data.isPlaying ? 'animate-slow-spin' : ''
+                data.isPlaying ? "animate-slow-spin" : ""
               }`}
             />
           ) : (
@@ -110,7 +110,7 @@ export default function SpotifyWidget() {
               <div className="w-3 h-3 bg-[#20D5B3]/20 rounded-full" />
             </div>
           )}
-          
+
           {data.isPlaying && (
             <div className="absolute -inset-[1px] border border-[#20D5B3]/10 rounded-full" />
           )}
@@ -130,11 +130,11 @@ export default function SpotifyWidget() {
         {/* Tooltip */}
         <div className="absolute top-[calc(100%+8px)] right-0 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0">
           <div className="bg-black/80 backdrop-blur-md text-white/90 text-[9px] font-medium px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap shadow-lg backdrop-saturate-150">
-            {data.isPlaying 
-              ? 'Now Playing' 
-              : data.playedAt 
-                ? `Last played: ${getRelativeTime(data.playedAt)}` 
-                : 'Recently Played'}
+            {data.isPlaying
+              ? "Now Playing"
+              : data.playedAt
+                ? `Last played: ${getRelativeTime(data.playedAt)}`
+                : "Recently Played"}
           </div>
         </div>
 

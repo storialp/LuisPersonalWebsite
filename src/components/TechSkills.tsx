@@ -1,70 +1,72 @@
-import { ES, IT, US } from 'country-flag-icons/react/3x2';
-import { useState } from 'react';
+import { ES, IT, US } from "country-flag-icons/react/3x2";
+import { useState } from "react";
 
 const technologies = [
-  'JavaScript',
-  'TypeScript',
-  'Python',
-  'Flask',
-  'React',
-  'Next.js',
-  'Angular',
-  'Astro',
-  'Express',
-  'Tailwind CSS',
-  'Prisma',
-  'Sequelize',
-  'Mongoose',
-  'NumPy',
-  'Pandas',
-  'Git',
-  'Docker',
-  'Vertex AI',
-  'GCP',
-  'Redis',
-  'Stripe',
-  'Posthog',
-  'Cursor',
-  'Claude Code',
-  'Drizzle',
-  'tRPC',
-  'smolagents',
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  "Flask",
+  "React",
+  "Next.js",
+  "Angular",
+  "Astro",
+  "Express",
+  "Tailwind CSS",
+  "Prisma",
+  "Sequelize",
+  "Mongoose",
+  "NumPy",
+  "Pandas",
+  "Git",
+  "Docker",
+  "Vertex AI",
+  "GCP",
+  "Redis",
+  "Stripe",
+  "Posthog",
+  "Cursor",
+  "Claude Code",
+  "Drizzle",
+  "tRPC",
+  "smolagents",
 ];
 
 const technologyLogos: Record<string, string> = {
-  JavaScript: 'https://cdn.simpleicons.org/javascript',
-  TypeScript: 'https://cdn.simpleicons.org/typescript',
-  Python: 'https://cdn.simpleicons.org/python',
-  Flask: 'https://cdn.simpleicons.org/flask',
-  React: 'https://cdn.simpleicons.org/react',
-  'Next.js': 'https://cdn.simpleicons.org/nextdotjs',
-  Angular: 'https://cdn.simpleicons.org/angular',
-  Astro: 'https://cdn.simpleicons.org/astro',
-  Express: 'https://cdn.simpleicons.org/express',
-  'Tailwind CSS': 'https://cdn.simpleicons.org/tailwindcss',
-  Prisma: 'https://cdn.simpleicons.org/prisma',
-  Sequelize: 'https://cdn.simpleicons.org/sequelize',
-  Mongoose: 'https://cdn.simpleicons.org/mongoose',
-  NumPy: 'https://cdn.simpleicons.org/numpy',
-  Pandas: 'https://cdn.simpleicons.org/pandas',
-  Git: 'https://cdn.simpleicons.org/git',
-  Docker: 'https://cdn.simpleicons.org/docker',
-  'Vertex AI': 'https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg',
-  GCP: 'https://cdn.simpleicons.org/googlecloud',
-  Redis: 'https://cdn.simpleicons.org/redis',
-  Stripe: 'https://cdn.simpleicons.org/stripe',
-  Posthog: 'https://cdn.simpleicons.org/posthog',
-  Cursor: 'https://www.cursor.com/favicon.svg',
-  'Claude Code': 'https://cdn.simpleicons.org/claude',
-  Drizzle: 'https://cdn.simpleicons.org/drizzle',
-  tRPC: 'https://cdn.simpleicons.org/trpc',
-  smolagents: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
+  JavaScript: "https://cdn.simpleicons.org/javascript",
+  TypeScript: "https://cdn.simpleicons.org/typescript",
+  Python: "https://cdn.simpleicons.org/python",
+  Flask: "https://cdn.simpleicons.org/flask",
+  React: "https://cdn.simpleicons.org/react",
+  "Next.js": "https://cdn.simpleicons.org/nextdotjs",
+  Angular: "https://cdn.simpleicons.org/angular",
+  Astro: "https://cdn.simpleicons.org/astro",
+  Express: "https://cdn.simpleicons.org/express",
+  "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss",
+  Prisma: "https://cdn.simpleicons.org/prisma",
+  Sequelize: "https://cdn.simpleicons.org/sequelize",
+  Mongoose: "https://cdn.simpleicons.org/mongoose",
+  NumPy: "https://cdn.simpleicons.org/numpy",
+  Pandas: "https://cdn.simpleicons.org/pandas",
+  Git: "https://cdn.simpleicons.org/git",
+  Docker: "https://cdn.simpleicons.org/docker",
+  "Vertex AI":
+    "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg",
+  GCP: "https://cdn.simpleicons.org/googlecloud",
+  Redis: "https://cdn.simpleicons.org/redis",
+  Stripe: "https://cdn.simpleicons.org/stripe",
+  Posthog: "https://cdn.simpleicons.org/posthog",
+  Cursor: "https://www.cursor.com/favicon.svg",
+  "Claude Code": "https://cdn.simpleicons.org/claude",
+  Drizzle: "https://cdn.simpleicons.org/drizzle",
+  tRPC: "https://cdn.simpleicons.org/trpc",
+  smolagents:
+    "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
 };
 
 const languages = [
-  { name: 'Spanish', level: 'Native', Flag: ES },
-  { name: 'English', level: 'Native', Flag: US },
-  { name: 'Italian', level: 'Professional', Flag: IT },
+  { name: "Spanish", level: "Native", Flag: ES },
+  { name: "English", level: "Native", Flag: US },
+  { name: "Italian", level: "Professional", Flag: IT },
 ];
 
 function TechTag({ tech }: { tech: string }) {
@@ -76,13 +78,19 @@ function TechTag({ tech }: { tech: string }) {
       type="button"
       className={`inline-flex items-center gap-2 px-3 py-1 text-xs rounded-[2px] tracking-[0.02em] transition-all duration-200 cursor-default ${
         hovered
-          ? 'text-white bg-white/[0.4] border-white/60 shadow-[0_0_14px_rgba(255,255,255,0.08)]'
-          : 'text-text-muted bg-white/[0.03] border-white/[0.07]'
+          ? "text-white bg-white/[0.4] border-white/60 shadow-[0_0_14px_rgba(255,255,255,0.08)]"
+          : "text-text-muted bg-white/[0.03] border-white/[0.07]"
       }`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {logoUrl && <img src={logoUrl} alt={`${tech} logo`} className="w-[0.9rem] h-[0.9rem]" />}
+      {logoUrl && (
+        <img
+          src={logoUrl}
+          alt={`${tech} logo`}
+          className="w-[0.9rem] h-[0.9rem]"
+        />
+      )}
       {tech}
     </button>
   );
@@ -94,7 +102,9 @@ export default function TechSkills() {
       <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[860px] mx-auto relative">
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Technologies</p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
+          Technologies
+        </p>
 
         <div className="flex flex-wrap gap-2.5 mb-20">
           {technologies.map((tech) => (
@@ -102,7 +112,9 @@ export default function TechSkills() {
           ))}
         </div>
 
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Languages</p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
+          Languages
+        </p>
 
         <div className="flex gap-16 flex-wrap">
           {languages.map((lang) => (
