@@ -17,7 +17,7 @@ const projects: Project[] = [
   {
     name: "Excelent.ai",
     role: "AI agent for Excel - Microsoft Office extension powered by Claude",
-    imageUrl: "",
+    imageUrl: "/stills/excelent-ai.png",
     link: "https://excelent.ai",
     stack: [
       {
@@ -50,7 +50,7 @@ const projects: Project[] = [
   {
     name: "FAQ extractor",
     role: "AI-powered FAQ extraction from Slack conversations",
-    imageUrl: "/logos/faq-extractor.png",
+    imageUrl: "/stills/faq-extractor.png",
     link: "https://faqextractor.com",
     stack: [
       {
@@ -86,27 +86,9 @@ const projects: Project[] = [
     ],
   },
   {
-    name: "Vento",
-    role: "Entrepreneur in Residence",
-    imageUrl: "/logos/vento.jpg",
-    link: "https://vento.vc",
-    stack: [
-      {
-        url: "https://vento.vc",
-        name: "Vento",
-        logo: "/logos/vento.jpg",
-      },
-    ],
-    highlights: [
-      "Interviewed 15 VPs from top 25 pharma companies and identified health data fragmentation as a critical problem",
-      "Launched Endpoint in front of 150+ investors and 10 potential clients at demo day",
-      "Started fundraising immediately after demo day, managing conversations with 40 investors in parallel",
-    ],
-  },
-  {
     name: "Endpoint Health",
     role: "Healthcare data platform for patient recruitment and hospital-pharma partnerships",
-    imageUrl: "/logos/endpoint.svg",
+    imageUrl: "/stills/endpoint-health.png",
     link: "https://old-endpoint-website.vercel.app/",
     stack: [
       {
@@ -149,7 +131,7 @@ const projects: Project[] = [
   {
     name: "Endpoint Sales",
     role: "AI-powered B2B lead generation - find verified decision-maker contacts via natural language",
-    imageUrl: "/logos/endpoint.svg",
+    imageUrl: "/stills/endpoint-sales.png",
     link: "https://tryendpoint.com",
     stack: [
       {
@@ -227,8 +209,6 @@ export default function PortfolioSection() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const isLogo = project.imageUrl.endsWith(".svg");
-
   function handleProjectClick() {
     window.posthog?.capture("project_link_clicked", {
       project_name: project.name,
@@ -245,28 +225,14 @@ function ProjectCard({ project }: { project: Project }) {
         className="block no-verify"
         onClick={handleProjectClick}
       >
-        <div
-          className={`aspect-video overflow-hidden relative transition-colors duration-300 ${
-            isLogo ? "bg-white p-12" : "bg-[#0d0d0d]"
-          }`}
-        >
-          {project.imageUrl ? (
+        <div className="aspect-video overflow-hidden bg-[#090909] p-4 sm:p-5">
+          <div className="relative h-full w-full overflow-hidden rounded-[14px] border border-white/10 bg-[#111] shadow-[0_18px_48px_rgba(0,0,0,0.32)]">
             <img
-              className={`w-full h-full transition-all duration-500 hover:scale-[1.04] block ${
-                isLogo
-                  ? "object-contain opacity-100"
-                  : "object-cover opacity-75 hover:opacity-100"
-              }`}
+              className="block h-full w-full object-cover object-top opacity-90 transition-all duration-500 hover:scale-[1.03] hover:opacity-100"
               src={project.imageUrl}
               alt={project.name}
             />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0d0d0d] to-[#111]">
-              <span className="text-xs text-white/30 tracking-[0.2em] uppercase">
-                {project.name}
-              </span>
-            </div>
-          )}
+          </div>
         </div>
       </a>
 
