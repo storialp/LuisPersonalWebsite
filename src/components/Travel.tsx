@@ -1,18 +1,30 @@
 import * as Flags from 'country-flag-icons/react/3x2';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import Globe from 'react-globe.gl';
 import { COUNTRIES, type Country } from '../data/countries';
+import geoJsonData from '../data/countries.json';
 
 const VISITED_CODES = new Set(COUNTRIES.map((c) => c.code));
 
-export default function Travel() {
-  const [geoJson, setGeoJson] = useState<GeoJSON.FeatureCollection | null>(null);
+interface TravelProps {
+  initialGeoJson?: any;
+}
+
+export default function Travel({ initialGeoJson }: TravelProps) {
+  const [Globe, setGlobe] = useState<any>(null);
+  const [geoJson, setGeoJson] = useState<any>(initialGeoJson || geoJsonData);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<any>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = dimensions.width > 0 && dimensions.width < 768;
+
+  useEffect(() => {
+    // Dynamically import Globe to avoid SSR issues
+    import('react-globe.gl').then((mod) => {
+      setGlobe(() => mod.default);
+    });
+  }, []);
 
   useEffect(() => {
     if (globeRef.current) {
@@ -25,7 +37,7 @@ export default function Travel() {
         controls.maxDistance = 500;
       }
     }
-  }, [dimensions, isMobile]);
+  }, [dimensions, isMobile, Globe]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -43,20 +55,9 @@ export default function Travel() {
     return () => resizeObserver.disconnect();
   }, []);
 
-  useEffect(() => {
-    fetch(
-      'https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson'
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setGeoJson(data);
-      })
-      .catch((err) => console.error('Failed to load GeoJSON:', err));
-  }, []);
-
   const polygonsWithHighlight = useMemo(() => {
     if (!geoJson?.features) return [];
-    return geoJson.features.map((feature) => {
+    return geoJson.features.map((feature: any) => {
       const props = feature.properties;
       const iso2 = props?.ISO_A2 === '-99' ? props?.WB_A2 : props?.ISO_A2;
       const iso3 = props?.ISO_A3 === '-99' ? props?.WB_A3 : props?.ISO_A3;
@@ -84,7 +85,7 @@ export default function Travel() {
           ref={containerRef}
           className="relative aspect-[16/9] md:aspect-[2/1] max-w-5xl mx-auto flex items-center justify-center"
         >
-          {dimensions.width > 0 && (
+          {dimensions.width > 0 && Globe && (
             <div className={isMobile ? 'scale-[1.18] transform-gpu' : ''}>
               <Globe
                 ref={globeRef}
