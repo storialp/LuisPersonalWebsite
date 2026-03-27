@@ -188,26 +188,6 @@ const projects: Project[] = [
   },
 ];
 
-export default function PortfolioSection() {
-  return (
-    <div className="bg-bg py-36 px-8 relative overflow-hidden border-t border-border">
-      <div className="absolute top-[20%] right-[-5%] w-[45%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
-
-      <div className="max-w-[860px] mx-auto relative">
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
-          Projects
-        </p>
-
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,380px),1fr))] gap-4">
-          {projects.map((project) => (
-            <ProjectCard key={project.name} project={project} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function ProjectCard({ project }: { project: Project }) {
   function handleProjectClick() {
     window.posthog?.capture("project_link_clicked", {
@@ -217,57 +197,52 @@ function ProjectCard({ project }: { project: Project }) {
   }
 
   return (
-    <article className="bg-white/[0.02] border border-white/[0.07] overflow-hidden rounded-[2px] transition-all duration-300 hover:border-[rgba(32,213,179,0.2)] hover:bg-[rgba(32,213,179,0.02)]">
+    <article className="group flex flex-col h-full min-h-[640px] bg-[#0A0A0A] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-accent/40">
       <a
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="block no-verify"
+        className="block w-full h-[400px] overflow-hidden bg-[#111] border-b border-white/5 flex-shrink-0"
         onClick={handleProjectClick}
       >
-        <div className="aspect-video overflow-hidden bg-[#090909] p-4 sm:p-5">
-          <div className="relative h-full w-full overflow-hidden rounded-[14px] border border-white/10 bg-[#111] shadow-[0_18px_48px_rgba(0,0,0,0.32)]">
-            <img
-              className="block h-full w-full object-cover object-top opacity-90 transition-all duration-500 hover:scale-[1.03] hover:opacity-100"
-              src={project.imageUrl}
-              alt={project.name}
-            />
-          </div>
-        </div>
+        <img
+          className="w-full h-full object-cover object-top opacity-90 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-100"
+          src={project.imageUrl}
+          alt={project.name}
+        />
       </a>
 
-      <div className="p-5">
-        <h3 className="text-base font-medium text-text mb-1 tracking-tight leading-[1.4]">
-          {project.name}
-        </h3>
-        <p className="text-sm text-text-muted mb-4 leading-[1.6]">
-          {project.role}
-        </p>
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">
+            {project.name}
+          </h3>
+          <p className="text-sm text-text-muted leading-relaxed">
+            {project.role}
+          </p>
+        </div>
 
-        {project.highlights ? (
-          <ul className="flex flex-col gap-1.5 mb-4">
+        {project.highlights && (
+          <ul className="space-y-2 mb-6">
             {project.highlights.map((highlight) => (
-              <li
-                key={highlight}
-                className="text-sm text-text-muted leading-[1.6] list-none pl-[0.9rem] relative"
-              >
-                <span className="absolute left-0 text-white/40">·</span>
+              <li key={highlight} className="text-sm text-text-muted flex gap-2">
+                <span className="text-accent opacity-50">•</span>
                 {highlight}
               </li>
             ))}
           </ul>
-        ) : null}
+        )}
 
-        <div className="flex flex-wrap gap-1.5">
+        <div className="mt-auto flex flex-wrap gap-2">
           {project.stack.map((stackItem) => (
             <span
               key={stackItem.name}
-              className="inline-flex items-center gap-1.5 px-2 py-0.5 text-xs text-text font-medium bg-white/[0.05] border border-white/[0.08] rounded-[2px] tracking-[0.02em]"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] text-text-muted font-medium bg-white/[0.03] border border-white/10 rounded-md transition-colors duration-300 group-hover:text-white/90"
             >
               <img
                 src={stackItem.logo}
                 alt={stackItem.name}
-                className="w-3 h-3 object-contain opacity-80"
+                className="w-3.5 h-3.5 object-contain opacity-80 brightness-90 group-hover:opacity-100 group-hover:brightness-110 transition-all"
               />
               {stackItem.name}
             </span>
@@ -275,5 +250,28 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
     </article>
+  );
+}
+
+export default function PortfolioSection() {
+  return (
+    <div className="bg-bg py-32 px-8 border-t border-border">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="mb-16">
+          <p className="text-xs text-accent tracking-[0.2em] uppercase font-bold mb-3">
+            Portfolio
+          </p>
+          <h2 className="text-4xl font-bold text-white tracking-tight">
+            Featured Projects
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-fr">
+          {projects.map((project) => (
+            <ProjectCard key={project.name} project={project} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
