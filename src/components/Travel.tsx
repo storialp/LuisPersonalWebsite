@@ -12,10 +12,11 @@ export default function Travel() {
   const globeRef = useRef<any>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isExpanded, setIsExpanded] = useState(false);
+  const isMobile = dimensions.width > 0 && dimensions.width < 768;
 
   useEffect(() => {
     if (globeRef.current) {
-      globeRef.current.pointOfView({ altitude: 1.8 });
+      globeRef.current.pointOfView({ altitude: isMobile ? 1.05 : 1.8 });
       const controls = globeRef.current.controls();
       if (controls) {
         controls.enableZoom = false; // Disable zooming
@@ -24,7 +25,7 @@ export default function Travel() {
         controls.maxDistance = 500;
       }
     }
-  }, [dimensions]);
+  }, [dimensions, isMobile]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -84,30 +85,32 @@ export default function Travel() {
           className="relative aspect-[16/9] md:aspect-[2/1] max-w-5xl mx-auto flex items-center justify-center"
         >
           {dimensions.width > 0 && (
-            <Globe
-              ref={globeRef}
-              width={dimensions.width}
-              height={dimensions.height}
-              globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-              backgroundImageUrl=""
-              backgroundColor="rgba(0,0,0,0)"
-              showAtmosphere={true}
-              atmosphereColor="#20D5B3"
-              atmosphereAltitude={0.08}
-              polygonsData={polygonsWithHighlight}
-              polygonAltitude={(d: any) => (d.properties?._isVisited ? 0.01 : 0.005)}
-              polygonCapColor={(d: any) =>
-                d.properties?._isVisited ? 'rgba(22, 101, 52, 0.8)' : 'transparent'
-              }
-              polygonSideColor={() => 'transparent'}
-              polygonStrokeColor={() => 'rgba(255, 255, 255, 0.2)'}
-              polygonLabel={(feature: any) => {
-                const props = feature.properties;
-                const code = props?.ISO_A2 === '-99' ? props?.WB_A2 : props?.ISO_A2;
-                const country = code ? COUNTRIES.find((c) => c.code === code) : null;
-                return country ? `<div><b>${country.name}</b></div>` : props?.ADMIN || '';
-              }}
-            />
+            <div className={isMobile ? 'scale-[1.18] transform-gpu' : ''}>
+              <Globe
+                ref={globeRef}
+                width={dimensions.width}
+                height={dimensions.height}
+                globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+                backgroundImageUrl=""
+                backgroundColor="rgba(0,0,0,0)"
+                showAtmosphere={true}
+                atmosphereColor="#20D5B3"
+                atmosphereAltitude={0.08}
+                polygonsData={polygonsWithHighlight}
+                polygonAltitude={(d: any) => (d.properties?._isVisited ? 0.01 : 0.005)}
+                polygonCapColor={(d: any) =>
+                  d.properties?._isVisited ? 'rgba(22, 101, 52, 0.8)' : 'transparent'
+                }
+                polygonSideColor={() => 'transparent'}
+                polygonStrokeColor={() => 'rgba(255, 255, 255, 0.2)'}
+                polygonLabel={(feature: any) => {
+                  const props = feature.properties;
+                  const code = props?.ISO_A2 === '-99' ? props?.WB_A2 : props?.ISO_A2;
+                  const country = code ? COUNTRIES.find((c) => c.code === code) : null;
+                  return country ? `<div><b>${country.name}</b></div>` : props?.ADMIN || '';
+                }}
+              />
+            </div>
           )}
 
           {hoveredCountry && (
