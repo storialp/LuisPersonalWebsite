@@ -89,7 +89,7 @@ export default function SpotifyWidget() {
         href={data.songUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`absolute right-6 top-[12px] hidden md:flex items-center gap-2.5 py-1.5 pl-1.5 pr-3.5 rounded-full border border-white/5 bg-white/[0.01] backdrop-blur-md transition-all duration-700 hover:bg-white/[0.04] hover:border-white/10 active:scale-95 ${
+        className={`fixed right-6 top-3 hidden md:flex items-center gap-2.5 py-1.5 pl-1.5 pr-3.5 rounded-full border border-white/5 bg-[rgba(8,8,8,0.72)] backdrop-blur-md transition-all duration-700 hover:bg-white/[0.04] hover:border-white/10 active:scale-95 ${
           visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
         } group`}
         style={{

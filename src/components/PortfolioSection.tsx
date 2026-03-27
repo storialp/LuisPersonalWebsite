@@ -10,12 +10,13 @@ interface Project {
   imageUrl: string;
   link: string;
   stack: StackItem[];
+  highlights?: string[];
 }
 
 const projects: Project[] = [
   {
     name: "Excelent.ai",
-    role: "AI agent for Excel — Microsoft Office extension powered by Claude",
+    role: "AI agent for Excel - Microsoft Office extension powered by Claude",
     imageUrl: "",
     link: "https://excelent.ai",
     stack: [
@@ -85,8 +86,69 @@ const projects: Project[] = [
     ],
   },
   {
-    name: "Endpoint",
-    role: "AI-powered B2B lead generation — find verified decision-maker contacts via natural language",
+    name: "Vento",
+    role: "Entrepreneur in Residence",
+    imageUrl: "/logos/vento.jpg",
+    link: "https://vento.vc",
+    stack: [
+      {
+        url: "https://vento.vc",
+        name: "Vento",
+        logo: "/logos/vento.jpg",
+      },
+    ],
+    highlights: [
+      "Interviewed 15 VPs from top 25 pharma companies and identified health data fragmentation as a critical problem",
+      "Launched Endpoint in front of 150+ investors and 10 potential clients at demo day",
+      "Started fundraising immediately after demo day, managing conversations with 40 investors in parallel",
+    ],
+  },
+  {
+    name: "Endpoint Health",
+    role: "Healthcare data platform for patient recruitment and hospital-pharma partnerships",
+    imageUrl: "/logos/endpoint.svg",
+    link: "https://old-endpoint-website.vercel.app/",
+    stack: [
+      {
+        url: "https://nextjs.org/",
+        name: "Next.js",
+        logo: "https://cdn.worldvectorlogo.com/logos/next-js.svg",
+      },
+      {
+        url: "https://trpc.io/",
+        name: "tRPC",
+        logo: "https://trpc.io/img/logo.svg",
+      },
+      {
+        url: "https://orm.drizzle.team/",
+        name: "Drizzle",
+        logo: "https://orm.drizzle.team/favicon.ico",
+      },
+      {
+        url: "https://www.postgresql.org/",
+        name: "PostgreSQL",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+      },
+      {
+        url: "https://redis.io/",
+        name: "Redis",
+        logo: "https://cdn.simpleicons.org/redis",
+      },
+      {
+        url: "https://stripe.com/",
+        name: "Stripe",
+        logo: "https://cdn.simpleicons.org/stripe",
+      },
+      {
+        url: "https://posthog.com/",
+        name: "PostHog",
+        logo: "https://cdn.simpleicons.org/posthog",
+      },
+    ],
+  },
+  {
+    name: "Endpoint Sales",
+    role: "AI-powered B2B lead generation - find verified decision-maker contacts via natural language",
     imageUrl: "/logos/endpoint.svg",
     link: "https://tryendpoint.com",
     stack: [
@@ -146,7 +208,7 @@ const projects: Project[] = [
 
 export default function PortfolioSection() {
   return (
-    <div className="bg-bg py-36 px-8 relative border-t border-border">
+    <div className="bg-bg py-36 px-8 relative overflow-hidden border-t border-border">
       <div className="absolute top-[20%] right-[-5%] w-[45%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[860px] mx-auto relative">
@@ -215,6 +277,20 @@ function ProjectCard({ project }: { project: Project }) {
         <p className="text-sm text-text-muted mb-4 leading-[1.6]">
           {project.role}
         </p>
+
+        {project.highlights ? (
+          <ul className="flex flex-col gap-1.5 mb-4">
+            {project.highlights.map((highlight) => (
+              <li
+                key={highlight}
+                className="text-sm text-text-muted leading-[1.6] list-none pl-[0.9rem] relative"
+              >
+                <span className="absolute left-0 text-white/40">·</span>
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        ) : null}
 
         <div className="flex flex-wrap gap-1.5">
           {project.stack.map((stackItem) => (

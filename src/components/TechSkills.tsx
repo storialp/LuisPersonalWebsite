@@ -98,7 +98,7 @@ function TechTag({ tech }: { tech: string }) {
 
 export default function TechSkills() {
   return (
-    <section className="py-36 px-8 bg-bg-secondary relative border-t border-b border-border">
+    <section className="py-36 px-8 bg-bg-secondary relative overflow-hidden border-t border-b border-border">
       <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[860px] mx-auto relative">

@@ -17,9 +17,9 @@ const experiences: Entry[] = [
     location: 'Milan, Italy',
     period: '2024 — Present',
     content: [
-      'Raised €135k from leading investors',
-      'Negotiated data-sharing deals covering 20M+ patients with EU & UK healthcare organizations',
-      'Led product & engineering for MVP that converted to LOI with major Italian pharma company',
+      'Raised €135k from leading American and Italian investors and led the full fundraising process',
+      'Negotiated data-sharing deals covering 20M+ patients with 15 academic medical centers across the EU & UK',
+      'Built a privacy-compliant synthetic medical data MVP that converted into an LOI with Menarini',
     ],
     website: 'https://endpoint.health',
     logo: '/logos/endpoint.svg',
@@ -30,20 +30,21 @@ const experiences: Entry[] = [
     location: 'Turin, Italy',
     period: '2024',
     content: [
-      'Selected from 800 applicants for venture builder program',
-      'One of 4 teams to receive funding',
+      'Interviewed 15 VPs from top 25 pharma companies and identified health data fragmentation as a critical problem',
+      'Launched Endpoint in front of 150+ investors and 10 potential clients at demo day',
+      'Started fundraising immediately after demo day, managing conversations with 40 investors in parallel',
     ],
     website: 'https://vento.vc',
     logo: '/logos/vento.jpg',
   },
   {
     name: 'Yummy (YC S21)',
-    role: 'Full-stack Engineer',
+    role: 'Full-stack Software Engineer',
     location: 'Milan, Italy',
     period: '2023 — 2024',
     content: [
-      "Venezuela's fastest growing startup with 3M+ users",
-      'Built CRUD APIs for multi-variant product management',
+      'Built the first iteration of an AI purchasing agent that let users buy from partner stores through WhatsApp',
+      'Implemented multi-variant product support using Express, Sequelize, and Mongoose',
     ],
     website: 'https://www.yummysuperapp.com/',
     logo: '/logos/yummy.png',
@@ -54,21 +55,19 @@ const experiences: Entry[] = [
     location: 'Milan, Italy',
     period: '2023',
     content: [
-      'Developed full-stack features for multi-category product management',
-      'Created drag-and-drop navigation tool for store routes',
+      'Built the backend for product categorization and multi-variant catalog management for merchants',
+      'Created a drag-and-drop navigation builder in Angular and Dragula for store routing setup',
     ],
     website: 'https://www.yummysuperapp.com/',
     logo: '/logos/yummy.png',
   },
   {
-    name: 'APX',
+    name: 'APX (Axel Springer & Porsche Joint Venture)',
     role: 'Venture Development Intern',
     location: 'Berlin, Germany',
     period: '2022',
     content: [
-      'Axel Springer & Porsche Joint Venture',
-      'Cut €500/month costs with KPI visualization system',
-      'Negotiated €50k in discounts for portfolio companies',
+      'Cut €6k in yearly costs by designing a KPI system for commercial partnerships',
     ],
     website: 'https://apx.vc/',
     logo: '/logos/apx.svg',
@@ -82,8 +81,8 @@ const education: Entry = {
   period: '',
   content: [
     'Bocconi Merit Award (Full-tuition scholarship)',
-    'SAT: 1540/1600',
-    'Thesis: The role of national wealth in adoption rates of innovative thoracic surgery methods ​',
+    'SAT: 1540/1600 (Math: 790/800); TOEFL: 111/120',
+    'Relevant coursework: Machine Learning, Computer Science, Advanced Statistics, Databases',
   ],
   website: 'https://www.unibocconi.it/',
   logo: '/logos/bocconi.svg',
@@ -180,7 +179,10 @@ function EntryCard({ item }: { item: Entry }) {
 
 export default function Cv() {
   return (
-    <section id="experience" className="py-36 px-8 bg-bg relative border-t border-border">
+    <section
+      id="experience"
+      className="py-36 px-8 bg-bg relative overflow-hidden border-t border-border"
+    >
       <div className="absolute top-0 right-[-10%] w-[50%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[860px] mx-auto relative">
