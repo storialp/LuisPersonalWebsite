@@ -16,7 +16,7 @@ interface Project {
 const projects: Project[] = [
   {
     name: "Excelent.ai",
-    role: "AI agent for Excel - Microsoft Office extension powered by Claude",
+    role: "Cursor for Excel. A Microsoft Office extension powered by Claude to create and edit financial models with AI",
     imageUrl: "/stills/excelent-ai.png",
     link: "https://excelent.ai",
     stack: [
@@ -49,7 +49,7 @@ const projects: Project[] = [
   },
   {
     name: "FAQ extractor",
-    role: "AI-powered FAQ extraction from Slack conversations",
+    role: "Internal AI documentation platform to extract FAQs from corporate Slack conversations",
     imageUrl: "/stills/faq-extractor.png",
     link: "https://faqextractor.com",
     stack: [
@@ -87,7 +87,7 @@ const projects: Project[] = [
   },
   {
     name: "Endpoint Health",
-    role: "Healthcare data platform for patient recruitment and hospital-pharma partnerships",
+    role: "Helping pharma companies use patient data for clinical and observational research",
     imageUrl: "/stills/endpoint-health.png",
     link: "https://old-endpoint-website.vercel.app/",
     stack: [
@@ -130,7 +130,7 @@ const projects: Project[] = [
   },
   {
     name: "Endpoint Sales",
-    role: "AI-powered B2B lead generation - find verified decision-maker contacts via natural language",
+    role: "Apollo for small companies that don't show up on Apollo. Find verified SMB owners and their contacts contacts through natural language",
     imageUrl: "/stills/endpoint-sales.png",
     link: "https://tryendpoint.com",
     stack: [
