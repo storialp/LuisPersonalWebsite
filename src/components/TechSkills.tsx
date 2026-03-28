@@ -101,7 +101,7 @@ export default function TechSkills() {
 
       <div className="max-w-[860px] mx-auto relative">
         <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
-          Technologies
+          Technologies I've worked with
         </p>
 
         <div className="flex flex-wrap gap-2.5 mb-20">
