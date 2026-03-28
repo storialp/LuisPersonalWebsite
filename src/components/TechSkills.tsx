@@ -1,40 +1,63 @@
 import { ES, IT, US } from "country-flag-icons/react/3x2";
 import { useState } from "react";
 
-const technologies = [
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "Flask",
-  "React",
-  "Next.js",
-  "Angular",
-  "Astro",
-  "Express",
-  "Tailwind CSS",
-  "Prisma",
-  "Sequelize",
-  "Mongoose",
-  "NumPy",
-  "Pandas",
-  "Git",
-  "Docker",
-  "Vertex AI",
-  "GCP",
-  "Redis",
-  "Stripe",
-  "Posthog",
-  "Cursor",
-  "Claude Code",
-  "Drizzle",
-  "tRPC",
-  "smolagents",
+const categories = [
+  {
+    name: "Languages",
+    skills: ["TypeScript", "JavaScript", "HTML", "CSS", "SQL", "Python", "R"],
+  },
+  {
+    name: "Frontend",
+    skills: ["Next.js", "Tailwind CSS", "React", "Angular", "Astro"],
+  },
+  {
+    name: "Backend & Databases",
+    skills: [
+      "tRPC",
+      "PostgreSQL",
+      "Express",
+      "Flask",
+      "Drizzle",
+      "Redis",
+      "Prisma",
+      "Mongoose",
+      "Sequelize",
+    ],
+  },
+  {
+    name: "AI & Data Science",
+    skills: [
+      "Pandas",
+      "NumPy",
+      "smolagents",
+      "Exa",
+      "Firecrawl",
+      "Vertex AI",
+    ],
+  },
+  {
+    name: "DevOps & Tools",
+    skills: [
+      "Git",
+      "Docker",
+      "GCP",
+      "Stripe",
+      "Posthog",
+      "Cursor",
+      "Claude Code",
+      "Codex",
+    ],
+  },
 ];
 
 const technologyLogos: Record<string, string> = {
   JavaScript: "/technologies/javascript.svg",
   TypeScript: "/technologies/typescript.svg",
   Python: "/technologies/python.svg",
+  SQL: "/technologies/sql.svg",
+  HTML: "/technologies/html.svg",
+  CSS: "/technologies/css.svg",
+  R: "/technologies/r.svg",
   Flask: "/technologies/flask.svg",
   React: "/technologies/react.svg",
   "Next.js": "/technologies/nextjs.svg",
@@ -56,9 +79,15 @@ const technologyLogos: Record<string, string> = {
   Posthog: "/technologies/posthog.svg",
   Cursor: "/technologies/cursor.svg",
   "Claude Code": "/technologies/claude-code.svg",
+  Codex: "/technologies/openai.svg",
   Drizzle: "/technologies/drizzle.svg",
   tRPC: "/technologies/trpc.svg",
   smolagents: "/technologies/smolagents.svg",
+  PostgreSQL: "/technologies/postgresql.svg",
+  Gemini: "/technologies/gemini.svg",
+  Firecrawl: "/technologies/firecrawl.ico",
+  Exa: "/technologies/exa.png",
+  Apollo: "/technologies/apollo.ico",
 };
 
 const languages = [
@@ -100,13 +129,22 @@ export default function TechSkills() {
       <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[860px] mx-auto relative">
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
-          Technologies I've worked with
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-12">
+          Technical Stack
         </p>
 
-        <div className="flex flex-wrap gap-2.5 mb-20">
-          {technologies.map((tech) => (
-            <TechTag key={tech} tech={tech} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 mb-20">
+          {categories.map((category) => (
+            <div key={category.name} className="flex flex-col gap-4">
+              <h3 className="text-[10px] text-text-muted tracking-[0.25em] uppercase font-semibold">
+                {category.name}
+              </h3>
+              <div className="flex flex-wrap gap-2.5">
+                {category.skills.map((tech) => (
+                  <TechTag key={tech} tech={tech} />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
 
