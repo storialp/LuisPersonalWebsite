@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
 
         <p className="text-xs text-white/40 tracking-[0.03em]">
-          Â© {new Date().getFullYear()} Luis Pericchi
+          © {new Date().getFullYear()} Luis Pericchi
         </p>
       </div>
     </footer>

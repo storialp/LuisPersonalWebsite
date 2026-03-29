@@ -15,7 +15,7 @@ const experiences: Entry[] = [
     name: 'Endpoint',
     role: 'CEO & Co-founder',
     location: 'Milan, Italy',
-    period: '2024 — Present',
+    period: '2024 - Present',
     content: [
       'Raised €135k from leading American and Italian investors and led the full fundraising process',
       'Negotiated data-sharing deals covering 20M+ patients with 15 academic medical centers across the EU & UK',
@@ -41,7 +41,7 @@ const experiences: Entry[] = [
     name: 'Yummy (YC S21)',
     role: 'Full-stack Software Engineer',
     location: 'Milan, Italy',
-    period: '2023 — 2024',
+    period: '2023 - 2024',
     content: [
       'Built the first iteration of an AI purchasing agent that let users buy from partner stores through WhatsApp',
       'Implemented multi-variant product support using Express, Sequelize, and Mongoose',
@@ -153,7 +153,7 @@ function EntryCard({ item }: { item: Entry }) {
       </div>
 
       <p className="text-[0.875rem] text-text-muted mb-4 tracking-normal">
-        {item.role} · {item.location}
+        {item.role} - {item.location}
       </p>
 
       <ul className="flex flex-col gap-1.5">
@@ -167,7 +167,7 @@ function EntryCard({ item }: { item: Entry }) {
                 hovered ? 'text-[rgba(32,213,179,0.5)]' : 'text-white/40'
               }`}
             >
-              ·
+              -
             </span>
             {bullet}
           </li>

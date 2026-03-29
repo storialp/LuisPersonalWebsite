@@ -120,7 +120,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 <span className="w-8 inline-block overflow-hidden rounded-[2px]">
                   {(() => {
                     const Flag = Flags[hoveredCountry.code as keyof typeof Flags];
-                    return Flag ? <Flag /> : '🏳️';
+                    return Flag ? <Flag /> : 'flag';
                   })()}
                 </span>
                 <div>
@@ -149,7 +149,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 onMouseLeave={() => setHoveredCountry(null)}
               >
                 <span className="w-5 inline-block overflow-hidden rounded-[2px] opacity-90">
-                  {Flag ? <Flag /> : '🏳️'}
+                  {Flag ? <Flag /> : 'flag'}
                 </span>
                 <span className="text-text-muted text-xs truncate">{country.name}</span>
               </button>
