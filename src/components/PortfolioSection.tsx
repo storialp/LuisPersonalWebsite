@@ -83,6 +83,16 @@ const projects: Project[] = [
         name: "Redis",
         logo: "/technologies/redis.svg",
       },
+      {
+        url: "https://kubernetes.io/",
+        name: "Kubernetes",
+        logo: "/technologies/kubernetes.svg",
+      },
+      {
+        url: "https://www.docker.com/",
+        name: "Docker",
+        logo: "/technologies/docker.svg",
+      },
     ],
   },
   {
