@@ -225,7 +225,10 @@ function ProjectCard({ project }: { project: Project }) {
         {project.highlights && (
           <ul className="space-y-2 mb-6">
             {project.highlights.map((highlight) => (
-              <li key={highlight} className="text-sm text-text-muted flex gap-2">
+              <li
+                key={highlight}
+                className="text-sm text-text-muted flex gap-2"
+              >
                 <span className="text-accent opacity-50">•</span>
                 {highlight}
               </li>
@@ -255,7 +258,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function PortfolioSection() {
   return (
-    <div className="bg-bg py-32 px-8 border-t border-border">
+    <div className="bg-bg py-16 px-8 border-t border-border">
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-16">
           <p className="text-xs text-accent tracking-[0.2em] uppercase font-bold mb-3">
