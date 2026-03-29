@@ -26,6 +26,11 @@ const projects: Project[] = [
         logo: "/technologies/react.svg",
       },
       {
+        url: "https://tailwindcss.com/",
+        name: "Tailwind CSS",
+        logo: "/technologies/tailwindcss.svg",
+      },
+      {
         url: "https://flask.palletsprojects.com/",
         name: "Flask",
         logo: "/technologies/flask.svg",
@@ -45,6 +50,16 @@ const projects: Project[] = [
         name: "Excel Add-in",
         logo: "/technologies/excel.svg",
       },
+      {
+        url: "https://redis.io/",
+        name: "Redis",
+        logo: "/technologies/redis.svg",
+      },
+      {
+        url: "https://workos.com/",
+        name: "Work OS",
+        logo: "/technologies/workos.svg",
+      },
     ],
   },
   {
@@ -57,6 +72,21 @@ const projects: Project[] = [
         url: "https://nextjs.org/",
         name: "Next.js",
         logo: "/technologies/nextjs.svg",
+      },
+      {
+        url: "https://tailwindcss.com/",
+        name: "Tailwind CSS",
+        logo: "/technologies/tailwindcss.svg",
+      },
+      {
+        url: "https://flask.palletsprojects.com/",
+        name: "Flask",
+        logo: "/technologies/flask.svg",
+      },
+      {
+        url: "https://clerk.com/",
+        name: "Clerk",
+        logo: "/technologies/clerk.svg",
       },
       {
         url: "https://deepmind.google/technologies/gemini/",
@@ -102,19 +132,29 @@ const projects: Project[] = [
     link: "https://old-endpoint-website.vercel.app/",
     stack: [
       {
-        url: "https://nextjs.org/",
-        name: "Next.js",
-        logo: "/technologies/nextjs.svg",
+        url: "https://reactjs.org/",
+        name: "React",
+        logo: "/technologies/react.svg",
       },
       {
-        url: "https://trpc.io/",
-        name: "tRPC",
-        logo: "/technologies/trpc.svg",
+        url: "https://rubyonrails.org/",
+        name: "Ruby On Rails",
+        logo: "/technologies/ruby-on-rails.svg",
       },
       {
-        url: "https://orm.drizzle.team/",
-        name: "Drizzle",
-        logo: "/technologies/drizzle.svg",
+        url: "https://flask.palletsprojects.com/",
+        name: "Flask",
+        logo: "/technologies/flask.svg",
+      },
+      {
+        url: "https://vitejs.dev/",
+        name: "Vite",
+        logo: "/technologies/vite.svg",
+      },
+      {
+        url: "https://tailwindcss.com/",
+        name: "Tailwind CSS",
+        logo: "/technologies/tailwindcss.svg",
       },
       {
         url: "https://www.postgresql.org/",
@@ -122,19 +162,9 @@ const projects: Project[] = [
         logo: "/technologies/postgresql.svg",
       },
       {
-        url: "https://redis.io/",
-        name: "Redis",
-        logo: "/technologies/redis.svg",
-      },
-      {
-        url: "https://stripe.com/",
-        name: "Stripe",
-        logo: "/technologies/stripe.svg",
-      },
-      {
-        url: "https://posthog.com/",
-        name: "PostHog",
-        logo: "/technologies/posthog.svg",
+        url: "https://www.docker.com/",
+        name: "Docker",
+        logo: "/technologies/docker.svg",
       },
     ],
   },
@@ -148,6 +178,16 @@ const projects: Project[] = [
         url: "https://nextjs.org/",
         name: "Next.js",
         logo: "/technologies/nextjs.svg",
+      },
+      {
+        url: "https://tailwindcss.com/",
+        name: "Tailwind CSS",
+        logo: "/technologies/tailwindcss.svg",
+      },
+      {
+        url: "https://clerk.com/",
+        name: "Clerk",
+        logo: "/technologies/clerk.svg",
       },
       {
         url: "https://trpc.io/",

@@ -8,15 +8,16 @@ const categories = [
   },
   {
     name: "Frontend",
-    skills: ["Next.js", "Tailwind CSS", "React", "Angular", "Astro"],
+    skills: ["Next.js", "Tailwind CSS", "React", "Angular", "Astro", "Vite"],
   },
   {
     name: "Backend & Databases",
     skills: [
+      "Flask",
+      "Ruby On Rails",
       "tRPC",
       "PostgreSQL",
       "Express",
-      "Flask",
       "Drizzle",
       "Redis",
       "Prisma",
@@ -36,6 +37,9 @@ const categories = [
       "GCP",
       "Stripe",
       "Posthog",
+      "Linear",
+      "Jira",
+      "Work OS",
       "Cursor",
       "Claude Code",
       "Codex",
@@ -54,6 +58,7 @@ const technologyLogos: Record<string, string> = {
   Flask: "/technologies/flask.svg",
   React: "/technologies/react.svg",
   "Next.js": "/technologies/nextjs.svg",
+  Clerk: "/technologies/clerk.svg",
   Angular: "/technologies/angular.svg",
   Astro: "/technologies/astro.svg",
   Express: "/technologies/express.svg",
@@ -70,6 +75,9 @@ const technologyLogos: Record<string, string> = {
   Redis: "/technologies/redis.svg",
   Stripe: "/technologies/stripe.svg",
   Posthog: "/technologies/posthog.svg",
+  Linear: "/technologies/linear.svg",
+  Jira: "/technologies/jira.svg",
+  "Work OS": "/technologies/workos.svg",
   Cursor: "/technologies/cursor.svg",
   "Claude Code": "/technologies/claude-code.svg",
   Codex: "/technologies/openai.svg",
@@ -81,6 +89,8 @@ const technologyLogos: Record<string, string> = {
   Firecrawl: "/technologies/firecrawl.ico",
   Exa: "/technologies/exa.png",
   Apollo: "/technologies/apollo.ico",
+  "Ruby On Rails": "/technologies/ruby-on-rails.svg",
+  Vite: "/technologies/vite.svg",
 };
 
 const languages = [
