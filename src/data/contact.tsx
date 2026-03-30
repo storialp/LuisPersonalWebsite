@@ -1,7 +1,7 @@
 export const contactLinks = [
   {
-    label: 'Email',
-    href: 'mailto:pericchiluis@gmail.com',
+    label: "Email",
+    href: "mailto:pericchiluis@gmail.com",
     external: false,
     icon: (
       <svg
@@ -17,11 +17,11 @@ export const contactLinks = [
         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
       </svg>
     ),
-    color: 'text-rose-400',
+    color: "text-rose-400",
   },
   {
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/in/luis-pericchi',
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/luis-pericchi",
     external: true,
     icon: (
       <svg
@@ -38,11 +38,11 @@ export const contactLinks = [
         <circle cx="4" cy="4" r="2" />
       </svg>
     ),
-    color: 'text-sky-500',
+    color: "text-sky-500",
   },
   {
-    label: 'GitHub',
-    href: 'https://github.com/storialp',
+    label: "GitHub",
+    href: "https://github.com/storialp",
     external: true,
     icon: (
       <svg
@@ -58,6 +58,6 @@ export const contactLinks = [
         <path d="M9 18c-4.51 2-5-2-7-2" />
       </svg>
     ),
-    color: 'text-indigo-400',
+    color: "text-indigo-400",
   },
 ];

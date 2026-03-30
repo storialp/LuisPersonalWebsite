@@ -66,9 +66,7 @@ const experiences: Entry[] = [
     role: "Venture Development Intern",
     location: "Berlin, Germany",
     period: "2022",
-    content: [
-      "Cut €6k in yearly costs by designing a KPI system for commercial partnerships",
-    ],
+    content: ["Cut €6k in yearly costs by designing a KPI system for commercial partnerships"],
     website: "https://apx.vc/",
     logo: "/logos/apx.svg",
   },
@@ -186,9 +184,7 @@ export default function Cv() {
       <div className="absolute top-0 right-[-10%] w-[50%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[860px] mx-auto relative">
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
-          Experience
-        </p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Experience</p>
 
         <div className="mb-20">
           {experiences.map((exp) => (
@@ -196,9 +192,7 @@ export default function Cv() {
           ))}
         </div>
 
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
-          Education
-        </p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Education</p>
 
         <EntryCard item={education} />
       </div>

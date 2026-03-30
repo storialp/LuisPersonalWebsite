@@ -264,21 +264,14 @@ function ProjectCard({ project }: { project: Project }) {
 
       <div className="p-6 flex flex-col flex-grow">
         <div className="mb-4">
-          <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">
-            {project.name}
-          </h3>
-          <p className="text-sm text-text-muted leading-relaxed">
-            {project.role}
-          </p>
+          <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">{project.name}</h3>
+          <p className="text-sm text-text-muted leading-relaxed">{project.role}</p>
         </div>
 
         {project.highlights && (
           <ul className="space-y-2 mb-6">
             {project.highlights.map((highlight) => (
-              <li
-                key={highlight}
-                className="text-sm text-text-muted flex gap-2"
-              >
+              <li key={highlight} className="text-sm text-text-muted flex gap-2">
                 <span className="text-accent opacity-50">•</span>
                 {highlight}
               </li>
@@ -311,12 +304,8 @@ export default function PortfolioSection() {
     <div className="bg-bg py-16 px-8 border-t border-border">
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-16">
-          <p className="text-xs text-accent tracking-[0.2em] uppercase font-bold mb-3">
-            Portfolio
-          </p>
-          <h2 className="text-4xl font-bold text-white tracking-tight">
-            Featured Projects
-          </h2>
+          <p className="text-xs text-accent tracking-[0.2em] uppercase font-bold mb-3">Portfolio</p>
+          <h2 className="text-4xl font-bold text-white tracking-tight">Featured Projects</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-fr">

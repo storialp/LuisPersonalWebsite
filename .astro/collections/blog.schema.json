@@ -23,9 +23,5 @@
       "type": "string"
     }
   },
-  "required": [
-    "title",
-    "description",
-    "pubDate"
-  ]
+  "required": ["title", "description", "pubDate"]
 }

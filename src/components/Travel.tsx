@@ -1,7 +1,7 @@
-import * as Flags from 'country-flag-icons/react/3x2';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { COUNTRIES, type Country } from '../data/countries';
-import geoJsonData from '../data/countries.json';
+import * as Flags from "country-flag-icons/react/3x2";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { COUNTRIES, type Country } from "../data/countries";
+import geoJsonData from "../data/countries.json";
 
 const VISITED_CODES = new Set(COUNTRIES.map((c) => c.code));
 
@@ -21,7 +21,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
 
   useEffect(() => {
     // Dynamically import Globe to avoid SSR issues
-    import('react-globe.gl').then((mod) => {
+    import("react-globe.gl").then((mod) => {
       setGlobe(() => mod.default);
     });
   }, []);
@@ -59,8 +59,8 @@ export default function Travel({ initialGeoJson }: TravelProps) {
     if (!geoJson?.features) return [];
     return geoJson.features.map((feature: any) => {
       const props = feature.properties;
-      const iso2 = props?.ISO_A2 === '-99' ? props?.WB_A2 : props?.ISO_A2;
-      const iso3 = props?.ISO_A3 === '-99' ? props?.WB_A3 : props?.ISO_A3;
+      const iso2 = props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
+      const iso3 = props?.ISO_A3 === "-99" ? props?.WB_A3 : props?.ISO_A3;
       const isVisited = (iso2 && VISITED_CODES.has(iso2)) || (iso3 && VISITED_CODES.has(iso3));
       return { ...feature, properties: { ...props, _isVisited: isVisited } };
     });
@@ -86,7 +86,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
           className="relative aspect-[16/9] md:aspect-[2/1] max-w-5xl mx-auto flex items-center justify-center"
         >
           {dimensions.width > 0 && Globe && (
-            <div className={isMobile ? 'scale-[1.18] transform-gpu' : ''}>
+            <div className={isMobile ? "scale-[1.18] transform-gpu" : ""}>
               <Globe
                 ref={globeRef}
                 width={dimensions.width}
@@ -100,15 +100,15 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 polygonsData={polygonsWithHighlight}
                 polygonAltitude={(d: any) => (d.properties?._isVisited ? 0.01 : 0.005)}
                 polygonCapColor={(d: any) =>
-                  d.properties?._isVisited ? 'rgba(22, 101, 52, 0.8)' : 'transparent'
+                  d.properties?._isVisited ? "rgba(22, 101, 52, 0.8)" : "transparent"
                 }
-                polygonSideColor={() => 'transparent'}
-                polygonStrokeColor={() => 'rgba(255, 255, 255, 0.2)'}
+                polygonSideColor={() => "transparent"}
+                polygonStrokeColor={() => "rgba(255, 255, 255, 0.2)"}
                 polygonLabel={(feature: any) => {
                   const props = feature.properties;
-                  const code = props?.ISO_A2 === '-99' ? props?.WB_A2 : props?.ISO_A2;
+                  const code = props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
                   const country = code ? COUNTRIES.find((c) => c.code === code) : null;
-                  return country ? `<div><b>${country.name}</b></div>` : props?.ADMIN || '';
+                  return country ? `<div><b>${country.name}</b></div>` : props?.ADMIN || "";
                 }}
               />
             </div>
@@ -120,7 +120,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 <span className="w-8 inline-block overflow-hidden rounded-[2px]">
                   {(() => {
                     const Flag = Flags[hoveredCountry.code as keyof typeof Flags];
-                    return Flag ? <Flag /> : 'flag';
+                    return Flag ? <Flag /> : "flag";
                   })()}
                 </span>
                 <div>
@@ -141,7 +141,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 className="flex items-center gap-2 px-3 py-2 bg-white/[0.02] border border-white/5 rounded-md hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 cursor-pointer text-left"
                 onMouseEnter={() => {
                   setHoveredCountry(country);
-                  window.posthog?.capture('travel_country_hovered', {
+                  window.posthog?.capture("travel_country_hovered", {
                     country_name: country.name,
                     country_code: country.code,
                   });
@@ -149,7 +149,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 onMouseLeave={() => setHoveredCountry(null)}
               >
                 <span className="w-5 inline-block overflow-hidden rounded-[2px] opacity-90">
-                  {Flag ? <Flag /> : 'flag'}
+                  {Flag ? <Flag /> : "flag"}
                 </span>
                 <span className="text-text-muted text-xs truncate">{country.name}</span>
               </button>
@@ -162,7 +162,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
               className="flex items-center justify-center px-3 py-2 bg-accent/5 border border-accent/20 rounded-md hover:bg-accent/10 transition-colors cursor-pointer"
             >
               <span className="text-accent text-xs font-medium">
-                {isExpanded ? 'Show less' : `+${COUNTRIES.length - 12} more`}
+                {isExpanded ? "Show less" : `+${COUNTRIES.length - 12} more`}
               </span>
             </button>
           )}

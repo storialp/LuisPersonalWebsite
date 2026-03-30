@@ -2,10 +2,7 @@ import { contactLinks } from "../data/contact";
 
 export default function Footer() {
   return (
-    <footer
-      id="contact"
-      className="border-t border-border py-12 px-8 bg-bg relative"
-    >
+    <footer id="contact" className="border-t border-border py-12 px-8 bg-bg relative">
       <div className="max-w-[860px] mx-auto flex justify-between items-center gap-4 flex-wrap">
         <div className="flex gap-10">
           {contactLinks.map(({ label, href, external, icon, color }) => (

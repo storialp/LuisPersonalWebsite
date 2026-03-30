@@ -1,20 +1,20 @@
 export const prerender = false;
 
-const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
-const NOW_PLAYING_ENDPOINT = 'https://api.spotify.com/v1/me/player/currently-playing';
-const RECENTLY_PLAYED_ENDPOINT = 'https://api.spotify.com/v1/me/player/recently-played?limit=1';
+const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+const NOW_PLAYING_ENDPOINT = "https://api.spotify.com/v1/me/player/currently-playing";
+const RECENTLY_PLAYED_ENDPOINT = "https://api.spotify.com/v1/me/player/recently-played?limit=1";
 
 async function getAccessToken() {
   const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = import.meta.env;
   const basic = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
   const res = await fetch(TOKEN_ENDPOINT, {
-    method: 'POST',
+    method: "POST",
     headers: {
       Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded",
     },
     body: new URLSearchParams({
-      grant_type: 'refresh_token',
+      grant_type: "refresh_token",
       refresh_token: SPOTIFY_REFRESH_TOKEN,
     }),
   });
@@ -27,12 +27,12 @@ function trackResponse(track: any, isPlaying: boolean, playedAt?: string) {
     JSON.stringify({
       isPlaying,
       title: track.name,
-      artist: track.artists.map((a: any) => a.name).join(', '),
+      artist: track.artists.map((a: any) => a.name).join(", "),
       albumArt: track.album.images?.[2]?.url ?? track.album.images?.[0]?.url,
       songUrl: track.external_urls.spotify,
       playedAt,
     }),
-    { status: 200, headers: { 'Content-Type': 'application/json' } },
+    { status: 200, headers: { "Content-Type": "application/json" } },
   );
 }
 
@@ -60,6 +60,6 @@ export async function GET() {
 
   return new Response(JSON.stringify({ isPlaying: false }), {
     status: 200,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { "Content-Type": "application/json" },
   });
 }

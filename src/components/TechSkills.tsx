@@ -114,13 +114,7 @@ function TechTag({ tech }: { tech: string }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {logoUrl && (
-        <img
-          src={logoUrl}
-          alt={`${tech} logo`}
-          className="w-[0.9rem] h-[0.9rem]"
-        />
-      )}
+      {logoUrl && <img src={logoUrl} alt={`${tech} logo`} className="w-[0.9rem] h-[0.9rem]" />}
       {tech}
     </button>
   );
@@ -132,9 +126,7 @@ export default function TechSkills() {
       <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[50%] bg-[radial-gradient(ellipse,rgba(32,213,179,0.025)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[860px] mx-auto relative">
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-12">
-          Technical Stack
-        </p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-12">Technical Stack</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 mb-20">
           {categories.map((category) => (
@@ -151,9 +143,7 @@ export default function TechSkills() {
           ))}
         </div>
 
-        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">
-          Languages
-        </p>
+        <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10">Languages</p>
 
         <div className="flex gap-16 flex-wrap">
           {languages.map((lang) => (
