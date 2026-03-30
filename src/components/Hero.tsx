@@ -9,7 +9,7 @@ export default function Hero() {
 
       <div className="relative z-10 text-center px-8 max-w-[860px] w-full">
         <p className="text-xs text-accent tracking-[0.2em] uppercase mb-10 animate-[fadeUp_0.8s_0.1s_both]">
-          Milan, Italy
+          Based in Milan, Italy
         </p>
 
         <h1 className="text-[clamp(4rem,12vw,8rem)] font-extralight leading-[1.05] tracking-tight text-text mb-12 animate-[fadeUp_0.8s_0.25s_both]">
@@ -28,15 +28,19 @@ export default function Hero() {
           >
             Endpoint
           </a>
-          . Previously at Yummy (YC&nbsp;S21) and APX. Studied CS&nbsp;&amp;&nbsp;Economics at
-          Bocconi in Milan.
+          . Previously at Yummy (YC&nbsp;S21) and APX. Studied
+          CS&nbsp;&amp;&nbsp;Economics at Bocconi in Milan.
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap animate-[fadeUp_0.8s_0.55s_both]">
           <a
             href="#experience"
             className="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-medium tracking-[0.08em] uppercase text-text no-verify border border-white/10 rounded-[2px] bg-white/[0.04] backdrop-blur-xl transition-all duration-250 hover:border-[rgba(32,213,179,0.35)] hover:bg-[rgba(32,213,179,0.07)] hover:text-accent"
-            onClick={() => window.posthog?.capture("hero_cta_clicked", { cta_label: "Experience" })}
+            onClick={() =>
+              window.posthog?.capture("hero_cta_clicked", {
+                cta_label: "Experience",
+              })
+            }
           >
             Experience
           </a>
@@ -44,7 +48,11 @@ export default function Hero() {
           <a
             href="mailto:pericchiluis@gmail.com"
             className="inline-flex items-center px-6 py-2.5 text-xs font-medium tracking-[0.08em] uppercase text-text-muted no-verify transition-colors duration-250 hover:text-text"
-            onClick={() => window.posthog?.capture("hero_cta_clicked", { cta_label: "Email me" })}
+            onClick={() =>
+              window.posthog?.capture("hero_cta_clicked", {
+                cta_label: "Email me",
+              })
+            }
           >
             Email me
           </a>
