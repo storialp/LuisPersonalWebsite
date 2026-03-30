@@ -63,30 +63,38 @@ export default function NavBar({ path }: NavBarProps) {
         <nav
           className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
             navIsSolid
-              ? "bg-[rgba(8,8,8,0.88)] backdrop-blur-2xl border-b border-white/[0.06]"
-              : "bg-transparent border-b border-transparent"
+              ? "bg-[rgba(8,8,8,0.88)] border-b border-white/[0.06] backdrop-blur-2xl"
+              : "border-b border-transparent bg-transparent"
           }`}
         >
-          <div className="max-w-[860px] mx-auto px-5 md:px-8 flex h-[60px] justify-between md:justify-center items-center relative">
+          <div className="flex h-[60px] w-full items-center px-5 md:px-8">
             <a
               href="/"
-              className="md:hidden text-[0.7rem] tracking-[0.1em] uppercase text-text-muted font-medium"
+              className="text-[0.7rem] font-medium uppercase tracking-[0.1em] text-text-muted md:hidden"
               onClick={handleNavItemClick}
             >
               Luis
             </a>
 
-            <div className="hidden md:flex gap-10 items-center">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={item.isModal ? handleContactClick : undefined}
-                  className="text-xs text-text-muted no-verify tracking-[0.1em] uppercase transition-colors duration-200 hover:text-text font-medium"
-                >
-                  {item.name}
-                </a>
-              ))}
+            <div className="hidden w-[248px] shrink-0 lg:block" aria-hidden="true" />
+
+            <div className="hidden min-w-0 flex-1 justify-center md:flex">
+              <div className="flex items-center gap-6 lg:gap-8 xl:gap-10">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={item.isModal ? handleContactClick : undefined}
+                    className="text-[0.68rem] font-medium uppercase tracking-[0.1em] text-text-muted transition-colors duration-200 hover:text-text lg:text-xs"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden w-[248px] shrink-0 justify-end lg:flex">
+              <SpotifyWidget className="w-[240px] max-w-[240px]" />
             </div>
 
             <SheetTrigger asChild>
@@ -97,7 +105,7 @@ export default function NavBar({ path }: NavBarProps) {
                 aria-label={
                   mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
                 }
-                className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl transition-all duration-300 hover:border-accent/40 hover:bg-accent/10"
+                className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl transition-all duration-300 hover:border-accent/40 hover:bg-accent/10 md:hidden"
               >
                 <span className="relative block h-4 w-4">
                   <span
@@ -119,7 +127,6 @@ export default function NavBar({ path }: NavBarProps) {
               </button>
             </SheetTrigger>
           </div>
-          <SpotifyWidget />
         </nav>
 
         <SheetContent
@@ -155,3 +162,5 @@ export default function NavBar({ path }: NavBarProps) {
     </>
   );
 }
+
+
