@@ -247,7 +247,7 @@ function ProjectCard({ project }: { project: Project }) {
   }
 
   return (
-    <article className="group flex flex-col h-full bg-[#0A0A0A] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-accent/40 md:min-h-[640px]">
+    <article className="group flex h-full flex-col bg-[#0A0A0A] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-accent/40">
       <a
         href={project.link}
         target="_blank"
@@ -262,7 +262,7 @@ function ProjectCard({ project }: { project: Project }) {
         />
       </a>
 
-      <div className="flex flex-col flex-grow p-5 md:p-6">
+      <div className="flex flex-1 flex-col p-5 md:p-5 lg:p-6">
         <div className="mb-3 md:mb-4">
           <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">
             {project.name}
@@ -286,16 +286,16 @@ function ProjectCard({ project }: { project: Project }) {
           </ul>
         )}
 
-        <div className="mt-4 flex flex-wrap gap-2 md:mt-auto">
+        <div className="mt-5 flex flex-wrap content-start gap-1.5 border-t border-white/6 pt-4 md:gap-2">
           {project.stack.map((stackItem) => (
             <span
               key={stackItem.name}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] text-text-muted font-medium bg-white/[0.03] border border-white/10 rounded-md transition-colors duration-300 group-hover:text-white/90"
+              className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10px] font-medium text-text-muted transition-colors duration-300 group-hover:text-white/90 md:px-2.5 md:py-1 md:text-[11px]"
             >
               <img
                 src={stackItem.logo}
                 alt={stackItem.name}
-                className="w-3.5 h-3.5 object-contain opacity-80 brightness-90 group-hover:opacity-100 group-hover:brightness-110 transition-all"
+                className="h-3 w-3 object-contain opacity-80 brightness-90 transition-all group-hover:opacity-100 group-hover:brightness-110 md:h-3.5 md:w-3.5"
               />
               {stackItem.name}
             </span>
@@ -319,7 +319,7 @@ export default function PortfolioSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-fr">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:auto-rows-fr">
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
@@ -328,3 +328,5 @@ export default function PortfolioSection() {
     </div>
   );
 }
+
+
