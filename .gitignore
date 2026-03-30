@@ -22,3 +22,5 @@ pnpm-debug.log*
 # Notes
 
 notes.md
+
+.playwright-mcp/

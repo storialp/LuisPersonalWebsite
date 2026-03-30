@@ -9,21 +9,6 @@ interface SpotifyData {
   playedAt?: string;
 }
 
-function getRelativeTime(dateString?: string) {
-  if (!dateString) return "";
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  if (diffInSeconds < 60) return "just now";
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  if (diffInHours < 24) return `${diffInHours}h ago`;
-  const diffInDays = Math.floor(diffInHours / 24);
-  return `${diffInDays}d ago`;
-}
-
 const AudioBars = () => (
   <div className="flex items-center gap-[1.5px] h-3 px-0.5 shrink-0 ml-1">
     {[...Array(4)].map((_, i) => (
@@ -67,6 +52,8 @@ export default function SpotifyWidget() {
 
   if (!data?.title) return null;
 
+  const statusLabel = data.isPlaying ? "Currently playing" : "Last song played";
+
   return (
     <>
       <style>{`
@@ -89,9 +76,9 @@ export default function SpotifyWidget() {
         href={data.songUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`fixed right-6 top-3 hidden md:flex items-center gap-2.5 py-1.5 pl-1.5 pr-3.5 rounded-full border border-white/5 bg-[rgba(8,8,8,0.72)] backdrop-blur-md transition-all duration-700 hover:bg-white/[0.04] hover:border-white/10 active:scale-95 ${
+        className={`fixed right-6 top-3 hidden md:flex items-center gap-2.5 py-1.5 pl-1.5 pr-3.5 rounded-full border border-white/5 bg-[rgba(8,8,8,0.72)] backdrop-blur-md transition-all duration-700 hover:bg-white/[0.04] hover:border-white/10 active:scale-95 group ${
           visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
-        } group`}
+        }`}
         style={{
           maxWidth: "240px",
         }}
@@ -117,28 +104,22 @@ export default function SpotifyWidget() {
         </div>
 
         <div className="flex flex-col min-w-0">
-          <span className="text-[10px] font-medium text-white/80 truncate leading-tight group-hover:text-white transition-colors duration-500">
-            {data.title}
+          <span className="text-[8px] font-medium tracking-[0.08em] uppercase text-white/45 truncate leading-tight">
+            {statusLabel}
           </span>
-          <span className="text-[9px] font-normal text-white/30 truncate leading-tight mt-0.5 group-hover:text-white/50 transition-colors duration-500">
-            {data.artist}
+          <span className="text-[10px] font-medium text-white/80 truncate leading-tight mt-0.5 group-hover:text-white transition-colors duration-500">
+            {data.title}
+            {data.artist ? (
+              <span className="font-normal text-white/40 group-hover:text-white/50 transition-colors duration-500">
+                {" "}
+                • {data.artist}
+              </span>
+            ) : null}
           </span>
         </div>
 
         {data.isPlaying && <AudioBars />}
 
-        {/* Tooltip */}
-        <div className="absolute top-[calc(100%+8px)] right-0 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0">
-          <div className="bg-black/80 backdrop-blur-md text-white/90 text-[9px] font-medium px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap shadow-lg backdrop-saturate-150">
-            {data.isPlaying
-              ? "Now Playing"
-              : data.playedAt
-                ? `Last played: ${getRelativeTime(data.playedAt)}`
-                : "Recently Played"}
-          </div>
-        </div>
-
-        {/* Minimal Glow Effect */}
         <div className="absolute inset-0 -z-10 bg-[#20D5B3]/0 group-hover:bg-[#20D5B3]/[0.02] rounded-full blur-md transition-all duration-700" />
       </a>
     </>
