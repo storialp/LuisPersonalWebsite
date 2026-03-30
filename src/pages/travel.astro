@@ -4,5 +4,8 @@ import MainLayout from "../layouts/mainLayout.astro";
 ---
 
 <MainLayout>
-  <Travel client:load />
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/images/earth-blue-marble.jpg" />
+  </Fragment>
+  <Travel client:idle />
 </MainLayout>
