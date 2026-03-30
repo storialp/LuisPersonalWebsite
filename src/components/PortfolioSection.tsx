@@ -252,7 +252,7 @@ function ProjectCard({ project }: { project: Project }) {
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-full h-[400px] overflow-hidden bg-[#111] border-b border-white/5 flex-shrink-0"
+        className="block w-full aspect-[16/10] overflow-hidden bg-[#111] border-b border-white/5 flex-shrink-0"
         onClick={handleProjectClick}
       >
         <img
