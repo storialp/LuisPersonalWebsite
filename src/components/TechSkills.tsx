@@ -1,5 +1,5 @@
 import { ES, IT, US } from "country-flag-icons/react/3x2";
-import { useState } from "react";
+import TechBubble from "./TechBubble";
 
 const categories = [
   {
@@ -93,32 +93,57 @@ const technologyLogos: Record<string, string> = {
   Vite: "/technologies/vite.svg",
 };
 
+const technologyUrls: Record<string, string> = {
+  JavaScript: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  TypeScript: "https://www.typescriptlang.org/",
+  Python: "https://www.python.org/",
+  SQL: "https://developer.mozilla.org/en-US/docs/Glossary/SQL",
+  HTML: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  CSS: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  R: "https://www.r-project.org/",
+  Flask: "https://flask.palletsprojects.com/",
+  React: "https://react.dev/",
+  "Next.js": "https://nextjs.org/",
+  Clerk: "https://clerk.com/",
+  Angular: "https://angular.dev/",
+  Astro: "https://astro.build/",
+  Express: "https://expressjs.com/",
+  "Tailwind CSS": "https://tailwindcss.com/",
+  Prisma: "https://www.prisma.io/",
+  Sequelize: "https://sequelize.org/",
+  Mongoose: "https://mongoosejs.com/",
+  NumPy: "https://numpy.org/",
+  Pandas: "https://pandas.pydata.org/",
+  Git: "https://git-scm.com/",
+  Docker: "https://www.docker.com/",
+  "Vertex AI": "https://cloud.google.com/vertex-ai",
+  GCP: "https://cloud.google.com/",
+  Redis: "https://redis.io/",
+  Stripe: "https://stripe.com/",
+  Posthog: "https://posthog.com/",
+  Linear: "https://linear.app/",
+  Jira: "https://www.atlassian.com/software/jira",
+  "Work OS": "https://workos.com/",
+  Cursor: "https://cursor.com/",
+  "Claude Code": "https://www.anthropic.com/claude-code",
+  Codex: "https://openai.com/codex/",
+  Drizzle: "https://orm.drizzle.team/",
+  tRPC: "https://trpc.io/",
+  smolagents: "https://huggingface.co/docs/smolagents/index",
+  PostgreSQL: "https://www.postgresql.org/",
+  Gemini: "https://deepmind.google/technologies/gemini/",
+  Firecrawl: "https://www.firecrawl.dev/",
+  Exa: "https://exa.ai/",
+  Apollo: "https://www.apollo.io/",
+  "Ruby On Rails": "https://rubyonrails.org/",
+  Vite: "https://vite.dev/",
+};
+
 const languages = [
   { name: "Spanish", level: "Native", Flag: ES },
   { name: "English", level: "Native", Flag: US },
   { name: "Italian", level: "Professional", Flag: IT },
 ];
-
-function TechTag({ tech }: { tech: string }) {
-  const [hovered, setHovered] = useState(false);
-  const logoUrl = technologyLogos[tech];
-
-  return (
-    <button
-      type="button"
-      className={`inline-flex items-center gap-2 px-3 py-1 text-xs rounded-[2px] tracking-[0.02em] transition-all duration-200 cursor-default ${
-        hovered
-          ? "text-white bg-white/[0.4] border-white/60 shadow-[0_0_14px_rgba(255,255,255,0.08)]"
-          : "text-text-muted bg-white/[0.03] border-white/[0.07]"
-      }`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {logoUrl && <img src={logoUrl} alt={`${tech} logo`} className="w-[0.9rem] h-[0.9rem]" />}
-      {tech}
-    </button>
-  );
-}
 
 export default function TechSkills() {
   return (
@@ -136,7 +161,12 @@ export default function TechSkills() {
               </h3>
               <div className="flex flex-wrap gap-2.5">
                 {category.skills.map((tech) => (
-                  <TechTag key={tech} tech={tech} />
+                  <TechBubble
+                    key={tech}
+                    name={tech}
+                    logo={technologyLogos[tech]}
+                    href={technologyUrls[tech]}
+                  />
                 ))}
               </div>
             </div>
