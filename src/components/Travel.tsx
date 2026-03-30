@@ -18,6 +18,11 @@ export default function Travel({ initialGeoJson }: TravelProps) {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = dimensions.width > 0 && dimensions.width < 768;
+  const globeWidth = dimensions.width > 0 ? dimensions.width : 0;
+  const globeHeight =
+    dimensions.width > 0
+      ? Math.min(dimensions.height, isMobile ? dimensions.width * 0.82 : dimensions.width * 0.6)
+      : 0;
 
   useEffect(() => {
     // Dynamically import Globe to avoid SSR issues
@@ -28,7 +33,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
 
   useEffect(() => {
     if (globeRef.current) {
-      globeRef.current.pointOfView({ altitude: isMobile ? 1.05 : 1.8 });
+      globeRef.current.pointOfView({ altitude: isMobile ? 1.45 : 1.7 });
       const controls = globeRef.current.controls();
       if (controls) {
         controls.enableZoom = false; // Disable zooming
@@ -86,11 +91,11 @@ export default function Travel({ initialGeoJson }: TravelProps) {
           className="relative aspect-[16/9] md:aspect-[2/1] max-w-5xl mx-auto flex items-center justify-center"
         >
           {dimensions.width > 0 && Globe && (
-            <div className={isMobile ? "scale-[1.18] transform-gpu" : ""}>
+            <div className="flex items-center justify-center w-full h-full overflow-visible">
               <Globe
                 ref={globeRef}
-                width={dimensions.width}
-                height={dimensions.height}
+                width={globeWidth}
+                height={globeHeight}
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
                 backgroundImageUrl=""
                 backgroundColor="rgba(0,0,0,0)"
