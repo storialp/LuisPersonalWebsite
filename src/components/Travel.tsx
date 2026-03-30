@@ -21,14 +21,36 @@ export default function Travel({ initialGeoJson }: TravelProps) {
   const globeWidth = dimensions.width > 0 ? dimensions.width : 0;
   const globeHeight =
     dimensions.width > 0
-      ? Math.min(dimensions.height, isMobile ? dimensions.width * 0.82 : dimensions.width * 0.6)
+      ? Math.min(
+          dimensions.height,
+          isMobile ? dimensions.width * 0.82 : dimensions.width * 0.6,
+        )
       : 0;
 
   useEffect(() => {
-    // Dynamically import Globe to avoid SSR issues
-    import("react-globe.gl").then((mod) => {
-      setGlobe(() => mod.default);
-    });
+    let cancelled = false;
+
+    const loadGlobe = () => {
+      import("react-globe.gl").then((mod) => {
+        if (!cancelled) {
+          setGlobe(() => mod.default);
+        }
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(loadGlobe, { timeout: 1200 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(idleId);
+      };
+    }
+
+    const timeoutId = window.setTimeout(loadGlobe, 0);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
   }, []);
 
   useEffect(() => {
@@ -66,7 +88,8 @@ export default function Travel({ initialGeoJson }: TravelProps) {
       const props = feature.properties;
       const iso2 = props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
       const iso3 = props?.ISO_A3 === "-99" ? props?.WB_A3 : props?.ISO_A3;
-      const isVisited = (iso2 && VISITED_CODES.has(iso2)) || (iso3 && VISITED_CODES.has(iso3));
+      const isVisited =
+        (iso2 && VISITED_CODES.has(iso2)) || (iso3 && VISITED_CODES.has(iso3));
       return { ...feature, properties: { ...props, _isVisited: isVisited } };
     });
   }, [geoJson]);
@@ -77,7 +100,9 @@ export default function Travel({ initialGeoJson }: TravelProps) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-8">
         <div className="text-center mb-16">
-          <p className="text-xs text-accent tracking-[0.2em] uppercase mb-4">Adventures</p>
+          <p className="text-xs text-accent tracking-[0.2em] uppercase mb-4">
+            Adventures
+          </p>
           <h2 className="text-4xl md:text-5xl font-light text-text tracking-tight">
             Countries Explored
           </h2>
@@ -90,30 +115,50 @@ export default function Travel({ initialGeoJson }: TravelProps) {
           ref={containerRef}
           className="relative aspect-[16/9] md:aspect-[2/1] max-w-5xl mx-auto flex items-center justify-center"
         >
+          {!Globe && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="h-12 w-12 rounded-full border-2 border-white/10 border-t-accent animate-spin shadow-[0_0_24px_rgba(32,213,179,0.18)]" />
+                <p className="text-xs uppercase tracking-[0.24em] text-text-muted/80">
+                  Loading
+                </p>
+              </div>
+            </div>
+          )}
+
           {dimensions.width > 0 && Globe && (
             <div className="flex items-center justify-center w-full h-full overflow-visible">
               <Globe
                 ref={globeRef}
                 width={globeWidth}
                 height={globeHeight}
-                globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+                globeImageUrl="/images/earth-blue-marble.jpg"
                 backgroundImageUrl=""
                 backgroundColor="rgba(0,0,0,0)"
                 showAtmosphere={true}
                 atmosphereColor="#20D5B3"
                 atmosphereAltitude={0.08}
                 polygonsData={polygonsWithHighlight}
-                polygonAltitude={(d: any) => (d.properties?._isVisited ? 0.01 : 0.005)}
+                polygonAltitude={(d: any) =>
+                  d.properties?._isVisited ? 0.01 : 0.005
+                }
                 polygonCapColor={(d: any) =>
-                  d.properties?._isVisited ? "rgba(22, 101, 52, 0.8)" : "transparent"
+                  d.properties?._isVisited
+                    ? "rgba(22, 101, 52, 0.8)"
+                    : "transparent"
                 }
                 polygonSideColor={() => "transparent"}
                 polygonStrokeColor={() => "rgba(255, 255, 255, 0.2)"}
                 polygonLabel={(feature: any) => {
                   const props = feature.properties;
-                  const code = props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
-                  const country = code ? COUNTRIES.find((c) => c.code === code) : null;
-                  return country ? `<div><b>${country.name}</b></div>` : props?.ADMIN || "";
+                  const code =
+                    props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
+                  const country = code
+                    ? COUNTRIES.find((c) => c.code === code)
+                    : null;
+                  return country
+                    ? `<div><b>${country.name}</b></div>`
+                    : props?.ADMIN || "";
                 }}
               />
             </div>
@@ -124,7 +169,8 @@ export default function Travel({ initialGeoJson }: TravelProps) {
               <div className="flex items-center gap-3">
                 <span className="w-8 inline-block overflow-hidden rounded-[2px]">
                   {(() => {
-                    const Flag = Flags[hoveredCountry.code as keyof typeof Flags];
+                    const Flag =
+                      Flags[hoveredCountry.code as keyof typeof Flags];
                     return Flag ? <Flag /> : "flag";
                   })()}
                 </span>
@@ -137,21 +183,25 @@ export default function Travel({ initialGeoJson }: TravelProps) {
         </div>
 
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {COUNTRIES.slice(0, isExpanded ? COUNTRIES.length : 12).map((country) => {
-            const Flag = Flags[country.code as keyof typeof Flags];
-            return (
-              <button
-                key={country.name}
-                type="button"
-                className="flex items-center gap-2 px-3 py-2 bg-white/[0.02] border border-white/5 rounded-md hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 cursor-pointer text-left"
-              >
-                <span className="w-5 inline-block overflow-hidden rounded-[2px] opacity-90">
-                  {Flag ? <Flag /> : "flag"}
-                </span>
-                <span className="text-text-muted text-xs truncate">{country.name}</span>
-              </button>
-            );
-          })}
+          {COUNTRIES.slice(0, isExpanded ? COUNTRIES.length : 12).map(
+            (country) => {
+              const Flag = Flags[country.code as keyof typeof Flags];
+              return (
+                <button
+                  key={country.name}
+                  type="button"
+                  className="flex items-center gap-2 px-3 py-2 bg-white/[0.02] border border-white/5 rounded-md hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 cursor-pointer text-left"
+                >
+                  <span className="w-5 inline-block overflow-hidden rounded-[2px] opacity-90">
+                    {Flag ? <Flag /> : "flag"}
+                  </span>
+                  <span className="text-text-muted text-xs truncate">
+                    {country.name}
+                  </span>
+                </button>
+              );
+            },
+          )}
           {COUNTRIES.length > 12 && (
             <button
               type="button"
