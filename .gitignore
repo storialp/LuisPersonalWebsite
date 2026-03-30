@@ -23,4 +23,6 @@ pnpm-debug.log*
 
 notes.md
 
+# Folders agents love to add and inconsistently delete
 .playwright-mcp/
+.vercel/
