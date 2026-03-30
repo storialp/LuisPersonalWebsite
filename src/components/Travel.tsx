@@ -139,14 +139,6 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 key={country.name}
                 type="button"
                 className="flex items-center gap-2 px-3 py-2 bg-white/[0.02] border border-white/5 rounded-md hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 cursor-pointer text-left"
-                onMouseEnter={() => {
-                  setHoveredCountry(country);
-                  window.posthog?.capture("travel_country_hovered", {
-                    country_name: country.name,
-                    country_code: country.code,
-                  });
-                }}
-                onMouseLeave={() => setHoveredCountry(null)}
               >
                 <span className="w-5 inline-block overflow-hidden rounded-[2px] opacity-90">
                   {Flag ? <Flag /> : "flag"}
