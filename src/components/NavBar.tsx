@@ -140,10 +140,9 @@ export default function NavBar({ path }: NavBarProps) {
                   href={item.href}
                   onClick={item.isModal ? handleContactClick : handleNavItemClick}
                   aria-current={path === item.href ? 'page' : undefined}
-                  className="flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-text-muted transition-all duration-200 hover:border-white/10 hover:bg-white/[0.04] hover:text-text"
+                  className="flex items-center rounded-2xl border border-transparent px-4 py-3 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-text-muted transition-all duration-200 hover:border-white/10 hover:bg-white/[0.04] hover:text-text"
                 >
                   <span>{item.name}</span>
-                  <span className="text-accent/70">{item.isModal ? '+' : '/'}</span>
                 </a>
               ))}
             </div>
