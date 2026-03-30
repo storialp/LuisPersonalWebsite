@@ -16,7 +16,7 @@ interface NavBarProps {
 const navigation = [
   { name: "Experience", href: "/#experience" },
   { name: "Projects", href: "/#projects" },
-  { name: "Blog", href: "/blog" },
+  // { name: "Blog", href: "/blog" },
   { name: "Travel", href: "/travel" },
   { name: "Contact", href: "#contact", isModal: true },
 ];
@@ -76,7 +76,10 @@ export default function NavBar({ path }: NavBarProps) {
               Luis
             </a>
 
-            <div className="hidden w-[248px] shrink-0 lg:block" aria-hidden="true" />
+            <div
+              className="hidden w-[248px] shrink-0 lg:block"
+              aria-hidden="true"
+            />
 
             <div className="hidden min-w-0 flex-1 justify-center md:flex">
               <div className="flex items-center gap-6 lg:gap-8 xl:gap-10">
@@ -103,7 +106,9 @@ export default function NavBar({ path }: NavBarProps) {
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation"
                 aria-label={
-                  mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
+                  mobileMenuOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
                 }
                 className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl transition-all duration-300 hover:border-accent/40 hover:bg-accent/10 md:hidden"
               >
@@ -162,5 +167,3 @@ export default function NavBar({ path }: NavBarProps) {
     </>
   );
 }
-
-
