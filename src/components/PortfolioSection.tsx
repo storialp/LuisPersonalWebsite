@@ -247,7 +247,7 @@ function ProjectCard({ project }: { project: Project }) {
   }
 
   return (
-    <article className="group flex flex-col h-full min-h-[640px] bg-[#0A0A0A] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-accent/40">
+    <article className="group flex flex-col h-full bg-[#0A0A0A] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-accent/40 md:min-h-[640px]">
       <a
         href={project.link}
         target="_blank"
@@ -262,8 +262,8 @@ function ProjectCard({ project }: { project: Project }) {
         />
       </a>
 
-      <div className="p-6 flex flex-col flex-grow">
-        <div className="mb-4">
+      <div className="flex flex-col flex-grow p-5 md:p-6">
+        <div className="mb-3 md:mb-4">
           <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">
             {project.name}
           </h3>
@@ -286,7 +286,7 @@ function ProjectCard({ project }: { project: Project }) {
           </ul>
         )}
 
-        <div className="mt-auto flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2 md:mt-auto">
           {project.stack.map((stackItem) => (
             <span
               key={stackItem.name}
