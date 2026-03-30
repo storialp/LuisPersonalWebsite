@@ -26,19 +26,14 @@ const projects: Project[] = [
         logo: "/technologies/react.svg",
       },
       {
-        url: "https://tailwindcss.com/",
-        name: "Tailwind CSS",
-        logo: "/technologies/tailwindcss.svg",
-      },
-      {
         url: "https://flask.palletsprojects.com/",
         name: "Flask",
         logo: "/technologies/flask.svg",
       },
       {
-        url: "https://www.anthropic.com/",
-        name: "Claude 4.5 Haiku",
-        logo: "/technologies/claude-code.svg",
+        url: "https://tailwindcss.com/",
+        name: "Tailwind",
+        logo: "/technologies/tailwindcss.svg",
       },
       {
         url: "https://huggingface.co/docs/smolagents/index",
@@ -46,9 +41,9 @@ const projects: Project[] = [
         logo: "/technologies/smolagents.svg",
       },
       {
-        url: "https://www.microsoft.com/en-us/microsoft-365/excel",
-        name: "Excel Add-in",
-        logo: "/technologies/excel.svg",
+        url: "https://www.postgresql.org/",
+        name: "PostgreSQL",
+        logo: "/technologies/postgresql.svg",
       },
       {
         url: "https://redis.io/",
@@ -57,8 +52,13 @@ const projects: Project[] = [
       },
       {
         url: "https://workos.com/",
-        name: "Work OS",
+        name: "WorkOS",
         logo: "/technologies/workos.svg",
+      },
+      {
+        url: "https://www.microsoft.com/en-us/microsoft-365/excel",
+        name: "Excel add-in",
+        logo: "/technologies/excel.svg",
       },
     ],
   },
@@ -74,29 +74,14 @@ const projects: Project[] = [
         logo: "/technologies/nextjs.svg",
       },
       {
-        url: "https://tailwindcss.com/",
-        name: "Tailwind CSS",
-        logo: "/technologies/tailwindcss.svg",
-      },
-      {
         url: "https://flask.palletsprojects.com/",
         name: "Flask",
         logo: "/technologies/flask.svg",
       },
       {
-        url: "https://clerk.com/",
-        name: "Clerk",
-        logo: "/technologies/clerk.svg",
-      },
-      {
-        url: "https://deepmind.google/technologies/gemini/",
-        name: "Gemini 2.0 Flash",
-        logo: "/technologies/gemini.svg",
-      },
-      {
-        url: "https://orm.drizzle.team/",
-        name: "Drizzle",
-        logo: "/technologies/drizzle.svg",
+        url: "https://tailwindcss.com/",
+        name: "Tailwind CSS",
+        logo: "/technologies/tailwindcss.svg",
       },
       {
         url: "https://trpc.io/",
@@ -104,14 +89,9 @@ const projects: Project[] = [
         logo: "/technologies/trpc.svg",
       },
       {
-        url: "https://stripe.com/",
-        name: "Stripe",
-        logo: "/technologies/stripe.svg",
-      },
-      {
-        url: "https://redis.io/",
-        name: "Redis",
-        logo: "/technologies/redis.svg",
+        url: "https://www.docker.com/",
+        name: "Docker",
+        logo: "/technologies/docker.svg",
       },
       {
         url: "https://kubernetes.io/",
@@ -119,9 +99,34 @@ const projects: Project[] = [
         logo: "/technologies/kubernetes.svg",
       },
       {
-        url: "https://www.docker.com/",
-        name: "Docker",
-        logo: "/technologies/docker.svg",
+        url: "https://www.postgresql.org/",
+        name: "PostgreSQL",
+        logo: "/technologies/postgresql.svg",
+      },
+      {
+        url: "https://redis.io/",
+        name: "Redis",
+        logo: "/technologies/redis.svg",
+      },
+      {
+        url: "https://orm.drizzle.team/",
+        name: "Drizzle",
+        logo: "/technologies/drizzle.svg",
+      },
+      {
+        url: "https://deepmind.google/technologies/gemini/",
+        name: "Gemini 2.0 Flash",
+        logo: "/technologies/gemini.svg",
+      },
+      {
+        url: "https://stripe.com/",
+        name: "Stripe",
+        logo: "/technologies/stripe.svg",
+      },
+      {
+        url: "https://clerk.com/",
+        name: "Clerk",
+        logo: "/technologies/clerk.svg",
       },
     ],
   },
@@ -185,19 +190,9 @@ const projects: Project[] = [
         logo: "/technologies/tailwindcss.svg",
       },
       {
-        url: "https://clerk.com/",
-        name: "Clerk",
-        logo: "/technologies/clerk.svg",
-      },
-      {
         url: "https://trpc.io/",
         name: "tRPC",
         logo: "/technologies/trpc.svg",
-      },
-      {
-        url: "https://orm.drizzle.team/",
-        name: "Drizzle",
-        logo: "/technologies/drizzle.svg",
       },
       {
         url: "https://www.postgresql.org/",
@@ -228,6 +223,11 @@ const projects: Project[] = [
         url: "https://stripe.com/",
         name: "Stripe",
         logo: "/technologies/stripe.svg",
+      },
+      {
+        url: "https://clerk.com/",
+        name: "Clerk",
+        logo: "/technologies/clerk.svg",
       },
       {
         url: "https://posthog.com/",
@@ -264,14 +264,21 @@ function ProjectCard({ project }: { project: Project }) {
 
       <div className="p-6 flex flex-col flex-grow">
         <div className="mb-4">
-          <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">{project.name}</h3>
-          <p className="text-sm text-text-muted leading-relaxed">{project.role}</p>
+          <h3 className="text-lg font-semibold text-white mb-1 tracking-tight">
+            {project.name}
+          </h3>
+          <p className="text-sm text-text-muted leading-relaxed">
+            {project.role}
+          </p>
         </div>
 
         {project.highlights && (
           <ul className="space-y-2 mb-6">
             {project.highlights.map((highlight) => (
-              <li key={highlight} className="text-sm text-text-muted flex gap-2">
+              <li
+                key={highlight}
+                className="text-sm text-text-muted flex gap-2"
+              >
                 <span className="text-accent opacity-50">•</span>
                 {highlight}
               </li>
@@ -304,8 +311,12 @@ export default function PortfolioSection() {
     <div className="bg-bg py-16 px-8 border-t border-border">
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-16">
-          <p className="text-xs text-accent tracking-[0.2em] uppercase font-bold mb-3">Portfolio</p>
-          <h2 className="text-4xl font-bold text-white tracking-tight">Featured Projects</h2>
+          <p className="text-xs text-accent tracking-[0.2em] uppercase font-bold mb-3">
+            Portfolio
+          </p>
+          <h2 className="text-4xl font-bold text-white tracking-tight">
+            Featured Projects
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-fr">
