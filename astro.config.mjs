@@ -6,4 +6,9 @@ export default defineConfig({
   output: "static",
   adapter: vercel(),
   integrations: [react()],
+  vite: {
+    optimizeDeps: {
+      include: ["react", "react-dom", "react-dom/client"],
+    },
+  },
 });
