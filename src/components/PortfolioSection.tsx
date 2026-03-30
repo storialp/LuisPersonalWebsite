@@ -10,7 +10,6 @@ interface Project {
   imageUrl: string;
   link: string;
   stack: StackItem[];
-  highlights?: string[];
 }
 
 const projects: Project[] = [
@@ -272,33 +271,23 @@ function ProjectCard({ project }: { project: Project }) {
           </p>
         </div>
 
-        {project.highlights && (
-          <ul className="space-y-2 mb-6">
-            {project.highlights.map((highlight) => (
-              <li
-                key={highlight}
-                className="text-sm text-text-muted flex gap-2"
-              >
-                <span className="text-accent opacity-50">•</span>
-                {highlight}
-              </li>
-            ))}
-          </ul>
-        )}
-
         <div className="mt-5 flex flex-wrap content-start gap-1.5 border-t border-white/6 pt-4 md:gap-2">
           {project.stack.map((stackItem) => (
-            <span
+            <a
               key={stackItem.name}
-              className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10px] font-medium text-text-muted transition-colors duration-300 group-hover:text-white/90 md:px-2.5 md:py-1 md:text-[11px]"
+              href={stackItem.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Open ${stackItem.name} in a new tab`}
+              className="group/stack inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10px] font-medium text-text-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-400/60 hover:bg-sky-400/10 hover:text-sky-100 focus-visible:-translate-y-0.5 focus-visible:border-sky-400/60 focus-visible:bg-sky-400/10 focus-visible:text-sky-100 focus-visible:outline-none md:px-2.5 md:py-1 md:text-[11px]"
             >
               <img
                 src={stackItem.logo}
                 alt={stackItem.name}
-                className="h-3 w-3 object-contain opacity-80 brightness-90 transition-all group-hover:opacity-100 group-hover:brightness-110 md:h-3.5 md:w-3.5"
+                className="h-3 w-3 object-contain opacity-80 brightness-90 transition-all duration-200 group-hover/stack:opacity-100 group-hover/stack:brightness-110 group-focus-visible/stack:opacity-100 group-focus-visible/stack:brightness-110 md:h-3.5 md:w-3.5"
               />
-              {stackItem.name}
-            </span>
+              <span>{stackItem.name}</span>
+            </a>
           ))}
         </div>
       </div>
@@ -328,5 +317,6 @@ export default function PortfolioSection() {
     </div>
   );
 }
+
 
 
