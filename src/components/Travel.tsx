@@ -1,18 +1,12 @@
 import * as Flags from "country-flag-icons/react/3x2";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { COUNTRIES, type Country } from "../data/countries";
+import { COUNTRIES } from "../data/countries";
 import geoJsonData from "../data/countries.json";
 
 const VISITED_CODES = new Set(COUNTRIES.map((c) => c.code));
 
-interface TravelProps {
-  initialGeoJson?: any;
-}
-
-export default function Travel({ initialGeoJson }: TravelProps) {
+export default function Travel() {
   const [Globe, setGlobe] = useState<any>(null);
-  const [geoJson, setGeoJson] = useState<any>(initialGeoJson || geoJsonData);
-  const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<any>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -83,8 +77,8 @@ export default function Travel({ initialGeoJson }: TravelProps) {
   }, []);
 
   const polygonsWithHighlight = useMemo(() => {
-    if (!geoJson?.features) return [];
-    return geoJson.features.map((feature: any) => {
+    if (!geoJsonData?.features) return [];
+    return geoJsonData.features.map((feature: any) => {
       const props = feature.properties;
       const iso2 = props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
       const iso3 = props?.ISO_A3 === "-99" ? props?.WB_A3 : props?.ISO_A3;
@@ -92,7 +86,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
         (iso2 && VISITED_CODES.has(iso2)) || (iso3 && VISITED_CODES.has(iso3));
       return { ...feature, properties: { ...props, _isVisited: isVisited } };
     });
-  }, [geoJson]);
+  }, []);
 
   return (
     <section className="relative py-32 bg-bg overflow-hidden">
@@ -149,35 +143,7 @@ export default function Travel({ initialGeoJson }: TravelProps) {
                 }
                 polygonSideColor={() => "transparent"}
                 polygonStrokeColor={() => "rgba(255, 255, 255, 0.2)"}
-                polygonLabel={(feature: any) => {
-                  const props = feature.properties;
-                  const code =
-                    props?.ISO_A2 === "-99" ? props?.WB_A2 : props?.ISO_A2;
-                  const country = code
-                    ? COUNTRIES.find((c) => c.code === code)
-                    : null;
-                  return country
-                    ? `<div><b>${country.name}</b></div>`
-                    : props?.ADMIN || "";
-                }}
               />
-            </div>
-          )}
-
-          {hoveredCountry && (
-            <div className="absolute top-4 right-4 bg-bg-card/90 backdrop-blur-xl border border-white/10 rounded-lg px-4 py-3 pointer-events-none">
-              <div className="flex items-center gap-3">
-                <span className="w-8 inline-block overflow-hidden rounded-[2px]">
-                  {(() => {
-                    const Flag =
-                      Flags[hoveredCountry.code as keyof typeof Flags];
-                    return Flag ? <Flag /> : "flag";
-                  })()}
-                </span>
-                <div>
-                  <p className="text-text font-medium">{hoveredCountry.name}</p>
-                </div>
-              </div>
             </div>
           )}
         </div>
