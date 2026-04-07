@@ -135,7 +135,7 @@ const projects: Project[] = [
     name: "Endpoint Health",
     role: "Helping pharma companies use patient data for clinical and observational research",
     imageUrl: "/stills/endpoint-health.png",
-    link: "https://old-endpoint-website.vercel.app/",
+    link: "https://tryendpoint.com",
     stack: [
       {
         url: "https://reactjs.org/",
@@ -175,10 +175,10 @@ const projects: Project[] = [
     ],
   },
   {
-    name: "Endpoint Sales",
+    name: "SME Lead Generator",
     role: "Apollo for small companies that don't show up on Apollo. Find verified SMB owners and their contacts contacts through natural language",
     imageUrl: "/stills/endpoint-sales.png",
-    link: "https://tryendpoint.com",
+    link: "https://smeleadgenerator.com",
     stack: [
       {
         url: "https://nextjs.org/",
